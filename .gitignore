@@ -1,0 +1,8 @@
+# Virtual Environment
+.venv
+
+# Build
+dist
+
+# Python Cache
+__pycache__
