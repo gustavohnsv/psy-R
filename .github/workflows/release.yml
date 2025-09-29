@@ -52,10 +52,7 @@ jobs:
 
       - name: Compilar com PyInstaller (Windows)
         if: runner.os == 'Windows'
-        run: |
-          pyinstaller --onefile --windowed --name="psy-r" `
-          --add-data="src/app/assets;app/assets" `
-          src/main.py
+        run: pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets;app/assets" src/main.py
 
       # 5. Organiza os arquivos para a Release.
       #    Define nomes diferentes para os artefatos de cada OS.
