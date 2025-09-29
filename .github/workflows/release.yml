@@ -35,25 +35,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Compila executável
-      - name: Compilar com PyInstaller
+      # 4. Compila executável em Linux/macOS
+      - name: Compilar com PyInstaller (Linux/macOS)
+        if: runner.os != 'Windows'
         run: |
-          if [ "$RUNNER_OS" = "Windows" ]; then
-            pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets;app/assets" src/main.py
-          else
-            pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets:app/assets" src/main.py
-          fi
+          pyinstaller --onefile --windowed --name="psy-r" \
+          --add-data="src/app/assets:app/assets" \
+          src/main.py
 
-      # 5. Renomeia o binário de acordo com o SO
-      - name: Renomear binário
-        run: |
-          if [ "$RUNNER_OS" = "Linux" ]; then
-            mv dist/psy-r psyR-linux
-          elif [ "$RUNNER_OS" = "macOS" ]; then
-            mv dist/psy-r psyR-macos
-          else
-            mv dist/psy-r.exe psyR-windows.exe
-          fi
+      # 4b. Compila executável em Windows
+      - name: Compilar com PyInstaller (Windows)
+        if: runner.os == 'Windows'
+        run: pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets;app/assets" src/main.py
+
+      # 5. Renomeia binário de acordo com SO
+      - name: Renomear binário (Linux)
+        if: runner.os == 'Linux'
+        run: mv dist/psy-r psyR-linux
+
+      - name: Renomear binário (macOS)
+        if: runner.os == 'macOS'
+        run: mv dist/psy-r psyR-macos
+
+      - name: Renomear binário (Windows)
+        if: runner.os == 'Windows'
+        run: mv dist/psy-r.exe psyR-windows.exe
 
       # 6. Faz upload do artefato
       - name: Upload artefato
@@ -64,7 +70,7 @@ jobs:
             psyR-linux
             psyR-macos
             psyR-windows.exe
-          if-no-files-found: error
+          if-no-files-found: ignore
 
   release:
     needs: build
@@ -81,6 +87,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ github.ref_name }}
-          files: artifacts/**/* 
+          files: artifacts/**/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
