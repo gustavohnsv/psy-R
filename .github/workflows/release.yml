@@ -1,86 +1,94 @@
-name: Release
+# Nome do seu workflow, que aparecerá na aba "Actions" do GitHub.
+name: Criar Release e Compilar Projeto
 
+# Gatilho: Este workflow roda sempre que uma nova tag começando com 'v' (ex: v1.0, v2.3.4) for enviada.
 on:
   push:
     tags:
-      - "v*.*.*" # roda quando criar tag tipo v1.0.0
+      - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
   build:
-    name: Build ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
+    runs-on: ${{ matrix.os }}
+
     steps:
-      - name: Checkout código
+      # 1. Baixa o código do repositório
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar Rust
-        uses: dtolnay/rust-toolchain@stable
+      # 2. Configura Python
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Build binário
-        run: cargo build --release
-
-      - name: Renomear binário Linux
-        if: matrix.os == 'ubuntu-latest'
+      # 3. Instala dependências
+      - name: Instalar dependências
         run: |
-          mkdir artifacts
-          mv target/release/psy-r artifacts/psyR-${{ github.ref_name }}-linux-x86_64
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Renomear binário macOS
-        if: matrix.os == 'macos-latest'
+      # 4. Compila executável em Linux/macOS
+      - name: Compilar com PyInstaller (Linux/macOS)
+        if: runner.os != 'Windows'
         run: |
-          mkdir artifacts
-          mv target/release/psy-r artifacts/psyR-${{ github.ref_name }}-macos-x86_64
+          pyinstaller --onefile --windowed --name="psy-r" \
+          --add-data="src/app/assets:app/assets" \
+          src/main.py
 
-      - name: Renomear binário Windows
-        if: matrix.os == 'windows-latest'
-        run: |
-          mkdir artifacts
-          move target\release\psy-r.exe artifacts\psyR-${{ github.ref_name }}-windows-x86_64.exe
+      # 4b. Compila executável em Windows
+      - name: Compilar com PyInstaller (Windows)
+        if: runner.os == 'Windows'
+        run: pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets;app/assets" src/main.py
 
-      - name: Upload binários
+      # 5. Renomeia binário de acordo com SO
+      - name: Renomear binário (Linux)
+        if: runner.os == 'Linux'
+        run: mv dist/psy-r psyR-linux
+
+      - name: Renomear binário (macOS)
+        if: runner.os == 'macOS'
+        run: mv dist/psy-r psyR-macos
+
+      - name: Renomear binário (Windows)
+        if: runner.os == 'Windows'
+        run: mv dist/psy-r.exe psyR-windows.exe
+
+      # 6. Faz upload do artefato
+      - name: Upload artefato
         uses: actions/upload-artifact@v4
         with:
-          name: binaries-${{ matrix.os }}
-          path: artifacts/*
+          name: psyR-${{ matrix.os }}
+          path: |
+            psyR-linux
+            psyR-macos
+            psyR-windows.exe
+          if-no-files-found: ignore
 
   release:
-    name: Criar Release
     needs: build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Baixar todos os binários
+      # 1. Faz download de todos os artefatos
+      - name: Download artefatos
         uses: actions/download-artifact@v4
         with:
-          path: artifacts
+          path: ./artifacts
 
-      - name: Preparar changelog
-        id: changelog
-        run: |
-          echo "log<<EOF" >> $GITHUB_OUTPUT
-          git fetch --tags
-          prev_tag=$(git describe --tags --abbrev=0 HEAD^ || echo "")
-          if [ -z "$prev_tag" ]; then
-            git log --oneline > commits.txt
-          else
-            git log $prev_tag..HEAD --oneline > commits.txt
-          fi
-          cat commits.txt
-          echo "EOF" >> $GITHUB_OUTPUT
-
+      # 2. Cria release única e anexa todos os executáveis
       - name: Criar Release e Anexar Artefatos
         uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
-          body: |
-            ## Mudanças nesta versão
-            ${{ steps.changelog.outputs.log }}
           files: artifacts/**/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
