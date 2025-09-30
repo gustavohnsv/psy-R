@@ -1,7 +1,5 @@
-# Nome do seu workflow, que aparecerá na aba "Actions" do GitHub.
-name: Criar Release e Compilar Projeto
+name: CI
 
-# Gatilho: Este workflow roda sempre que uma nova tag começando com 'v' (ex: v1.0, v2.3.4) for enviada.
 on:
   push:
     tags:
@@ -19,23 +17,19 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      # 1. Baixa o código do repositório
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2. Configura Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 3. Instala dependências
       - name: Instalar dependências
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. Compila executável em Linux/macOS
       - name: Compilar com PyInstaller (Linux/macOS)
         if: runner.os != 'Windows'
         run: |
@@ -43,12 +37,10 @@ jobs:
           --add-data="src/app/assets:app/assets" \
           src/main.py
 
-      # 4b. Compila executável em Windows
       - name: Compilar com PyInstaller (Windows)
         if: runner.os == 'Windows'
         run: pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets;app/assets" src/main.py
 
-      # 5. Renomeia binário de acordo com SO
       - name: Renomear binário (Linux)
         if: runner.os == 'Linux'
         run: mv dist/psy-r psyR-linux
@@ -61,7 +53,6 @@ jobs:
         if: runner.os == 'Windows'
         run: mv dist/psy-r.exe psyR-windows.exe
 
-      # 6. Faz upload do artefato
       - name: Upload artefato
         uses: actions/upload-artifact@v4
         with:
@@ -76,13 +67,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # 1. Faz download de todos os artefatos
       - name: Download artefatos
         uses: actions/download-artifact@v4
         with:
           path: ./artifacts
 
-      # 2. Cria release única e anexa todos os executáveis
       - name: Criar Release e Anexar Artefatos
         uses: softprops/action-gh-release@v2
         with:
