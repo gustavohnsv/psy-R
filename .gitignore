@@ -1,8 +1,14 @@
 # Virtual Environment
-.venv
+.venv/
 
 # Build
-dist
+dist/
 
 # Python Cache
-__pycache__
+__pycache__/
+.pytest_cache/
+
+# Test
+.coverage
+coverage.xml
+

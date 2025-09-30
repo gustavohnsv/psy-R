@@ -1,2 +1,4 @@
 pyside6
 pyinstaller
+pytest
+pytest-cov
