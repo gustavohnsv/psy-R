@@ -28,6 +28,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Instalar dependências de sistema para Qt
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libgl1-mesa-glx libxkbcommon-x11-0
+
       - name: Rodar testes e gerar relatórios de cobertura
         run: pytest --cov=src --cov-report=xml
 
