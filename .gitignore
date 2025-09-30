@@ -11,4 +11,4 @@ __pycache__/
 # Test
 .coverage
 coverage.xml
-
+*.egg-info/
