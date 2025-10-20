@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TelaTestes</class>
+ <widget class="QWidget" name="TelaTestes">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="label_titulo">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Passo 3: Inserir Dados dos Testes</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBox_botoes">
+       <property name="title">
+        <string>Testes</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="btn_teste1">
+          <property name="text">
+           <string>Teste 1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste2">
+          <property name="text">
+           <string>Teste 2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste3">
+          <property name="text">
+           <string>Teste 3</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste4">
+          <property name="text">
+           <string>Teste 4</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste5">
+          <property name="text">
+           <string>Teste 5</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste6">
+          <property name="text">
+           <string>Teste 6</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste7">
+          <property name="text">
+           <string>Teste 7</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste8">
+          <property name="text">
+           <string>Teste 8</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_teste9">
+          <property name="text">
+           <string>Teste 9</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget_formularios">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="page_inicial">
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>128</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Selecione um teste à esquerda para preencher os dados.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>127</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste1">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste1">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste2">
+        <layout class="QVBoxLayout" name="verticalLayout_3_2">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste2">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_2">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_2">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_2">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_2">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_2">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_2">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_2">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_2">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_3"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_2">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_2"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste3">
+        <layout class="QVBoxLayout" name="verticalLayout_3_3">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste3">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_3">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_3">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_3">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_3">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_3">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_3">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_3">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_3">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_4"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_3">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_3"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste4">
+        <layout class="QVBoxLayout" name="verticalLayout_3_4">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste4">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 4</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_4">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_4">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_4">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_4">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_4">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_4">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_4">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_4">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_5"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_4">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_4"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste5">
+        <layout class="QVBoxLayout" name="verticalLayout_3_5">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste5">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 5</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_5">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_5">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_5">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_5">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_5">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_5">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_5">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_5">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_6"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_5">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_5"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste6">
+        <layout class="QVBoxLayout" name="verticalLayout_3_6">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste6">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 6</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_6">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_6">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_6">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_6">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_6">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_6">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_6">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_6">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_7"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_6">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_6"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste7">
+        <layout class="QVBoxLayout" name="verticalLayout_3_7">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste7">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 7</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_7">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_7">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_7">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_7">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_7">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_7">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_7">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_7">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_8"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_7">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_7"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste8">
+        <layout class="QVBoxLayout" name="verticalLayout_3_8">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste8">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 8</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_8">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_8">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_8">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_8">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_8">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_8">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_8">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_8">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_9"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_8">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_8"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_8">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="page_form_teste9">
+        <layout class="QVBoxLayout" name="verticalLayout_3_9">
+         <item>
+          <widget class="QLabel" name="label_titulo_teste9">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Formulário - Teste 9</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_faixa_etaria_9">
+           <property name="title">
+            <string>Faixa Etária</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3_9">
+            <item>
+             <widget class="QRadioButton" name="radioButton_pre_escolar_9">
+              <property name="text">
+               <string>Pré-escolar</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_escolar_9">
+              <property name="text">
+               <string>Escolar</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_adulto_9">
+              <property name="text">
+               <string>Adulto</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dados_teste_9">
+           <property name="title">
+            <string>Dados do Teste</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_9">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2_9">
+              <property name="text">
+               <string>Escore Bruto:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="spinBox_10"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3_9">
+              <property name="text">
+               <string>Percentil:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_2_9"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4_9">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btn_voltar">
+       <property name="text">
+        <string>Voltar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_avancar">
+       <property name="text">
+        <string>Avançar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
