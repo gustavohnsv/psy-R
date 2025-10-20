@@ -1,5 +1,5 @@
 pyside6
 pyinstaller
-pytest
-pytest-cov
-pytest-qt
+#pytest
+#pytest-cov
+#pytest-qt
