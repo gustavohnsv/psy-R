@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFormLayout, QGroupBox, QHBoxLayout,
-    QLabel, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QSpinBox, QStackedWidget, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QGroupBox,
+    QHBoxLayout, QLabel, QPushButton, QRadioButton,
+    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
+    QVBoxLayout, QWidget)
 
 class Ui_TelaTestes(object):
     def setupUi(self, TelaTestes):
@@ -33,7 +33,7 @@ class Ui_TelaTestes(object):
         font.setPointSize(16)
         font.setBold(True)
         self.label_titulo.setFont(font)
-        self.label_titulo.setAlignment(Qt.AlignCenter)
+        self.label_titulo.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_2.addWidget(self.label_titulo)
 
@@ -107,7 +107,7 @@ class Ui_TelaTestes(object):
 
         self.label = QLabel(self.page_inicial)
         self.label.setObjectName(u"label")
-        self.label.setAlignment(Qt.AlignCenter)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.label)
 
@@ -132,6 +132,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria.setObjectName(u"groupBox_faixa_etaria")
         self.horizontalLayout_3 = QHBoxLayout(self.groupBox_faixa_etaria)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.checkBox_incluir = QCheckBox(self.groupBox_faixa_etaria)
+        self.checkBox_incluir.setObjectName(u"checkBox_incluir")
+
+        self.horizontalLayout_3.addWidget(self.checkBox_incluir)
+
         self.radioButton_pre_escolar = QRadioButton(self.groupBox_faixa_etaria)
         self.radioButton_pre_escolar.setObjectName(u"radioButton_pre_escolar")
 
@@ -197,6 +202,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_2.setObjectName(u"groupBox_faixa_etaria_2")
         self.horizontalLayout_3_2 = QHBoxLayout(self.groupBox_faixa_etaria_2)
         self.horizontalLayout_3_2.setObjectName(u"horizontalLayout_3_2")
+        self.checkBox_incluir_2 = QCheckBox(self.groupBox_faixa_etaria_2)
+        self.checkBox_incluir_2.setObjectName(u"checkBox_incluir_2")
+
+        self.horizontalLayout_3_2.addWidget(self.checkBox_incluir_2)
+
         self.radioButton_pre_escolar_2 = QRadioButton(self.groupBox_faixa_etaria_2)
         self.radioButton_pre_escolar_2.setObjectName(u"radioButton_pre_escolar_2")
 
@@ -262,6 +272,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_3.setObjectName(u"groupBox_faixa_etaria_3")
         self.horizontalLayout_3_3 = QHBoxLayout(self.groupBox_faixa_etaria_3)
         self.horizontalLayout_3_3.setObjectName(u"horizontalLayout_3_3")
+        self.checkBox_incluir_3 = QCheckBox(self.groupBox_faixa_etaria_3)
+        self.checkBox_incluir_3.setObjectName(u"checkBox_incluir_3")
+
+        self.horizontalLayout_3_3.addWidget(self.checkBox_incluir_3)
+
         self.radioButton_pre_escolar_3 = QRadioButton(self.groupBox_faixa_etaria_3)
         self.radioButton_pre_escolar_3.setObjectName(u"radioButton_pre_escolar_3")
 
@@ -327,6 +342,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_4.setObjectName(u"groupBox_faixa_etaria_4")
         self.horizontalLayout_3_4 = QHBoxLayout(self.groupBox_faixa_etaria_4)
         self.horizontalLayout_3_4.setObjectName(u"horizontalLayout_3_4")
+        self.checkBox_incluir_4 = QCheckBox(self.groupBox_faixa_etaria_4)
+        self.checkBox_incluir_4.setObjectName(u"checkBox_incluir_4")
+
+        self.horizontalLayout_3_4.addWidget(self.checkBox_incluir_4)
+
         self.radioButton_pre_escolar_4 = QRadioButton(self.groupBox_faixa_etaria_4)
         self.radioButton_pre_escolar_4.setObjectName(u"radioButton_pre_escolar_4")
 
@@ -392,6 +412,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_5.setObjectName(u"groupBox_faixa_etaria_5")
         self.horizontalLayout_3_5 = QHBoxLayout(self.groupBox_faixa_etaria_5)
         self.horizontalLayout_3_5.setObjectName(u"horizontalLayout_3_5")
+        self.checkBox_incluir_5 = QCheckBox(self.groupBox_faixa_etaria_5)
+        self.checkBox_incluir_5.setObjectName(u"checkBox_incluir_5")
+
+        self.horizontalLayout_3_5.addWidget(self.checkBox_incluir_5)
+
         self.radioButton_pre_escolar_5 = QRadioButton(self.groupBox_faixa_etaria_5)
         self.radioButton_pre_escolar_5.setObjectName(u"radioButton_pre_escolar_5")
 
@@ -457,6 +482,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_6.setObjectName(u"groupBox_faixa_etaria_6")
         self.horizontalLayout_3_6 = QHBoxLayout(self.groupBox_faixa_etaria_6)
         self.horizontalLayout_3_6.setObjectName(u"horizontalLayout_3_6")
+        self.checkBox_incluir_6 = QCheckBox(self.groupBox_faixa_etaria_6)
+        self.checkBox_incluir_6.setObjectName(u"checkBox_incluir_6")
+
+        self.horizontalLayout_3_6.addWidget(self.checkBox_incluir_6)
+
         self.radioButton_pre_escolar_6 = QRadioButton(self.groupBox_faixa_etaria_6)
         self.radioButton_pre_escolar_6.setObjectName(u"radioButton_pre_escolar_6")
 
@@ -522,6 +552,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_7.setObjectName(u"groupBox_faixa_etaria_7")
         self.horizontalLayout_3_7 = QHBoxLayout(self.groupBox_faixa_etaria_7)
         self.horizontalLayout_3_7.setObjectName(u"horizontalLayout_3_7")
+        self.checkBox_incluir_7 = QCheckBox(self.groupBox_faixa_etaria_7)
+        self.checkBox_incluir_7.setObjectName(u"checkBox_incluir_7")
+
+        self.horizontalLayout_3_7.addWidget(self.checkBox_incluir_7)
+
         self.radioButton_pre_escolar_7 = QRadioButton(self.groupBox_faixa_etaria_7)
         self.radioButton_pre_escolar_7.setObjectName(u"radioButton_pre_escolar_7")
 
@@ -587,6 +622,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_8.setObjectName(u"groupBox_faixa_etaria_8")
         self.horizontalLayout_3_8 = QHBoxLayout(self.groupBox_faixa_etaria_8)
         self.horizontalLayout_3_8.setObjectName(u"horizontalLayout_3_8")
+        self.checkBox_incluir_8 = QCheckBox(self.groupBox_faixa_etaria_8)
+        self.checkBox_incluir_8.setObjectName(u"checkBox_incluir_8")
+
+        self.horizontalLayout_3_8.addWidget(self.checkBox_incluir_8)
+
         self.radioButton_pre_escolar_8 = QRadioButton(self.groupBox_faixa_etaria_8)
         self.radioButton_pre_escolar_8.setObjectName(u"radioButton_pre_escolar_8")
 
@@ -652,6 +692,11 @@ class Ui_TelaTestes(object):
         self.groupBox_faixa_etaria_9.setObjectName(u"groupBox_faixa_etaria_9")
         self.horizontalLayout_3_9 = QHBoxLayout(self.groupBox_faixa_etaria_9)
         self.horizontalLayout_3_9.setObjectName(u"horizontalLayout_3_9")
+        self.checkBox_incluir_9 = QCheckBox(self.groupBox_faixa_etaria_9)
+        self.checkBox_incluir_9.setObjectName(u"checkBox_incluir_9")
+
+        self.horizontalLayout_3_9.addWidget(self.checkBox_incluir_9)
+
         self.radioButton_pre_escolar_9 = QRadioButton(self.groupBox_faixa_etaria_9)
         self.radioButton_pre_escolar_9.setObjectName(u"radioButton_pre_escolar_9")
 
@@ -731,7 +776,7 @@ class Ui_TelaTestes(object):
 
         self.retranslateUi(TelaTestes)
 
-        self.stackedWidget_formularios.setCurrentIndex(0)
+        self.stackedWidget_formularios.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(TelaTestes)
@@ -753,6 +798,7 @@ class Ui_TelaTestes(object):
         self.label.setText(QCoreApplication.translate("TelaTestes", u"Selecione um teste \u00e0 esquerda para preencher os dados.", None))
         self.label_titulo_teste1.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 1", None))
         self.groupBox_faixa_etaria.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -761,6 +807,7 @@ class Ui_TelaTestes(object):
         self.label_3.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 2", None))
         self.groupBox_faixa_etaria_2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_2.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -769,6 +816,7 @@ class Ui_TelaTestes(object):
         self.label_3_2.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste3.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 3", None))
         self.groupBox_faixa_etaria_3.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_3.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_3.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_3.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_3.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -777,6 +825,7 @@ class Ui_TelaTestes(object):
         self.label_3_3.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste4.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 4", None))
         self.groupBox_faixa_etaria_4.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_4.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_4.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_4.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_4.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -785,6 +834,7 @@ class Ui_TelaTestes(object):
         self.label_3_4.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste5.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 5", None))
         self.groupBox_faixa_etaria_5.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_5.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_5.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_5.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_5.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -793,6 +843,7 @@ class Ui_TelaTestes(object):
         self.label_3_5.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste6.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 6", None))
         self.groupBox_faixa_etaria_6.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_6.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_6.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_6.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_6.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -801,6 +852,7 @@ class Ui_TelaTestes(object):
         self.label_3_6.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste7.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 7", None))
         self.groupBox_faixa_etaria_7.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_7.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_7.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_7.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_7.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -809,6 +861,7 @@ class Ui_TelaTestes(object):
         self.label_3_7.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste8.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 8", None))
         self.groupBox_faixa_etaria_8.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_8.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_8.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_8.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_8.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
@@ -817,6 +870,7 @@ class Ui_TelaTestes(object):
         self.label_3_8.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
         self.label_titulo_teste9.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 9", None))
         self.groupBox_faixa_etaria_9.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_9.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
         self.radioButton_pre_escolar_9.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
         self.radioButton_escolar_9.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_9.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
