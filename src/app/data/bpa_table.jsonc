@@ -1,0 +1,34 @@
+{
+    // Intervalo para aplicação do teste
+    "intervalo": [6,59],
+    
+    // Classificações, com os percentis e textos formatados
+    "muito-inferior": {
+        "percentil": [1],
+        "texto": "Muito inferior"
+    },
+    "inferior": {
+        "percentil": [10],
+        "texto": "Inferior"
+    },
+    "medio-inferior": {
+        "percentil": [20, 25, 30],
+        "texto": "Médio inferior"
+    },
+    "medio": {
+        "percentil": [40, 50, 60],
+        "texto": "Médio"
+    },
+    "medio-superior": {
+        "percentil": [70, 75, 80],
+        "texto": "Médio superior"
+    },
+    "superior": {
+        "percentil": [90],
+        "texto": "Superior"
+    },
+    "muito-superior": {
+        "percentil": [99],
+        "texto": "Muito superior"
+    }
+}

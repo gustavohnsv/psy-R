@@ -1,0 +1,45 @@
+{
+    // Intervalo para aplicação do teste
+    "intervalo": [1,1],
+
+    // Classificações, com as pontuações, percentis e textos formatados
+    "excp-baixa": {
+
+        // Pontuação segue intervalo A <= x < B
+        "pontuacao": [0, 70],
+        
+        // Percentil segue intervalo A <= y < B
+        "percentil": [0, 2],
+        "texto": "Excepcionalmente baixa"
+    },
+    "abaixo-media": {
+        "pontuacao": [71, 79],
+        "percentil": [2, 8],
+        "texto": "Abaixo da média"
+    },
+    "media-inf": {
+        "pontuacao": [80, 89],
+        "percentil": [9, 24],
+        "texto": "Média inferior"
+    },
+    "media": {
+        "pontuacao": [90, 109],
+        "percentil": [25, 74],
+        "texto": "Média"
+    },
+    "media-sup": {
+        "pontuacao": [110, 119],
+        "percentil": [75, 90],
+        "texto": "Média superior"
+    },
+    "acima-media": {
+        "pontuacao": [120, 129],
+        "percentil": [91, 97],
+        "texto": "Acima da média"
+    },
+    "excp-alta": {
+        "pontuacao": [130, 999],
+        "percentil": [98, 100],
+        "texto": "Excepcionalmente alta"
+    }
+}

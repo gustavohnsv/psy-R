@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QGroupBox,
     QHBoxLayout, QLabel, QPushButton, QRadioButton,
-    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
-    QVBoxLayout, QWidget)
+    QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
+    QStackedWidget, QVBoxLayout, QWidget)
 
 class Ui_TelaTestes(object):
     def setupUi(self, TelaTestes):
@@ -43,50 +43,50 @@ class Ui_TelaTestes(object):
         self.groupBox_botoes.setObjectName(u"groupBox_botoes")
         self.verticalLayout = QVBoxLayout(self.groupBox_botoes)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.btn_teste1 = QPushButton(self.groupBox_botoes)
-        self.btn_teste1.setObjectName(u"btn_teste1")
+        self.btn_wisc4 = QPushButton(self.groupBox_botoes)
+        self.btn_wisc4.setObjectName(u"btn_wisc4")
 
-        self.verticalLayout.addWidget(self.btn_teste1)
+        self.verticalLayout.addWidget(self.btn_wisc4)
 
-        self.btn_teste2 = QPushButton(self.groupBox_botoes)
-        self.btn_teste2.setObjectName(u"btn_teste2")
+        self.btn_ravlt = QPushButton(self.groupBox_botoes)
+        self.btn_ravlt.setObjectName(u"btn_ravlt")
 
-        self.verticalLayout.addWidget(self.btn_teste2)
+        self.verticalLayout.addWidget(self.btn_ravlt)
 
-        self.btn_teste3 = QPushButton(self.groupBox_botoes)
-        self.btn_teste3.setObjectName(u"btn_teste3")
+        self.btn_bpa2 = QPushButton(self.groupBox_botoes)
+        self.btn_bpa2.setObjectName(u"btn_bpa2")
 
-        self.verticalLayout.addWidget(self.btn_teste3)
+        self.verticalLayout.addWidget(self.btn_bpa2)
 
-        self.btn_teste4 = QPushButton(self.groupBox_botoes)
-        self.btn_teste4.setObjectName(u"btn_teste4")
+        self.btn_neupsilin = QPushButton(self.groupBox_botoes)
+        self.btn_neupsilin.setObjectName(u"btn_neupsilin")
 
-        self.verticalLayout.addWidget(self.btn_teste4)
+        self.verticalLayout.addWidget(self.btn_neupsilin)
 
-        self.btn_teste5 = QPushButton(self.groupBox_botoes)
-        self.btn_teste5.setObjectName(u"btn_teste5")
+        self.btn_srs2 = QPushButton(self.groupBox_botoes)
+        self.btn_srs2.setObjectName(u"btn_srs2")
 
-        self.verticalLayout.addWidget(self.btn_teste5)
+        self.verticalLayout.addWidget(self.btn_srs2)
 
-        self.btn_teste6 = QPushButton(self.groupBox_botoes)
-        self.btn_teste6.setObjectName(u"btn_teste6")
+        self.btn_etdah = QPushButton(self.groupBox_botoes)
+        self.btn_etdah.setObjectName(u"btn_etdah")
 
-        self.verticalLayout.addWidget(self.btn_teste6)
+        self.verticalLayout.addWidget(self.btn_etdah)
 
-        self.btn_teste7 = QPushButton(self.groupBox_botoes)
-        self.btn_teste7.setObjectName(u"btn_teste7")
+        self.btn_cars2 = QPushButton(self.groupBox_botoes)
+        self.btn_cars2.setObjectName(u"btn_cars2")
 
-        self.verticalLayout.addWidget(self.btn_teste7)
+        self.verticalLayout.addWidget(self.btn_cars2)
 
-        self.btn_teste8 = QPushButton(self.groupBox_botoes)
-        self.btn_teste8.setObjectName(u"btn_teste8")
+        self.btn_htp = QPushButton(self.groupBox_botoes)
+        self.btn_htp.setObjectName(u"btn_htp")
 
-        self.verticalLayout.addWidget(self.btn_teste8)
+        self.verticalLayout.addWidget(self.btn_htp)
 
-        self.btn_teste9 = QPushButton(self.groupBox_botoes)
-        self.btn_teste9.setObjectName(u"btn_teste9")
+        self.btn_fdt = QPushButton(self.groupBox_botoes)
+        self.btn_fdt.setObjectName(u"btn_fdt")
 
-        self.verticalLayout.addWidget(self.btn_teste9)
+        self.verticalLayout.addWidget(self.btn_fdt)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -116,638 +116,691 @@ class Ui_TelaTestes(object):
         self.verticalLayout_4.addItem(self.verticalSpacer_3)
 
         self.stackedWidget_formularios.addWidget(self.page_inicial)
-        self.page_form_teste1 = QWidget()
-        self.page_form_teste1.setObjectName(u"page_form_teste1")
-        self.verticalLayout_3 = QVBoxLayout(self.page_form_teste1)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.label_titulo_teste1 = QLabel(self.page_form_teste1)
-        self.label_titulo_teste1.setObjectName(u"label_titulo_teste1")
+        self.page_form_wisc4 = QWidget()
+        self.page_form_wisc4.setObjectName(u"page_form_wisc4")
+        self.verticalLayout_wisc4 = QVBoxLayout(self.page_form_wisc4)
+        self.verticalLayout_wisc4.setObjectName(u"verticalLayout_wisc4")
+        self.label_titulo_wisc4 = QLabel(self.page_form_wisc4)
+        self.label_titulo_wisc4.setObjectName(u"label_titulo_wisc4")
         font1 = QFont()
         font1.setPointSize(12)
-        self.label_titulo_teste1.setFont(font1)
+        self.label_titulo_wisc4.setFont(font1)
 
-        self.verticalLayout_3.addWidget(self.label_titulo_teste1)
+        self.verticalLayout_wisc4.addWidget(self.label_titulo_wisc4)
 
-        self.groupBox_faixa_etaria = QGroupBox(self.page_form_teste1)
-        self.groupBox_faixa_etaria.setObjectName(u"groupBox_faixa_etaria")
-        self.horizontalLayout_3 = QHBoxLayout(self.groupBox_faixa_etaria)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.checkBox_incluir = QCheckBox(self.groupBox_faixa_etaria)
-        self.checkBox_incluir.setObjectName(u"checkBox_incluir")
+        self.groupBox_faixa_etaria_wisc4 = QGroupBox(self.page_form_wisc4)
+        self.groupBox_faixa_etaria_wisc4.setObjectName(u"groupBox_faixa_etaria_wisc4")
+        self.horizontalLayout_wisc4 = QHBoxLayout(self.groupBox_faixa_etaria_wisc4)
+        self.horizontalLayout_wisc4.setObjectName(u"horizontalLayout_wisc4")
+        self.checkBox_incluir_wisc4 = QCheckBox(self.groupBox_faixa_etaria_wisc4)
+        self.checkBox_incluir_wisc4.setObjectName(u"checkBox_incluir_wisc4")
 
-        self.horizontalLayout_3.addWidget(self.checkBox_incluir)
+        self.horizontalLayout_wisc4.addWidget(self.checkBox_incluir_wisc4)
 
-        self.radioButton_pre_escolar = QRadioButton(self.groupBox_faixa_etaria)
-        self.radioButton_pre_escolar.setObjectName(u"radioButton_pre_escolar")
+        self.radioButton_pre_escolar_wisc4 = QRadioButton(self.groupBox_faixa_etaria_wisc4)
+        self.radioButton_pre_escolar_wisc4.setObjectName(u"radioButton_pre_escolar_wisc4")
 
-        self.horizontalLayout_3.addWidget(self.radioButton_pre_escolar)
+        self.horizontalLayout_wisc4.addWidget(self.radioButton_pre_escolar_wisc4)
 
-        self.radioButton_escolar = QRadioButton(self.groupBox_faixa_etaria)
-        self.radioButton_escolar.setObjectName(u"radioButton_escolar")
-        self.radioButton_escolar.setChecked(True)
+        self.radioButton_escolar_wisc4 = QRadioButton(self.groupBox_faixa_etaria_wisc4)
+        self.radioButton_escolar_wisc4.setObjectName(u"radioButton_escolar_wisc4")
+        self.radioButton_escolar_wisc4.setChecked(True)
 
-        self.horizontalLayout_3.addWidget(self.radioButton_escolar)
+        self.horizontalLayout_wisc4.addWidget(self.radioButton_escolar_wisc4)
 
-        self.radioButton_adulto = QRadioButton(self.groupBox_faixa_etaria)
-        self.radioButton_adulto.setObjectName(u"radioButton_adulto")
+        self.radioButton_adulto_wisc4 = QRadioButton(self.groupBox_faixa_etaria_wisc4)
+        self.radioButton_adulto_wisc4.setObjectName(u"radioButton_adulto_wisc4")
 
-        self.horizontalLayout_3.addWidget(self.radioButton_adulto)
+        self.horizontalLayout_wisc4.addWidget(self.radioButton_adulto_wisc4)
 
 
-        self.verticalLayout_3.addWidget(self.groupBox_faixa_etaria)
+        self.verticalLayout_wisc4.addWidget(self.groupBox_faixa_etaria_wisc4)
 
-        self.groupBox_dados_teste = QGroupBox(self.page_form_teste1)
-        self.groupBox_dados_teste.setObjectName(u"groupBox_dados_teste")
-        self.formLayout = QFormLayout(self.groupBox_dados_teste)
-        self.formLayout.setObjectName(u"formLayout")
-        self.label_2 = QLabel(self.groupBox_dados_teste)
+        self.scrollArea = QScrollArea(self.page_form_wisc4)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 584, 446))
+        self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.groupBox_dados_teste_wisc4 = QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_dados_teste_wisc4.setObjectName(u"groupBox_dados_teste_wisc4")
+        self.groupBox_dados_teste_wisc4.setMouseTracking(False)
+        self.formLayout_wisc4 = QFormLayout(self.groupBox_dados_teste_wisc4)
+        self.formLayout_wisc4.setObjectName(u"formLayout_wisc4")
+        self.label_icv_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_icv_wisc4.setObjectName(u"label_icv_wisc4")
+
+        self.formLayout_wisc4.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_icv_wisc4)
+
+        self.spinBox_icv_wisc4 = QSpinBox(self.groupBox_dados_teste_wisc4)
+        self.spinBox_icv_wisc4.setObjectName(u"spinBox_icv_wisc4")
+
+        self.formLayout_wisc4.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_icv_wisc4)
+
+        self.label_iop_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_iop_wisc4.setObjectName(u"label_iop_wisc4")
+
+        self.formLayout_wisc4.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_iop_wisc4)
+
+        self.spinBox_iop_wisc4 = QSpinBox(self.groupBox_dados_teste_wisc4)
+        self.spinBox_iop_wisc4.setObjectName(u"spinBox_iop_wisc4")
+
+        self.formLayout_wisc4.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_iop_wisc4)
+
+        self.label_imo_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_imo_wisc4.setObjectName(u"label_imo_wisc4")
+
+        self.formLayout_wisc4.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_imo_wisc4)
+
+        self.spinBo_imo_wisc4 = QSpinBox(self.groupBox_dados_teste_wisc4)
+        self.spinBo_imo_wisc4.setObjectName(u"spinBo_imo_wisc4")
+
+        self.formLayout_wisc4.setWidget(2, QFormLayout.ItemRole.FieldRole, self.spinBo_imo_wisc4)
+
+        self.label_ivp_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_ivp_wisc4.setObjectName(u"label_ivp_wisc4")
+
+        self.formLayout_wisc4.setWidget(3, QFormLayout.ItemRole.LabelRole, self.label_ivp_wisc4)
+
+        self.spinBox_ivp_wisc4 = QSpinBox(self.groupBox_dados_teste_wisc4)
+        self.spinBox_ivp_wisc4.setObjectName(u"spinBox_ivp_wisc4")
+
+        self.formLayout_wisc4.setWidget(3, QFormLayout.ItemRole.FieldRole, self.spinBox_ivp_wisc4)
+
+        self.label_2 = QLabel(self.groupBox_dados_teste_wisc4)
         self.label_2.setObjectName(u"label_2")
 
-        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2)
+        self.formLayout_wisc4.setWidget(4, QFormLayout.ItemRole.LabelRole, self.label_2)
 
-        self.spinBox = QSpinBox(self.groupBox_dados_teste)
-        self.spinBox.setObjectName(u"spinBox")
-
-        self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox)
-
-        self.label_3 = QLabel(self.groupBox_dados_teste)
+        self.label_3 = QLabel(self.groupBox_dados_teste_wisc4)
         self.label_3.setObjectName(u"label_3")
 
-        self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3)
+        self.formLayout_wisc4.setWidget(5, QFormLayout.ItemRole.LabelRole, self.label_3)
 
-        self.spinBox_2 = QSpinBox(self.groupBox_dados_teste)
+        self.label_4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_4.setObjectName(u"label_4")
+
+        self.formLayout_wisc4.setWidget(6, QFormLayout.ItemRole.LabelRole, self.label_4)
+
+        self.label_5 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_5.setObjectName(u"label_5")
+
+        self.formLayout_wisc4.setWidget(7, QFormLayout.ItemRole.LabelRole, self.label_5)
+
+        self.label_6 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_6.setObjectName(u"label_6")
+
+        self.formLayout_wisc4.setWidget(8, QFormLayout.ItemRole.LabelRole, self.label_6)
+
+        self.label_7 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_7.setObjectName(u"label_7")
+
+        self.formLayout_wisc4.setWidget(9, QFormLayout.ItemRole.LabelRole, self.label_7)
+
+        self.label_8 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_8.setObjectName(u"label_8")
+
+        self.formLayout_wisc4.setWidget(11, QFormLayout.ItemRole.LabelRole, self.label_8)
+
+        self.label_9 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_9.setObjectName(u"label_9")
+
+        self.formLayout_wisc4.setWidget(12, QFormLayout.ItemRole.LabelRole, self.label_9)
+
+        self.spinBox = QSpinBox(self.groupBox_dados_teste_wisc4)
+        self.spinBox.setObjectName(u"spinBox")
+
+        self.formLayout_wisc4.setWidget(4, QFormLayout.ItemRole.FieldRole, self.spinBox)
+
+        self.spinBox_2 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_2.setObjectName(u"spinBox_2")
 
-        self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2)
+        self.formLayout_wisc4.setWidget(5, QFormLayout.ItemRole.FieldRole, self.spinBox_2)
 
-
-        self.verticalLayout_3.addWidget(self.groupBox_dados_teste)
-
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_3.addItem(self.verticalSpacer_4)
-
-        self.stackedWidget_formularios.addWidget(self.page_form_teste1)
-        self.page_form_teste2 = QWidget()
-        self.page_form_teste2.setObjectName(u"page_form_teste2")
-        self.verticalLayout_3_2 = QVBoxLayout(self.page_form_teste2)
-        self.verticalLayout_3_2.setObjectName(u"verticalLayout_3_2")
-        self.label_titulo_teste2 = QLabel(self.page_form_teste2)
-        self.label_titulo_teste2.setObjectName(u"label_titulo_teste2")
-        self.label_titulo_teste2.setFont(font1)
-
-        self.verticalLayout_3_2.addWidget(self.label_titulo_teste2)
-
-        self.groupBox_faixa_etaria_2 = QGroupBox(self.page_form_teste2)
-        self.groupBox_faixa_etaria_2.setObjectName(u"groupBox_faixa_etaria_2")
-        self.horizontalLayout_3_2 = QHBoxLayout(self.groupBox_faixa_etaria_2)
-        self.horizontalLayout_3_2.setObjectName(u"horizontalLayout_3_2")
-        self.checkBox_incluir_2 = QCheckBox(self.groupBox_faixa_etaria_2)
-        self.checkBox_incluir_2.setObjectName(u"checkBox_incluir_2")
-
-        self.horizontalLayout_3_2.addWidget(self.checkBox_incluir_2)
-
-        self.radioButton_pre_escolar_2 = QRadioButton(self.groupBox_faixa_etaria_2)
-        self.radioButton_pre_escolar_2.setObjectName(u"radioButton_pre_escolar_2")
-
-        self.horizontalLayout_3_2.addWidget(self.radioButton_pre_escolar_2)
-
-        self.radioButton_escolar_2 = QRadioButton(self.groupBox_faixa_etaria_2)
-        self.radioButton_escolar_2.setObjectName(u"radioButton_escolar_2")
-        self.radioButton_escolar_2.setChecked(True)
-
-        self.horizontalLayout_3_2.addWidget(self.radioButton_escolar_2)
-
-        self.radioButton_adulto_2 = QRadioButton(self.groupBox_faixa_etaria_2)
-        self.radioButton_adulto_2.setObjectName(u"radioButton_adulto_2")
-
-        self.horizontalLayout_3_2.addWidget(self.radioButton_adulto_2)
-
-
-        self.verticalLayout_3_2.addWidget(self.groupBox_faixa_etaria_2)
-
-        self.groupBox_dados_teste_2 = QGroupBox(self.page_form_teste2)
-        self.groupBox_dados_teste_2.setObjectName(u"groupBox_dados_teste_2")
-        self.formLayout_2 = QFormLayout(self.groupBox_dados_teste_2)
-        self.formLayout_2.setObjectName(u"formLayout_2")
-        self.label_2_2 = QLabel(self.groupBox_dados_teste_2)
-        self.label_2_2.setObjectName(u"label_2_2")
-
-        self.formLayout_2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_2)
-
-        self.spinBox_3 = QSpinBox(self.groupBox_dados_teste_2)
+        self.spinBox_3 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_3.setObjectName(u"spinBox_3")
 
-        self.formLayout_2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_3)
+        self.formLayout_wisc4.setWidget(6, QFormLayout.ItemRole.FieldRole, self.spinBox_3)
 
-        self.label_3_2 = QLabel(self.groupBox_dados_teste_2)
-        self.label_3_2.setObjectName(u"label_3_2")
-
-        self.formLayout_2.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_2)
-
-        self.spinBox_2_2 = QSpinBox(self.groupBox_dados_teste_2)
-        self.spinBox_2_2.setObjectName(u"spinBox_2_2")
-
-        self.formLayout_2.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_2)
-
-
-        self.verticalLayout_3_2.addWidget(self.groupBox_dados_teste_2)
-
-        self.verticalSpacer_4_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_3_2.addItem(self.verticalSpacer_4_2)
-
-        self.stackedWidget_formularios.addWidget(self.page_form_teste2)
-        self.page_form_teste3 = QWidget()
-        self.page_form_teste3.setObjectName(u"page_form_teste3")
-        self.verticalLayout_3_3 = QVBoxLayout(self.page_form_teste3)
-        self.verticalLayout_3_3.setObjectName(u"verticalLayout_3_3")
-        self.label_titulo_teste3 = QLabel(self.page_form_teste3)
-        self.label_titulo_teste3.setObjectName(u"label_titulo_teste3")
-        self.label_titulo_teste3.setFont(font1)
-
-        self.verticalLayout_3_3.addWidget(self.label_titulo_teste3)
-
-        self.groupBox_faixa_etaria_3 = QGroupBox(self.page_form_teste3)
-        self.groupBox_faixa_etaria_3.setObjectName(u"groupBox_faixa_etaria_3")
-        self.horizontalLayout_3_3 = QHBoxLayout(self.groupBox_faixa_etaria_3)
-        self.horizontalLayout_3_3.setObjectName(u"horizontalLayout_3_3")
-        self.checkBox_incluir_3 = QCheckBox(self.groupBox_faixa_etaria_3)
-        self.checkBox_incluir_3.setObjectName(u"checkBox_incluir_3")
-
-        self.horizontalLayout_3_3.addWidget(self.checkBox_incluir_3)
-
-        self.radioButton_pre_escolar_3 = QRadioButton(self.groupBox_faixa_etaria_3)
-        self.radioButton_pre_escolar_3.setObjectName(u"radioButton_pre_escolar_3")
-
-        self.horizontalLayout_3_3.addWidget(self.radioButton_pre_escolar_3)
-
-        self.radioButton_escolar_3 = QRadioButton(self.groupBox_faixa_etaria_3)
-        self.radioButton_escolar_3.setObjectName(u"radioButton_escolar_3")
-        self.radioButton_escolar_3.setChecked(True)
-
-        self.horizontalLayout_3_3.addWidget(self.radioButton_escolar_3)
-
-        self.radioButton_adulto_3 = QRadioButton(self.groupBox_faixa_etaria_3)
-        self.radioButton_adulto_3.setObjectName(u"radioButton_adulto_3")
-
-        self.horizontalLayout_3_3.addWidget(self.radioButton_adulto_3)
-
-
-        self.verticalLayout_3_3.addWidget(self.groupBox_faixa_etaria_3)
-
-        self.groupBox_dados_teste_3 = QGroupBox(self.page_form_teste3)
-        self.groupBox_dados_teste_3.setObjectName(u"groupBox_dados_teste_3")
-        self.formLayout_3 = QFormLayout(self.groupBox_dados_teste_3)
-        self.formLayout_3.setObjectName(u"formLayout_3")
-        self.label_2_3 = QLabel(self.groupBox_dados_teste_3)
-        self.label_2_3.setObjectName(u"label_2_3")
-
-        self.formLayout_3.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_3)
-
-        self.spinBox_4 = QSpinBox(self.groupBox_dados_teste_3)
+        self.spinBox_4 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_4.setObjectName(u"spinBox_4")
 
-        self.formLayout_3.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_4)
+        self.formLayout_wisc4.setWidget(7, QFormLayout.ItemRole.FieldRole, self.spinBox_4)
 
-        self.label_3_3 = QLabel(self.groupBox_dados_teste_3)
-        self.label_3_3.setObjectName(u"label_3_3")
-
-        self.formLayout_3.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_3)
-
-        self.spinBox_2_3 = QSpinBox(self.groupBox_dados_teste_3)
-        self.spinBox_2_3.setObjectName(u"spinBox_2_3")
-
-        self.formLayout_3.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_3)
-
-
-        self.verticalLayout_3_3.addWidget(self.groupBox_dados_teste_3)
-
-        self.verticalSpacer_4_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_3_3.addItem(self.verticalSpacer_4_3)
-
-        self.stackedWidget_formularios.addWidget(self.page_form_teste3)
-        self.page_form_teste4 = QWidget()
-        self.page_form_teste4.setObjectName(u"page_form_teste4")
-        self.verticalLayout_3_4 = QVBoxLayout(self.page_form_teste4)
-        self.verticalLayout_3_4.setObjectName(u"verticalLayout_3_4")
-        self.label_titulo_teste4 = QLabel(self.page_form_teste4)
-        self.label_titulo_teste4.setObjectName(u"label_titulo_teste4")
-        self.label_titulo_teste4.setFont(font1)
-
-        self.verticalLayout_3_4.addWidget(self.label_titulo_teste4)
-
-        self.groupBox_faixa_etaria_4 = QGroupBox(self.page_form_teste4)
-        self.groupBox_faixa_etaria_4.setObjectName(u"groupBox_faixa_etaria_4")
-        self.horizontalLayout_3_4 = QHBoxLayout(self.groupBox_faixa_etaria_4)
-        self.horizontalLayout_3_4.setObjectName(u"horizontalLayout_3_4")
-        self.checkBox_incluir_4 = QCheckBox(self.groupBox_faixa_etaria_4)
-        self.checkBox_incluir_4.setObjectName(u"checkBox_incluir_4")
-
-        self.horizontalLayout_3_4.addWidget(self.checkBox_incluir_4)
-
-        self.radioButton_pre_escolar_4 = QRadioButton(self.groupBox_faixa_etaria_4)
-        self.radioButton_pre_escolar_4.setObjectName(u"radioButton_pre_escolar_4")
-
-        self.horizontalLayout_3_4.addWidget(self.radioButton_pre_escolar_4)
-
-        self.radioButton_escolar_4 = QRadioButton(self.groupBox_faixa_etaria_4)
-        self.radioButton_escolar_4.setObjectName(u"radioButton_escolar_4")
-        self.radioButton_escolar_4.setChecked(True)
-
-        self.horizontalLayout_3_4.addWidget(self.radioButton_escolar_4)
-
-        self.radioButton_adulto_4 = QRadioButton(self.groupBox_faixa_etaria_4)
-        self.radioButton_adulto_4.setObjectName(u"radioButton_adulto_4")
-
-        self.horizontalLayout_3_4.addWidget(self.radioButton_adulto_4)
-
-
-        self.verticalLayout_3_4.addWidget(self.groupBox_faixa_etaria_4)
-
-        self.groupBox_dados_teste_4 = QGroupBox(self.page_form_teste4)
-        self.groupBox_dados_teste_4.setObjectName(u"groupBox_dados_teste_4")
-        self.formLayout_4 = QFormLayout(self.groupBox_dados_teste_4)
-        self.formLayout_4.setObjectName(u"formLayout_4")
-        self.label_2_4 = QLabel(self.groupBox_dados_teste_4)
-        self.label_2_4.setObjectName(u"label_2_4")
-
-        self.formLayout_4.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_4)
-
-        self.spinBox_5 = QSpinBox(self.groupBox_dados_teste_4)
+        self.spinBox_5 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_5.setObjectName(u"spinBox_5")
 
-        self.formLayout_4.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_5)
+        self.formLayout_wisc4.setWidget(8, QFormLayout.ItemRole.FieldRole, self.spinBox_5)
 
-        self.label_3_4 = QLabel(self.groupBox_dados_teste_4)
-        self.label_3_4.setObjectName(u"label_3_4")
-
-        self.formLayout_4.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_4)
-
-        self.spinBox_2_4 = QSpinBox(self.groupBox_dados_teste_4)
-        self.spinBox_2_4.setObjectName(u"spinBox_2_4")
-
-        self.formLayout_4.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_4)
-
-
-        self.verticalLayout_3_4.addWidget(self.groupBox_dados_teste_4)
-
-        self.verticalSpacer_4_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_3_4.addItem(self.verticalSpacer_4_4)
-
-        self.stackedWidget_formularios.addWidget(self.page_form_teste4)
-        self.page_form_teste5 = QWidget()
-        self.page_form_teste5.setObjectName(u"page_form_teste5")
-        self.verticalLayout_3_5 = QVBoxLayout(self.page_form_teste5)
-        self.verticalLayout_3_5.setObjectName(u"verticalLayout_3_5")
-        self.label_titulo_teste5 = QLabel(self.page_form_teste5)
-        self.label_titulo_teste5.setObjectName(u"label_titulo_teste5")
-        self.label_titulo_teste5.setFont(font1)
-
-        self.verticalLayout_3_5.addWidget(self.label_titulo_teste5)
-
-        self.groupBox_faixa_etaria_5 = QGroupBox(self.page_form_teste5)
-        self.groupBox_faixa_etaria_5.setObjectName(u"groupBox_faixa_etaria_5")
-        self.horizontalLayout_3_5 = QHBoxLayout(self.groupBox_faixa_etaria_5)
-        self.horizontalLayout_3_5.setObjectName(u"horizontalLayout_3_5")
-        self.checkBox_incluir_5 = QCheckBox(self.groupBox_faixa_etaria_5)
-        self.checkBox_incluir_5.setObjectName(u"checkBox_incluir_5")
-
-        self.horizontalLayout_3_5.addWidget(self.checkBox_incluir_5)
-
-        self.radioButton_pre_escolar_5 = QRadioButton(self.groupBox_faixa_etaria_5)
-        self.radioButton_pre_escolar_5.setObjectName(u"radioButton_pre_escolar_5")
-
-        self.horizontalLayout_3_5.addWidget(self.radioButton_pre_escolar_5)
-
-        self.radioButton_escolar_5 = QRadioButton(self.groupBox_faixa_etaria_5)
-        self.radioButton_escolar_5.setObjectName(u"radioButton_escolar_5")
-        self.radioButton_escolar_5.setChecked(True)
-
-        self.horizontalLayout_3_5.addWidget(self.radioButton_escolar_5)
-
-        self.radioButton_adulto_5 = QRadioButton(self.groupBox_faixa_etaria_5)
-        self.radioButton_adulto_5.setObjectName(u"radioButton_adulto_5")
-
-        self.horizontalLayout_3_5.addWidget(self.radioButton_adulto_5)
-
-
-        self.verticalLayout_3_5.addWidget(self.groupBox_faixa_etaria_5)
-
-        self.groupBox_dados_teste_5 = QGroupBox(self.page_form_teste5)
-        self.groupBox_dados_teste_5.setObjectName(u"groupBox_dados_teste_5")
-        self.formLayout_5 = QFormLayout(self.groupBox_dados_teste_5)
-        self.formLayout_5.setObjectName(u"formLayout_5")
-        self.label_2_5 = QLabel(self.groupBox_dados_teste_5)
-        self.label_2_5.setObjectName(u"label_2_5")
-
-        self.formLayout_5.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_5)
-
-        self.spinBox_6 = QSpinBox(self.groupBox_dados_teste_5)
+        self.spinBox_6 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_6.setObjectName(u"spinBox_6")
 
-        self.formLayout_5.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_6)
+        self.formLayout_wisc4.setWidget(9, QFormLayout.ItemRole.FieldRole, self.spinBox_6)
 
-        self.label_3_5 = QLabel(self.groupBox_dados_teste_5)
-        self.label_3_5.setObjectName(u"label_3_5")
-
-        self.formLayout_5.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_5)
-
-        self.spinBox_2_5 = QSpinBox(self.groupBox_dados_teste_5)
-        self.spinBox_2_5.setObjectName(u"spinBox_2_5")
-
-        self.formLayout_5.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_5)
-
-
-        self.verticalLayout_3_5.addWidget(self.groupBox_dados_teste_5)
-
-        self.verticalSpacer_4_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_3_5.addItem(self.verticalSpacer_4_5)
-
-        self.stackedWidget_formularios.addWidget(self.page_form_teste5)
-        self.page_form_teste6 = QWidget()
-        self.page_form_teste6.setObjectName(u"page_form_teste6")
-        self.verticalLayout_3_6 = QVBoxLayout(self.page_form_teste6)
-        self.verticalLayout_3_6.setObjectName(u"verticalLayout_3_6")
-        self.label_titulo_teste6 = QLabel(self.page_form_teste6)
-        self.label_titulo_teste6.setObjectName(u"label_titulo_teste6")
-        self.label_titulo_teste6.setFont(font1)
-
-        self.verticalLayout_3_6.addWidget(self.label_titulo_teste6)
-
-        self.groupBox_faixa_etaria_6 = QGroupBox(self.page_form_teste6)
-        self.groupBox_faixa_etaria_6.setObjectName(u"groupBox_faixa_etaria_6")
-        self.horizontalLayout_3_6 = QHBoxLayout(self.groupBox_faixa_etaria_6)
-        self.horizontalLayout_3_6.setObjectName(u"horizontalLayout_3_6")
-        self.checkBox_incluir_6 = QCheckBox(self.groupBox_faixa_etaria_6)
-        self.checkBox_incluir_6.setObjectName(u"checkBox_incluir_6")
-
-        self.horizontalLayout_3_6.addWidget(self.checkBox_incluir_6)
-
-        self.radioButton_pre_escolar_6 = QRadioButton(self.groupBox_faixa_etaria_6)
-        self.radioButton_pre_escolar_6.setObjectName(u"radioButton_pre_escolar_6")
-
-        self.horizontalLayout_3_6.addWidget(self.radioButton_pre_escolar_6)
-
-        self.radioButton_escolar_6 = QRadioButton(self.groupBox_faixa_etaria_6)
-        self.radioButton_escolar_6.setObjectName(u"radioButton_escolar_6")
-        self.radioButton_escolar_6.setChecked(True)
-
-        self.horizontalLayout_3_6.addWidget(self.radioButton_escolar_6)
-
-        self.radioButton_adulto_6 = QRadioButton(self.groupBox_faixa_etaria_6)
-        self.radioButton_adulto_6.setObjectName(u"radioButton_adulto_6")
-
-        self.horizontalLayout_3_6.addWidget(self.radioButton_adulto_6)
-
-
-        self.verticalLayout_3_6.addWidget(self.groupBox_faixa_etaria_6)
-
-        self.groupBox_dados_teste_6 = QGroupBox(self.page_form_teste6)
-        self.groupBox_dados_teste_6.setObjectName(u"groupBox_dados_teste_6")
-        self.formLayout_6 = QFormLayout(self.groupBox_dados_teste_6)
-        self.formLayout_6.setObjectName(u"formLayout_6")
-        self.label_2_6 = QLabel(self.groupBox_dados_teste_6)
-        self.label_2_6.setObjectName(u"label_2_6")
-
-        self.formLayout_6.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_6)
-
-        self.spinBox_7 = QSpinBox(self.groupBox_dados_teste_6)
+        self.spinBox_7 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_7.setObjectName(u"spinBox_7")
 
-        self.formLayout_6.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_7)
+        self.formLayout_wisc4.setWidget(11, QFormLayout.ItemRole.FieldRole, self.spinBox_7)
 
-        self.label_3_6 = QLabel(self.groupBox_dados_teste_6)
-        self.label_3_6.setObjectName(u"label_3_6")
-
-        self.formLayout_6.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_6)
-
-        self.spinBox_2_6 = QSpinBox(self.groupBox_dados_teste_6)
-        self.spinBox_2_6.setObjectName(u"spinBox_2_6")
-
-        self.formLayout_6.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_6)
-
-
-        self.verticalLayout_3_6.addWidget(self.groupBox_dados_teste_6)
-
-        self.verticalSpacer_4_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_3_6.addItem(self.verticalSpacer_4_6)
-
-        self.stackedWidget_formularios.addWidget(self.page_form_teste6)
-        self.page_form_teste7 = QWidget()
-        self.page_form_teste7.setObjectName(u"page_form_teste7")
-        self.verticalLayout_3_7 = QVBoxLayout(self.page_form_teste7)
-        self.verticalLayout_3_7.setObjectName(u"verticalLayout_3_7")
-        self.label_titulo_teste7 = QLabel(self.page_form_teste7)
-        self.label_titulo_teste7.setObjectName(u"label_titulo_teste7")
-        self.label_titulo_teste7.setFont(font1)
-
-        self.verticalLayout_3_7.addWidget(self.label_titulo_teste7)
-
-        self.groupBox_faixa_etaria_7 = QGroupBox(self.page_form_teste7)
-        self.groupBox_faixa_etaria_7.setObjectName(u"groupBox_faixa_etaria_7")
-        self.horizontalLayout_3_7 = QHBoxLayout(self.groupBox_faixa_etaria_7)
-        self.horizontalLayout_3_7.setObjectName(u"horizontalLayout_3_7")
-        self.checkBox_incluir_7 = QCheckBox(self.groupBox_faixa_etaria_7)
-        self.checkBox_incluir_7.setObjectName(u"checkBox_incluir_7")
-
-        self.horizontalLayout_3_7.addWidget(self.checkBox_incluir_7)
-
-        self.radioButton_pre_escolar_7 = QRadioButton(self.groupBox_faixa_etaria_7)
-        self.radioButton_pre_escolar_7.setObjectName(u"radioButton_pre_escolar_7")
-
-        self.horizontalLayout_3_7.addWidget(self.radioButton_pre_escolar_7)
-
-        self.radioButton_escolar_7 = QRadioButton(self.groupBox_faixa_etaria_7)
-        self.radioButton_escolar_7.setObjectName(u"radioButton_escolar_7")
-        self.radioButton_escolar_7.setChecked(True)
-
-        self.horizontalLayout_3_7.addWidget(self.radioButton_escolar_7)
-
-        self.radioButton_adulto_7 = QRadioButton(self.groupBox_faixa_etaria_7)
-        self.radioButton_adulto_7.setObjectName(u"radioButton_adulto_7")
-
-        self.horizontalLayout_3_7.addWidget(self.radioButton_adulto_7)
-
-
-        self.verticalLayout_3_7.addWidget(self.groupBox_faixa_etaria_7)
-
-        self.groupBox_dados_teste_7 = QGroupBox(self.page_form_teste7)
-        self.groupBox_dados_teste_7.setObjectName(u"groupBox_dados_teste_7")
-        self.formLayout_7 = QFormLayout(self.groupBox_dados_teste_7)
-        self.formLayout_7.setObjectName(u"formLayout_7")
-        self.label_2_7 = QLabel(self.groupBox_dados_teste_7)
-        self.label_2_7.setObjectName(u"label_2_7")
-
-        self.formLayout_7.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_7)
-
-        self.spinBox_8 = QSpinBox(self.groupBox_dados_teste_7)
+        self.spinBox_8 = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox_8.setObjectName(u"spinBox_8")
 
-        self.formLayout_7.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_8)
-
-        self.label_3_7 = QLabel(self.groupBox_dados_teste_7)
-        self.label_3_7.setObjectName(u"label_3_7")
-
-        self.formLayout_7.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_7)
-
-        self.spinBox_2_7 = QSpinBox(self.groupBox_dados_teste_7)
-        self.spinBox_2_7.setObjectName(u"spinBox_2_7")
-
-        self.formLayout_7.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_7)
+        self.formLayout_wisc4.setWidget(12, QFormLayout.ItemRole.FieldRole, self.spinBox_8)
 
 
-        self.verticalLayout_3_7.addWidget(self.groupBox_dados_teste_7)
+        self.verticalLayout_3.addWidget(self.groupBox_dados_teste_wisc4)
 
-        self.verticalSpacer_4_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
-        self.verticalLayout_3_7.addItem(self.verticalSpacer_4_7)
+        self.verticalLayout_wisc4.addWidget(self.scrollArea)
 
-        self.stackedWidget_formularios.addWidget(self.page_form_teste7)
-        self.page_form_teste8 = QWidget()
-        self.page_form_teste8.setObjectName(u"page_form_teste8")
-        self.verticalLayout_3_8 = QVBoxLayout(self.page_form_teste8)
-        self.verticalLayout_3_8.setObjectName(u"verticalLayout_3_8")
-        self.label_titulo_teste8 = QLabel(self.page_form_teste8)
-        self.label_titulo_teste8.setObjectName(u"label_titulo_teste8")
-        self.label_titulo_teste8.setFont(font1)
+        self.verticalSpacer_wisc4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_3_8.addWidget(self.label_titulo_teste8)
+        self.verticalLayout_wisc4.addItem(self.verticalSpacer_wisc4)
 
-        self.groupBox_faixa_etaria_8 = QGroupBox(self.page_form_teste8)
-        self.groupBox_faixa_etaria_8.setObjectName(u"groupBox_faixa_etaria_8")
-        self.horizontalLayout_3_8 = QHBoxLayout(self.groupBox_faixa_etaria_8)
-        self.horizontalLayout_3_8.setObjectName(u"horizontalLayout_3_8")
-        self.checkBox_incluir_8 = QCheckBox(self.groupBox_faixa_etaria_8)
-        self.checkBox_incluir_8.setObjectName(u"checkBox_incluir_8")
+        self.stackedWidget_formularios.addWidget(self.page_form_wisc4)
+        self.page_form_ravlt = QWidget()
+        self.page_form_ravlt.setObjectName(u"page_form_ravlt")
+        self.verticalLayout_ravlt = QVBoxLayout(self.page_form_ravlt)
+        self.verticalLayout_ravlt.setObjectName(u"verticalLayout_ravlt")
+        self.label_titulo_ravlt = QLabel(self.page_form_ravlt)
+        self.label_titulo_ravlt.setObjectName(u"label_titulo_ravlt")
+        self.label_titulo_ravlt.setFont(font1)
 
-        self.horizontalLayout_3_8.addWidget(self.checkBox_incluir_8)
+        self.verticalLayout_ravlt.addWidget(self.label_titulo_ravlt)
 
-        self.radioButton_pre_escolar_8 = QRadioButton(self.groupBox_faixa_etaria_8)
-        self.radioButton_pre_escolar_8.setObjectName(u"radioButton_pre_escolar_8")
+        self.groupBox_faixa_etaria_ravlt = QGroupBox(self.page_form_ravlt)
+        self.groupBox_faixa_etaria_ravlt.setObjectName(u"groupBox_faixa_etaria_ravlt")
+        self.horizontalLayout_ravlt = QHBoxLayout(self.groupBox_faixa_etaria_ravlt)
+        self.horizontalLayout_ravlt.setObjectName(u"horizontalLayout_ravlt")
+        self.checkBox_incluir_ravlt = QCheckBox(self.groupBox_faixa_etaria_ravlt)
+        self.checkBox_incluir_ravlt.setObjectName(u"checkBox_incluir_ravlt")
 
-        self.horizontalLayout_3_8.addWidget(self.radioButton_pre_escolar_8)
+        self.horizontalLayout_ravlt.addWidget(self.checkBox_incluir_ravlt)
 
-        self.radioButton_escolar_8 = QRadioButton(self.groupBox_faixa_etaria_8)
-        self.radioButton_escolar_8.setObjectName(u"radioButton_escolar_8")
-        self.radioButton_escolar_8.setChecked(True)
+        self.radioButton_pre_escolar_ravlt = QRadioButton(self.groupBox_faixa_etaria_ravlt)
+        self.radioButton_pre_escolar_ravlt.setObjectName(u"radioButton_pre_escolar_ravlt")
 
-        self.horizontalLayout_3_8.addWidget(self.radioButton_escolar_8)
+        self.horizontalLayout_ravlt.addWidget(self.radioButton_pre_escolar_ravlt)
 
-        self.radioButton_adulto_8 = QRadioButton(self.groupBox_faixa_etaria_8)
-        self.radioButton_adulto_8.setObjectName(u"radioButton_adulto_8")
+        self.radioButton_escolar_ravlt = QRadioButton(self.groupBox_faixa_etaria_ravlt)
+        self.radioButton_escolar_ravlt.setObjectName(u"radioButton_escolar_ravlt")
+        self.radioButton_escolar_ravlt.setChecked(True)
 
-        self.horizontalLayout_3_8.addWidget(self.radioButton_adulto_8)
+        self.horizontalLayout_ravlt.addWidget(self.radioButton_escolar_ravlt)
 
+        self.radioButton_adulto_ravlt = QRadioButton(self.groupBox_faixa_etaria_ravlt)
+        self.radioButton_adulto_ravlt.setObjectName(u"radioButton_adulto_ravlt")
 
-        self.verticalLayout_3_8.addWidget(self.groupBox_faixa_etaria_8)
-
-        self.groupBox_dados_teste_8 = QGroupBox(self.page_form_teste8)
-        self.groupBox_dados_teste_8.setObjectName(u"groupBox_dados_teste_8")
-        self.formLayout_8 = QFormLayout(self.groupBox_dados_teste_8)
-        self.formLayout_8.setObjectName(u"formLayout_8")
-        self.label_2_8 = QLabel(self.groupBox_dados_teste_8)
-        self.label_2_8.setObjectName(u"label_2_8")
-
-        self.formLayout_8.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_8)
-
-        self.spinBox_9 = QSpinBox(self.groupBox_dados_teste_8)
-        self.spinBox_9.setObjectName(u"spinBox_9")
-
-        self.formLayout_8.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_9)
-
-        self.label_3_8 = QLabel(self.groupBox_dados_teste_8)
-        self.label_3_8.setObjectName(u"label_3_8")
-
-        self.formLayout_8.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_8)
-
-        self.spinBox_2_8 = QSpinBox(self.groupBox_dados_teste_8)
-        self.spinBox_2_8.setObjectName(u"spinBox_2_8")
-
-        self.formLayout_8.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_8)
+        self.horizontalLayout_ravlt.addWidget(self.radioButton_adulto_ravlt)
 
 
-        self.verticalLayout_3_8.addWidget(self.groupBox_dados_teste_8)
+        self.verticalLayout_ravlt.addWidget(self.groupBox_faixa_etaria_ravlt)
 
-        self.verticalSpacer_4_8 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.groupBox_dados_teste_ravlt = QGroupBox(self.page_form_ravlt)
+        self.groupBox_dados_teste_ravlt.setObjectName(u"groupBox_dados_teste_ravlt")
+        self.formLayout_ravlt = QFormLayout(self.groupBox_dados_teste_ravlt)
+        self.formLayout_ravlt.setObjectName(u"formLayout_ravlt")
+        self.label_TODO_ravlt = QLabel(self.groupBox_dados_teste_ravlt)
+        self.label_TODO_ravlt.setObjectName(u"label_TODO_ravlt")
 
-        self.verticalLayout_3_8.addItem(self.verticalSpacer_4_8)
+        self.formLayout_ravlt.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_ravlt)
 
-        self.stackedWidget_formularios.addWidget(self.page_form_teste8)
-        self.page_form_teste9 = QWidget()
-        self.page_form_teste9.setObjectName(u"page_form_teste9")
-        self.verticalLayout_3_9 = QVBoxLayout(self.page_form_teste9)
-        self.verticalLayout_3_9.setObjectName(u"verticalLayout_3_9")
-        self.label_titulo_teste9 = QLabel(self.page_form_teste9)
-        self.label_titulo_teste9.setObjectName(u"label_titulo_teste9")
-        self.label_titulo_teste9.setFont(font1)
+        self.spinBox_TODO_ravlt = QSpinBox(self.groupBox_dados_teste_ravlt)
+        self.spinBox_TODO_ravlt.setObjectName(u"spinBox_TODO_ravlt")
 
-        self.verticalLayout_3_9.addWidget(self.label_titulo_teste9)
-
-        self.groupBox_faixa_etaria_9 = QGroupBox(self.page_form_teste9)
-        self.groupBox_faixa_etaria_9.setObjectName(u"groupBox_faixa_etaria_9")
-        self.horizontalLayout_3_9 = QHBoxLayout(self.groupBox_faixa_etaria_9)
-        self.horizontalLayout_3_9.setObjectName(u"horizontalLayout_3_9")
-        self.checkBox_incluir_9 = QCheckBox(self.groupBox_faixa_etaria_9)
-        self.checkBox_incluir_9.setObjectName(u"checkBox_incluir_9")
-
-        self.horizontalLayout_3_9.addWidget(self.checkBox_incluir_9)
-
-        self.radioButton_pre_escolar_9 = QRadioButton(self.groupBox_faixa_etaria_9)
-        self.radioButton_pre_escolar_9.setObjectName(u"radioButton_pre_escolar_9")
-
-        self.horizontalLayout_3_9.addWidget(self.radioButton_pre_escolar_9)
-
-        self.radioButton_escolar_9 = QRadioButton(self.groupBox_faixa_etaria_9)
-        self.radioButton_escolar_9.setObjectName(u"radioButton_escolar_9")
-        self.radioButton_escolar_9.setChecked(True)
-
-        self.horizontalLayout_3_9.addWidget(self.radioButton_escolar_9)
-
-        self.radioButton_adulto_9 = QRadioButton(self.groupBox_faixa_etaria_9)
-        self.radioButton_adulto_9.setObjectName(u"radioButton_adulto_9")
-
-        self.horizontalLayout_3_9.addWidget(self.radioButton_adulto_9)
+        self.formLayout_ravlt.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_ravlt)
 
 
-        self.verticalLayout_3_9.addWidget(self.groupBox_faixa_etaria_9)
+        self.verticalLayout_ravlt.addWidget(self.groupBox_dados_teste_ravlt)
 
-        self.groupBox_dados_teste_9 = QGroupBox(self.page_form_teste9)
-        self.groupBox_dados_teste_9.setObjectName(u"groupBox_dados_teste_9")
-        self.formLayout_9 = QFormLayout(self.groupBox_dados_teste_9)
-        self.formLayout_9.setObjectName(u"formLayout_9")
-        self.label_2_9 = QLabel(self.groupBox_dados_teste_9)
-        self.label_2_9.setObjectName(u"label_2_9")
+        self.verticalSpacer_ravlt = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.formLayout_9.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_2_9)
+        self.verticalLayout_ravlt.addItem(self.verticalSpacer_ravlt)
 
-        self.spinBox_10 = QSpinBox(self.groupBox_dados_teste_9)
-        self.spinBox_10.setObjectName(u"spinBox_10")
+        self.stackedWidget_formularios.addWidget(self.page_form_ravlt)
+        self.page_form_bpa2 = QWidget()
+        self.page_form_bpa2.setObjectName(u"page_form_bpa2")
+        self.verticalLayout_bpa2 = QVBoxLayout(self.page_form_bpa2)
+        self.verticalLayout_bpa2.setObjectName(u"verticalLayout_bpa2")
+        self.label_titulo_bpa2 = QLabel(self.page_form_bpa2)
+        self.label_titulo_bpa2.setObjectName(u"label_titulo_bpa2")
+        self.label_titulo_bpa2.setFont(font1)
 
-        self.formLayout_9.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_10)
+        self.verticalLayout_bpa2.addWidget(self.label_titulo_bpa2)
 
-        self.label_3_9 = QLabel(self.groupBox_dados_teste_9)
-        self.label_3_9.setObjectName(u"label_3_9")
+        self.groupBox_faixa_etaria_bpa2 = QGroupBox(self.page_form_bpa2)
+        self.groupBox_faixa_etaria_bpa2.setObjectName(u"groupBox_faixa_etaria_bpa2")
+        self.horizontalLayout_bpa2 = QHBoxLayout(self.groupBox_faixa_etaria_bpa2)
+        self.horizontalLayout_bpa2.setObjectName(u"horizontalLayout_bpa2")
+        self.checkBox_incluir_bpa2 = QCheckBox(self.groupBox_faixa_etaria_bpa2)
+        self.checkBox_incluir_bpa2.setObjectName(u"checkBox_incluir_bpa2")
 
-        self.formLayout_9.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_3_9)
+        self.horizontalLayout_bpa2.addWidget(self.checkBox_incluir_bpa2)
 
-        self.spinBox_2_9 = QSpinBox(self.groupBox_dados_teste_9)
-        self.spinBox_2_9.setObjectName(u"spinBox_2_9")
+        self.radioButton_pre_escolar_bpa2 = QRadioButton(self.groupBox_faixa_etaria_bpa2)
+        self.radioButton_pre_escolar_bpa2.setObjectName(u"radioButton_pre_escolar_bpa2")
 
-        self.formLayout_9.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_2_9)
+        self.horizontalLayout_bpa2.addWidget(self.radioButton_pre_escolar_bpa2)
+
+        self.radioButton_escolar_bpa2 = QRadioButton(self.groupBox_faixa_etaria_bpa2)
+        self.radioButton_escolar_bpa2.setObjectName(u"radioButton_escolar_bpa2")
+        self.radioButton_escolar_bpa2.setChecked(True)
+
+        self.horizontalLayout_bpa2.addWidget(self.radioButton_escolar_bpa2)
+
+        self.radioButton_adulto_bpa2 = QRadioButton(self.groupBox_faixa_etaria_bpa2)
+        self.radioButton_adulto_bpa2.setObjectName(u"radioButton_adulto_bpa2")
+
+        self.horizontalLayout_bpa2.addWidget(self.radioButton_adulto_bpa2)
 
 
-        self.verticalLayout_3_9.addWidget(self.groupBox_dados_teste_9)
+        self.verticalLayout_bpa2.addWidget(self.groupBox_faixa_etaria_bpa2)
 
-        self.verticalSpacer_4_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.groupBox_dados_teste_bpa2 = QGroupBox(self.page_form_bpa2)
+        self.groupBox_dados_teste_bpa2.setObjectName(u"groupBox_dados_teste_bpa2")
+        self.formLayout_bpa2 = QFormLayout(self.groupBox_dados_teste_bpa2)
+        self.formLayout_bpa2.setObjectName(u"formLayout_bpa2")
+        self.label_ac_bpa2 = QLabel(self.groupBox_dados_teste_bpa2)
+        self.label_ac_bpa2.setObjectName(u"label_ac_bpa2")
 
-        self.verticalLayout_3_9.addItem(self.verticalSpacer_4_9)
+        self.formLayout_bpa2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_ac_bpa2)
 
-        self.stackedWidget_formularios.addWidget(self.page_form_teste9)
+        self.spinBox_ac_bpa2 = QSpinBox(self.groupBox_dados_teste_bpa2)
+        self.spinBox_ac_bpa2.setObjectName(u"spinBox_ac_bpa2")
+
+        self.formLayout_bpa2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_ac_bpa2)
+
+        self.label_ad_bpa2 = QLabel(self.groupBox_dados_teste_bpa2)
+        self.label_ad_bpa2.setObjectName(u"label_ad_bpa2")
+
+        self.formLayout_bpa2.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_ad_bpa2)
+
+        self.spinBox_ad_bpa2 = QSpinBox(self.groupBox_dados_teste_bpa2)
+        self.spinBox_ad_bpa2.setObjectName(u"spinBox_ad_bpa2")
+
+        self.formLayout_bpa2.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_ad_bpa2)
+
+        self.spinBox_aa_bpa2 = QSpinBox(self.groupBox_dados_teste_bpa2)
+        self.spinBox_aa_bpa2.setObjectName(u"spinBox_aa_bpa2")
+
+        self.formLayout_bpa2.setWidget(2, QFormLayout.ItemRole.FieldRole, self.spinBox_aa_bpa2)
+
+        self.label_aa_bpa2 = QLabel(self.groupBox_dados_teste_bpa2)
+        self.label_aa_bpa2.setObjectName(u"label_aa_bpa2")
+
+        self.formLayout_bpa2.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_aa_bpa2)
+
+
+        self.verticalLayout_bpa2.addWidget(self.groupBox_dados_teste_bpa2)
+
+        self.verticalSpacer_bpa2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_bpa2.addItem(self.verticalSpacer_bpa2)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_bpa2)
+        self.page_form_neupsilin = QWidget()
+        self.page_form_neupsilin.setObjectName(u"page_form_neupsilin")
+        self.verticalLayout_neupsilin = QVBoxLayout(self.page_form_neupsilin)
+        self.verticalLayout_neupsilin.setObjectName(u"verticalLayout_neupsilin")
+        self.label_titulo_neupsilin = QLabel(self.page_form_neupsilin)
+        self.label_titulo_neupsilin.setObjectName(u"label_titulo_neupsilin")
+        self.label_titulo_neupsilin.setFont(font1)
+
+        self.verticalLayout_neupsilin.addWidget(self.label_titulo_neupsilin)
+
+        self.groupBox_faixa_etaria_neupsilin = QGroupBox(self.page_form_neupsilin)
+        self.groupBox_faixa_etaria_neupsilin.setObjectName(u"groupBox_faixa_etaria_neupsilin")
+        self.horizontalLayout_neupsilin = QHBoxLayout(self.groupBox_faixa_etaria_neupsilin)
+        self.horizontalLayout_neupsilin.setObjectName(u"horizontalLayout_neupsilin")
+        self.checkBox_incluir_neupsilin = QCheckBox(self.groupBox_faixa_etaria_neupsilin)
+        self.checkBox_incluir_neupsilin.setObjectName(u"checkBox_incluir_neupsilin")
+
+        self.horizontalLayout_neupsilin.addWidget(self.checkBox_incluir_neupsilin)
+
+        self.radioButton_pre_escolar_neupsilin = QRadioButton(self.groupBox_faixa_etaria_neupsilin)
+        self.radioButton_pre_escolar_neupsilin.setObjectName(u"radioButton_pre_escolar_neupsilin")
+
+        self.horizontalLayout_neupsilin.addWidget(self.radioButton_pre_escolar_neupsilin)
+
+        self.radioButton_escolar_neupsilin = QRadioButton(self.groupBox_faixa_etaria_neupsilin)
+        self.radioButton_escolar_neupsilin.setObjectName(u"radioButton_escolar_neupsilin")
+        self.radioButton_escolar_neupsilin.setChecked(True)
+
+        self.horizontalLayout_neupsilin.addWidget(self.radioButton_escolar_neupsilin)
+
+        self.radioButton_adulto_neupsilin = QRadioButton(self.groupBox_faixa_etaria_neupsilin)
+        self.radioButton_adulto_neupsilin.setObjectName(u"radioButton_adulto_neupsilin")
+
+        self.horizontalLayout_neupsilin.addWidget(self.radioButton_adulto_neupsilin)
+
+
+        self.verticalLayout_neupsilin.addWidget(self.groupBox_faixa_etaria_neupsilin)
+
+        self.groupBox_dados_teste_neupsilin = QGroupBox(self.page_form_neupsilin)
+        self.groupBox_dados_teste_neupsilin.setObjectName(u"groupBox_dados_teste_neupsilin")
+        self.formLayout_neupsilin = QFormLayout(self.groupBox_dados_teste_neupsilin)
+        self.formLayout_neupsilin.setObjectName(u"formLayout_neupsilin")
+        self.label_TODO_neupsilin = QLabel(self.groupBox_dados_teste_neupsilin)
+        self.label_TODO_neupsilin.setObjectName(u"label_TODO_neupsilin")
+
+        self.formLayout_neupsilin.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_neupsilin)
+
+        self.spinBox_TODO_neupsilin = QSpinBox(self.groupBox_dados_teste_neupsilin)
+        self.spinBox_TODO_neupsilin.setObjectName(u"spinBox_TODO_neupsilin")
+
+        self.formLayout_neupsilin.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_neupsilin)
+
+
+        self.verticalLayout_neupsilin.addWidget(self.groupBox_dados_teste_neupsilin)
+
+        self.verticalSpacer_neupsilin = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_neupsilin.addItem(self.verticalSpacer_neupsilin)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_neupsilin)
+        self.page_form_srs2 = QWidget()
+        self.page_form_srs2.setObjectName(u"page_form_srs2")
+        self.verticalLayout_srs2 = QVBoxLayout(self.page_form_srs2)
+        self.verticalLayout_srs2.setObjectName(u"verticalLayout_srs2")
+        self.label_titulo_srs2 = QLabel(self.page_form_srs2)
+        self.label_titulo_srs2.setObjectName(u"label_titulo_srs2")
+        self.label_titulo_srs2.setFont(font1)
+
+        self.verticalLayout_srs2.addWidget(self.label_titulo_srs2)
+
+        self.groupBox_faixa_etaria_srs2 = QGroupBox(self.page_form_srs2)
+        self.groupBox_faixa_etaria_srs2.setObjectName(u"groupBox_faixa_etaria_srs2")
+        self.horizontalLayout_srs2 = QHBoxLayout(self.groupBox_faixa_etaria_srs2)
+        self.horizontalLayout_srs2.setObjectName(u"horizontalLayout_srs2")
+        self.checkBox_incluir_srs2 = QCheckBox(self.groupBox_faixa_etaria_srs2)
+        self.checkBox_incluir_srs2.setObjectName(u"checkBox_incluir_srs2")
+
+        self.horizontalLayout_srs2.addWidget(self.checkBox_incluir_srs2)
+
+        self.radioButton_pre_escolar_srs2 = QRadioButton(self.groupBox_faixa_etaria_srs2)
+        self.radioButton_pre_escolar_srs2.setObjectName(u"radioButton_pre_escolar_srs2")
+
+        self.horizontalLayout_srs2.addWidget(self.radioButton_pre_escolar_srs2)
+
+        self.radioButton_escolar_srs2 = QRadioButton(self.groupBox_faixa_etaria_srs2)
+        self.radioButton_escolar_srs2.setObjectName(u"radioButton_escolar_srs2")
+        self.radioButton_escolar_srs2.setChecked(True)
+
+        self.horizontalLayout_srs2.addWidget(self.radioButton_escolar_srs2)
+
+        self.radioButton_adulto_srs2 = QRadioButton(self.groupBox_faixa_etaria_srs2)
+        self.radioButton_adulto_srs2.setObjectName(u"radioButton_adulto_srs2")
+
+        self.horizontalLayout_srs2.addWidget(self.radioButton_adulto_srs2)
+
+
+        self.verticalLayout_srs2.addWidget(self.groupBox_faixa_etaria_srs2)
+
+        self.groupBox_dados_teste_srs2 = QGroupBox(self.page_form_srs2)
+        self.groupBox_dados_teste_srs2.setObjectName(u"groupBox_dados_teste_srs2")
+        self.formLayout_srs2 = QFormLayout(self.groupBox_dados_teste_srs2)
+        self.formLayout_srs2.setObjectName(u"formLayout_srs2")
+        self.label_TODO_srs2 = QLabel(self.groupBox_dados_teste_srs2)
+        self.label_TODO_srs2.setObjectName(u"label_TODO_srs2")
+
+        self.formLayout_srs2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_srs2)
+
+        self.spinBox_TODO_srs2 = QSpinBox(self.groupBox_dados_teste_srs2)
+        self.spinBox_TODO_srs2.setObjectName(u"spinBox_TODO_srs2")
+
+        self.formLayout_srs2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_srs2)
+
+
+        self.verticalLayout_srs2.addWidget(self.groupBox_dados_teste_srs2)
+
+        self.verticalSpacer_srs2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_srs2.addItem(self.verticalSpacer_srs2)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_srs2)
+        self.page_form_etdah = QWidget()
+        self.page_form_etdah.setObjectName(u"page_form_etdah")
+        self.verticalLayout_etdah = QVBoxLayout(self.page_form_etdah)
+        self.verticalLayout_etdah.setObjectName(u"verticalLayout_etdah")
+        self.label_titulo_etdah = QLabel(self.page_form_etdah)
+        self.label_titulo_etdah.setObjectName(u"label_titulo_etdah")
+        self.label_titulo_etdah.setFont(font1)
+
+        self.verticalLayout_etdah.addWidget(self.label_titulo_etdah)
+
+        self.groupBox_faixa_etaria_etdah = QGroupBox(self.page_form_etdah)
+        self.groupBox_faixa_etaria_etdah.setObjectName(u"groupBox_faixa_etaria_etdah")
+        self.horizontalLayout_etdah = QHBoxLayout(self.groupBox_faixa_etaria_etdah)
+        self.horizontalLayout_etdah.setObjectName(u"horizontalLayout_etdah")
+        self.checkBox_incluir_etdah = QCheckBox(self.groupBox_faixa_etaria_etdah)
+        self.checkBox_incluir_etdah.setObjectName(u"checkBox_incluir_etdah")
+
+        self.horizontalLayout_etdah.addWidget(self.checkBox_incluir_etdah)
+
+        self.radioButton_pre_escolar_etdah = QRadioButton(self.groupBox_faixa_etaria_etdah)
+        self.radioButton_pre_escolar_etdah.setObjectName(u"radioButton_pre_escolar_etdah")
+
+        self.horizontalLayout_etdah.addWidget(self.radioButton_pre_escolar_etdah)
+
+        self.radioButton_escolar_etdah = QRadioButton(self.groupBox_faixa_etaria_etdah)
+        self.radioButton_escolar_etdah.setObjectName(u"radioButton_escolar_etdah")
+        self.radioButton_escolar_etdah.setChecked(True)
+
+        self.horizontalLayout_etdah.addWidget(self.radioButton_escolar_etdah)
+
+        self.radioButton_adulto_etdah = QRadioButton(self.groupBox_faixa_etaria_etdah)
+        self.radioButton_adulto_etdah.setObjectName(u"radioButton_adulto_etdah")
+
+        self.horizontalLayout_etdah.addWidget(self.radioButton_adulto_etdah)
+
+
+        self.verticalLayout_etdah.addWidget(self.groupBox_faixa_etaria_etdah)
+
+        self.groupBox_dados_teste_etdah = QGroupBox(self.page_form_etdah)
+        self.groupBox_dados_teste_etdah.setObjectName(u"groupBox_dados_teste_etdah")
+        self.formLayout_etdah = QFormLayout(self.groupBox_dados_teste_etdah)
+        self.formLayout_etdah.setObjectName(u"formLayout_etdah")
+        self.label_TODO_etdah = QLabel(self.groupBox_dados_teste_etdah)
+        self.label_TODO_etdah.setObjectName(u"label_TODO_etdah")
+
+        self.formLayout_etdah.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_etdah)
+
+        self.spinBox_TODO_etdah = QSpinBox(self.groupBox_dados_teste_etdah)
+        self.spinBox_TODO_etdah.setObjectName(u"spinBox_TODO_etdah")
+
+        self.formLayout_etdah.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_etdah)
+
+
+        self.verticalLayout_etdah.addWidget(self.groupBox_dados_teste_etdah)
+
+        self.verticalSpacer_etdah = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_etdah.addItem(self.verticalSpacer_etdah)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_etdah)
+        self.page_form_cars2 = QWidget()
+        self.page_form_cars2.setObjectName(u"page_form_cars2")
+        self.verticalLayout_cars2 = QVBoxLayout(self.page_form_cars2)
+        self.verticalLayout_cars2.setObjectName(u"verticalLayout_cars2")
+        self.label_titulo_cars2 = QLabel(self.page_form_cars2)
+        self.label_titulo_cars2.setObjectName(u"label_titulo_cars2")
+        self.label_titulo_cars2.setFont(font1)
+
+        self.verticalLayout_cars2.addWidget(self.label_titulo_cars2)
+
+        self.groupBox_faixa_etaria_cars2 = QGroupBox(self.page_form_cars2)
+        self.groupBox_faixa_etaria_cars2.setObjectName(u"groupBox_faixa_etaria_cars2")
+        self.horizontalLayout_cars2 = QHBoxLayout(self.groupBox_faixa_etaria_cars2)
+        self.horizontalLayout_cars2.setObjectName(u"horizontalLayout_cars2")
+        self.checkBox_incluir_cars2 = QCheckBox(self.groupBox_faixa_etaria_cars2)
+        self.checkBox_incluir_cars2.setObjectName(u"checkBox_incluir_cars2")
+
+        self.horizontalLayout_cars2.addWidget(self.checkBox_incluir_cars2)
+
+        self.radioButton_pre_escolar_cars2 = QRadioButton(self.groupBox_faixa_etaria_cars2)
+        self.radioButton_pre_escolar_cars2.setObjectName(u"radioButton_pre_escolar_cars2")
+
+        self.horizontalLayout_cars2.addWidget(self.radioButton_pre_escolar_cars2)
+
+        self.radioButton_escolar_cars2 = QRadioButton(self.groupBox_faixa_etaria_cars2)
+        self.radioButton_escolar_cars2.setObjectName(u"radioButton_escolar_cars2")
+        self.radioButton_escolar_cars2.setChecked(True)
+
+        self.horizontalLayout_cars2.addWidget(self.radioButton_escolar_cars2)
+
+        self.radioButton_adulto_cars2 = QRadioButton(self.groupBox_faixa_etaria_cars2)
+        self.radioButton_adulto_cars2.setObjectName(u"radioButton_adulto_cars2")
+
+        self.horizontalLayout_cars2.addWidget(self.radioButton_adulto_cars2)
+
+
+        self.verticalLayout_cars2.addWidget(self.groupBox_faixa_etaria_cars2)
+
+        self.groupBox_dados_teste_cars2 = QGroupBox(self.page_form_cars2)
+        self.groupBox_dados_teste_cars2.setObjectName(u"groupBox_dados_teste_cars2")
+        self.formLayout_cars2 = QFormLayout(self.groupBox_dados_teste_cars2)
+        self.formLayout_cars2.setObjectName(u"formLayout_cars2")
+        self.label_TODO_cars2 = QLabel(self.groupBox_dados_teste_cars2)
+        self.label_TODO_cars2.setObjectName(u"label_TODO_cars2")
+
+        self.formLayout_cars2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_cars2)
+
+        self.spinBox_TODO_cars2 = QSpinBox(self.groupBox_dados_teste_cars2)
+        self.spinBox_TODO_cars2.setObjectName(u"spinBox_TODO_cars2")
+
+        self.formLayout_cars2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_cars2)
+
+
+        self.verticalLayout_cars2.addWidget(self.groupBox_dados_teste_cars2)
+
+        self.verticalSpacer_cars2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_cars2.addItem(self.verticalSpacer_cars2)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_cars2)
+        self.page_form_htp = QWidget()
+        self.page_form_htp.setObjectName(u"page_form_htp")
+        self.verticalLayout_htp = QVBoxLayout(self.page_form_htp)
+        self.verticalLayout_htp.setObjectName(u"verticalLayout_htp")
+        self.label_titulo_htp = QLabel(self.page_form_htp)
+        self.label_titulo_htp.setObjectName(u"label_titulo_htp")
+        self.label_titulo_htp.setFont(font1)
+
+        self.verticalLayout_htp.addWidget(self.label_titulo_htp)
+
+        self.groupBox_faixa_etaria_htp = QGroupBox(self.page_form_htp)
+        self.groupBox_faixa_etaria_htp.setObjectName(u"groupBox_faixa_etaria_htp")
+        self.horizontalLayout_htp = QHBoxLayout(self.groupBox_faixa_etaria_htp)
+        self.horizontalLayout_htp.setObjectName(u"horizontalLayout_htp")
+        self.checkBox_incluir_htp = QCheckBox(self.groupBox_faixa_etaria_htp)
+        self.checkBox_incluir_htp.setObjectName(u"checkBox_incluir_htp")
+
+        self.horizontalLayout_htp.addWidget(self.checkBox_incluir_htp)
+
+        self.radioButton_pre_escolar_htp = QRadioButton(self.groupBox_faixa_etaria_htp)
+        self.radioButton_pre_escolar_htp.setObjectName(u"radioButton_pre_escolar_htp")
+
+        self.horizontalLayout_htp.addWidget(self.radioButton_pre_escolar_htp)
+
+        self.radioButton_escolar_htp = QRadioButton(self.groupBox_faixa_etaria_htp)
+        self.radioButton_escolar_htp.setObjectName(u"radioButton_escolar_htp")
+        self.radioButton_escolar_htp.setChecked(True)
+
+        self.horizontalLayout_htp.addWidget(self.radioButton_escolar_htp)
+
+        self.radioButton_adulto_htp = QRadioButton(self.groupBox_faixa_etaria_htp)
+        self.radioButton_adulto_htp.setObjectName(u"radioButton_adulto_htp")
+
+        self.horizontalLayout_htp.addWidget(self.radioButton_adulto_htp)
+
+
+        self.verticalLayout_htp.addWidget(self.groupBox_faixa_etaria_htp)
+
+        self.groupBox_dados_teste_htp = QGroupBox(self.page_form_htp)
+        self.groupBox_dados_teste_htp.setObjectName(u"groupBox_dados_teste_htp")
+        self.formLayout_htp = QFormLayout(self.groupBox_dados_teste_htp)
+        self.formLayout_htp.setObjectName(u"formLayout_htp")
+        self.label_TODO_htp = QLabel(self.groupBox_dados_teste_htp)
+        self.label_TODO_htp.setObjectName(u"label_TODO_htp")
+
+        self.formLayout_htp.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_htp)
+
+        self.spinBox_TODO_htp = QSpinBox(self.groupBox_dados_teste_htp)
+        self.spinBox_TODO_htp.setObjectName(u"spinBox_TODO_htp")
+
+        self.formLayout_htp.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_htp)
+
+
+        self.verticalLayout_htp.addWidget(self.groupBox_dados_teste_htp)
+
+        self.verticalSpacer_htp = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_htp.addItem(self.verticalSpacer_htp)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_htp)
+        self.page_form_fdt = QWidget()
+        self.page_form_fdt.setObjectName(u"page_form_fdt")
+        self.verticalLayout_fdt = QVBoxLayout(self.page_form_fdt)
+        self.verticalLayout_fdt.setObjectName(u"verticalLayout_fdt")
+        self.label_titulo_fdt = QLabel(self.page_form_fdt)
+        self.label_titulo_fdt.setObjectName(u"label_titulo_fdt")
+        self.label_titulo_fdt.setFont(font1)
+
+        self.verticalLayout_fdt.addWidget(self.label_titulo_fdt)
+
+        self.groupBox_faixa_etaria_fdt = QGroupBox(self.page_form_fdt)
+        self.groupBox_faixa_etaria_fdt.setObjectName(u"groupBox_faixa_etaria_fdt")
+        self.horizontalLayout_fdt = QHBoxLayout(self.groupBox_faixa_etaria_fdt)
+        self.horizontalLayout_fdt.setObjectName(u"horizontalLayout_fdt")
+        self.checkBox_incluir_fdt = QCheckBox(self.groupBox_faixa_etaria_fdt)
+        self.checkBox_incluir_fdt.setObjectName(u"checkBox_incluir_fdt")
+
+        self.horizontalLayout_fdt.addWidget(self.checkBox_incluir_fdt)
+
+        self.radioButton_pre_escolar_fdt = QRadioButton(self.groupBox_faixa_etaria_fdt)
+        self.radioButton_pre_escolar_fdt.setObjectName(u"radioButton_pre_escolar_fdt")
+
+        self.horizontalLayout_fdt.addWidget(self.radioButton_pre_escolar_fdt)
+
+        self.radioButton_escolar_fdt = QRadioButton(self.groupBox_faixa_etaria_fdt)
+        self.radioButton_escolar_fdt.setObjectName(u"radioButton_escolar_fdt")
+        self.radioButton_escolar_fdt.setChecked(True)
+
+        self.horizontalLayout_fdt.addWidget(self.radioButton_escolar_fdt)
+
+        self.radioButton_adulto_fdt = QRadioButton(self.groupBox_faixa_etaria_fdt)
+        self.radioButton_adulto_fdt.setObjectName(u"radioButton_adulto_fdt")
+
+        self.horizontalLayout_fdt.addWidget(self.radioButton_adulto_fdt)
+
+
+        self.verticalLayout_fdt.addWidget(self.groupBox_faixa_etaria_fdt)
+
+        self.groupBox_dados_teste_fdt = QGroupBox(self.page_form_fdt)
+        self.groupBox_dados_teste_fdt.setObjectName(u"groupBox_dados_teste_fdt")
+        self.formLayout_fdt = QFormLayout(self.groupBox_dados_teste_fdt)
+        self.formLayout_fdt.setObjectName(u"formLayout_fdt")
+        self.label_TODO_fdt = QLabel(self.groupBox_dados_teste_fdt)
+        self.label_TODO_fdt.setObjectName(u"label_TODO_fdt")
+
+        self.formLayout_fdt.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_fdt)
+
+        self.spinBox_TODO_fdt = QSpinBox(self.groupBox_dados_teste_fdt)
+        self.spinBox_TODO_fdt.setObjectName(u"spinBox_TODO_fdt")
+
+        self.formLayout_fdt.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_fdt)
+
+
+        self.verticalLayout_fdt.addWidget(self.groupBox_dados_teste_fdt)
+
+        self.verticalSpacer_fdt = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_fdt.addItem(self.verticalSpacer_fdt)
+
+        self.stackedWidget_formularios.addWidget(self.page_form_fdt)
 
         self.horizontalLayout_2.addWidget(self.stackedWidget_formularios)
 
@@ -776,7 +829,7 @@ class Ui_TelaTestes(object):
 
         self.retranslateUi(TelaTestes)
 
-        self.stackedWidget_formularios.setCurrentIndex(5)
+        self.stackedWidget_formularios.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(TelaTestes)
@@ -786,97 +839,101 @@ class Ui_TelaTestes(object):
         TelaTestes.setWindowTitle(QCoreApplication.translate("TelaTestes", u"Form", None))
         self.label_titulo.setText(QCoreApplication.translate("TelaTestes", u"Passo 3: Inserir Dados dos Testes", None))
         self.groupBox_botoes.setTitle(QCoreApplication.translate("TelaTestes", u"Testes", None))
-        self.btn_teste1.setText(QCoreApplication.translate("TelaTestes", u"Teste 1", None))
-        self.btn_teste2.setText(QCoreApplication.translate("TelaTestes", u"Teste 2", None))
-        self.btn_teste3.setText(QCoreApplication.translate("TelaTestes", u"Teste 3", None))
-        self.btn_teste4.setText(QCoreApplication.translate("TelaTestes", u"Teste 4", None))
-        self.btn_teste5.setText(QCoreApplication.translate("TelaTestes", u"Teste 5", None))
-        self.btn_teste6.setText(QCoreApplication.translate("TelaTestes", u"Teste 6", None))
-        self.btn_teste7.setText(QCoreApplication.translate("TelaTestes", u"Teste 7", None))
-        self.btn_teste8.setText(QCoreApplication.translate("TelaTestes", u"Teste 8", None))
-        self.btn_teste9.setText(QCoreApplication.translate("TelaTestes", u"Teste 9", None))
+        self.btn_wisc4.setText(QCoreApplication.translate("TelaTestes", u"WISC-IV", None))
+        self.btn_ravlt.setText(QCoreApplication.translate("TelaTestes", u"RAVLT", None))
+        self.btn_bpa2.setText(QCoreApplication.translate("TelaTestes", u"BPA-2", None))
+        self.btn_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Neupsilin", None))
+        self.btn_srs2.setText(QCoreApplication.translate("TelaTestes", u"SRS-2", None))
+        self.btn_etdah.setText(QCoreApplication.translate("TelaTestes", u"ETDAH-PAIS", None))
+        self.btn_cars2.setText(QCoreApplication.translate("TelaTestes", u"CARS-II", None))
+        self.btn_htp.setText(QCoreApplication.translate("TelaTestes", u"HTP", None))
+        self.btn_fdt.setText(QCoreApplication.translate("TelaTestes", u"FDT", None))
         self.label.setText(QCoreApplication.translate("TelaTestes", u"Selecione um teste \u00e0 esquerda para preencher os dados.", None))
-        self.label_titulo_teste1.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 1", None))
-        self.groupBox_faixa_etaria.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 2", None))
-        self.groupBox_faixa_etaria_2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_2.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_2.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_2.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_2.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste3.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 3", None))
-        self.groupBox_faixa_etaria_3.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_3.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_3.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_3.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_3.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_3.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_3.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_3.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste4.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 4", None))
-        self.groupBox_faixa_etaria_4.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_4.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_4.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_4.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_4.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_4.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_4.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_4.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste5.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 5", None))
-        self.groupBox_faixa_etaria_5.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_5.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_5.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_5.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_5.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_5.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_5.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_5.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste6.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 6", None))
-        self.groupBox_faixa_etaria_6.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_6.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_6.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_6.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_6.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_6.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_6.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_6.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste7.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 7", None))
-        self.groupBox_faixa_etaria_7.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_7.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_7.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_7.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_7.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_7.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_7.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_7.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste8.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 8", None))
-        self.groupBox_faixa_etaria_8.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_8.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_8.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_8.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_8.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_8.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_8.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_8.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
-        self.label_titulo_teste9.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Teste 9", None))
-        self.groupBox_faixa_etaria_9.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
-        self.checkBox_incluir_9.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
-        self.radioButton_pre_escolar_9.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
-        self.radioButton_escolar_9.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
-        self.radioButton_adulto_9.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
-        self.groupBox_dados_teste_9.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_2_9.setText(QCoreApplication.translate("TelaTestes", u"Escore Bruto:", None))
-        self.label_3_9.setText(QCoreApplication.translate("TelaTestes", u"Percentil:", None))
+        self.label_titulo_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - WISC-IV", None))
+        self.groupBox_faixa_etaria_wisc4.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_wisc4.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_icv_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndices de Compreens\u00e3o Verbal", None))
+        self.label_iop_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndices de Organiza\u00e7\u00e3o Perceptual", None))
+        self.label_imo_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndices de Mem\u00f3ria Operacional", None))
+        self.label_ivp_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndice Velocidade Processamento", None))
+        self.label_2.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_3.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_4.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_5.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_6.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_7.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_8.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_9.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_titulo_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - RAVLT", None))
+        self.groupBox_faixa_etaria_ravlt.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_ravlt.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_ravlt.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_titulo_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - BPA-2", None))
+        self.groupBox_faixa_etaria_bpa2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_bpa2.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_ac_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Aten\u00e7\u00e3o Concentrada", None))
+        self.label_ad_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Aten\u00e7\u00e3o Dividida", None))
+        self.label_aa_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Aten\u00e7\u00e3o Alternada", None))
+        self.label_titulo_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - Neupsilin", None))
+        self.groupBox_faixa_etaria_neupsilin.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_neupsilin.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_titulo_srs2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - SRS-2", None))
+        self.groupBox_faixa_etaria_srs2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_srs2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_srs2.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_srs2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_srs2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_srs2.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_srs2.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_titulo_etdah.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - ETDAH-PAIS", None))
+        self.groupBox_faixa_etaria_etdah.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_etdah.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_etdah.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_etdah.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_etdah.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_etdah.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_etdah.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_titulo_cars2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - CARS-II", None))
+        self.groupBox_faixa_etaria_cars2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_cars2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_cars2.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_cars2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_cars2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_cars2.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_cars2.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_titulo_htp.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - HTP", None))
+        self.groupBox_faixa_etaria_htp.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_htp.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_htp.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_htp.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_htp.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_htp.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_htp.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_titulo_fdt.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - FDT", None))
+        self.groupBox_faixa_etaria_fdt.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
+        self.checkBox_incluir_fdt.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
+        self.radioButton_pre_escolar_fdt.setText(QCoreApplication.translate("TelaTestes", u"Pr\u00e9-escolar", None))
+        self.radioButton_escolar_fdt.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
+        self.radioButton_adulto_fdt.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
+        self.groupBox_dados_teste_fdt.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
+        self.label_TODO_fdt.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
         self.btn_voltar.setText(QCoreApplication.translate("TelaTestes", u"Voltar", None))
         self.btn_avancar.setText(QCoreApplication.translate("TelaTestes", u"Avan\u00e7ar", None))
     # retranslateUi

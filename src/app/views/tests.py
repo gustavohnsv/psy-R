@@ -22,9 +22,9 @@ class TestsScreen(QWidget):
         stacked_forms = self.ui.stackedWidget_formularios
 
         botoes_testes = [
-            self.ui.btn_teste1, self.ui.btn_teste2, self.ui.btn_teste3,
-            self.ui.btn_teste4, self.ui.btn_teste5, self.ui.btn_teste6,
-            self.ui.btn_teste7, self.ui.btn_teste8, self.ui.btn_teste9,
+            self.ui.btn_wisc4, self.ui.btn_ravlt, self.ui.btn_bpa2,
+            self.ui.btn_neupsilin, self.ui.btn_srs2, self.ui.btn_etdah,
+            self.ui.btn_cars2, self.ui.btn_htp, self.ui.btn_fdt,
         ]
 
         for i, btn in enumerate(botoes_testes):
