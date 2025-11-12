@@ -8,12 +8,16 @@ from app.views import (
     ConclusionScreen,
     ReviewScreen
 )
+from app.models import LaudoDataModel
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Assistente de Laudo Psicológico")
         self.resize(800, 600)
+
+        # Initialize data model
+        self.data_model = LaudoDataModel()
 
         self.stacked_widget = QStackedWidget()
         self.setCentralWidget(self.stacked_widget)
