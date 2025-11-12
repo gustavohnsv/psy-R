@@ -209,45 +209,45 @@ class Ui_TelaTestes(object):
 
         self.formLayout_wisc4.setWidget(3, QFormLayout.ItemRole.FieldRole, self.spinBox_ivp_wisc4)
 
-        self.label_2 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_2.setObjectName(u"label_2")
+        self.label_digitos_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_digitos_wisc4.setObjectName(u"label_digitos_wisc4")
 
-        self.formLayout_wisc4.setWidget(4, QFormLayout.ItemRole.LabelRole, self.label_2)
+        self.formLayout_wisc4.setWidget(4, QFormLayout.ItemRole.LabelRole, self.label_digitos_wisc4)
 
-        self.label_3 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_3.setObjectName(u"label_3")
+        self.label_sequencia_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_sequencia_wisc4.setObjectName(u"label_sequencia_wisc4")
 
-        self.formLayout_wisc4.setWidget(5, QFormLayout.ItemRole.LabelRole, self.label_3)
+        self.formLayout_wisc4.setWidget(5, QFormLayout.ItemRole.LabelRole, self.label_sequencia_wisc4)
 
-        self.label_4 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_4.setObjectName(u"label_4")
+        self.label_aritmetica_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_aritmetica_wisc4.setObjectName(u"label_aritmetica_wisc4")
 
-        self.formLayout_wisc4.setWidget(6, QFormLayout.ItemRole.LabelRole, self.label_4)
+        self.formLayout_wisc4.setWidget(6, QFormLayout.ItemRole.LabelRole, self.label_aritmetica_wisc4)
 
-        self.label_5 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_5.setObjectName(u"label_5")
+        self.label_semelhanca_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_semelhanca_wisc4.setObjectName(u"label_semelhanca_wisc4")
 
-        self.formLayout_wisc4.setWidget(7, QFormLayout.ItemRole.LabelRole, self.label_5)
+        self.formLayout_wisc4.setWidget(7, QFormLayout.ItemRole.LabelRole, self.label_semelhanca_wisc4)
 
-        self.label_6 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_6.setObjectName(u"label_6")
+        self.label_rac_verbal_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_rac_verbal_wisc4.setObjectName(u"label_rac_verbal_wisc4")
 
-        self.formLayout_wisc4.setWidget(8, QFormLayout.ItemRole.LabelRole, self.label_6)
+        self.formLayout_wisc4.setWidget(8, QFormLayout.ItemRole.LabelRole, self.label_rac_verbal_wisc4)
 
-        self.label_7 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_7.setObjectName(u"label_7")
+        self.label_rac_naoverbal_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_rac_naoverbal_wisc4.setObjectName(u"label_rac_naoverbal_wisc4")
 
-        self.formLayout_wisc4.setWidget(9, QFormLayout.ItemRole.LabelRole, self.label_7)
+        self.formLayout_wisc4.setWidget(9, QFormLayout.ItemRole.LabelRole, self.label_rac_naoverbal_wisc4)
 
-        self.label_8 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_8.setObjectName(u"label_8")
+        self.label_cubos_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_cubos_wisc4.setObjectName(u"label_cubos_wisc4")
 
-        self.formLayout_wisc4.setWidget(11, QFormLayout.ItemRole.LabelRole, self.label_8)
+        self.formLayout_wisc4.setWidget(11, QFormLayout.ItemRole.LabelRole, self.label_cubos_wisc4)
 
-        self.label_9 = QLabel(self.groupBox_dados_teste_wisc4)
-        self.label_9.setObjectName(u"label_9")
+        self.label_vel_processamento_wisc4 = QLabel(self.groupBox_dados_teste_wisc4)
+        self.label_vel_processamento_wisc4.setObjectName(u"label_vel_processamento_wisc4")
 
-        self.formLayout_wisc4.setWidget(12, QFormLayout.ItemRole.LabelRole, self.label_9)
+        self.formLayout_wisc4.setWidget(12, QFormLayout.ItemRole.LabelRole, self.label_vel_processamento_wisc4)
 
         self.spinBox = QSpinBox(self.groupBox_dados_teste_wisc4)
         self.spinBox.setObjectName(u"spinBox")
@@ -343,15 +343,45 @@ class Ui_TelaTestes(object):
         self.groupBox_dados_teste_ravlt.setObjectName(u"groupBox_dados_teste_ravlt")
         self.formLayout_ravlt = QFormLayout(self.groupBox_dados_teste_ravlt)
         self.formLayout_ravlt.setObjectName(u"formLayout_ravlt")
-        self.label_TODO_ravlt = QLabel(self.groupBox_dados_teste_ravlt)
-        self.label_TODO_ravlt.setObjectName(u"label_TODO_ravlt")
+        self.label_r1_ravlt = QLabel(self.groupBox_dados_teste_ravlt)
+        self.label_r1_ravlt.setObjectName(u"label_r1_ravlt")
 
-        self.formLayout_ravlt.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_ravlt)
+        self.formLayout_ravlt.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_r1_ravlt)
 
-        self.spinBox_TODO_ravlt = QSpinBox(self.groupBox_dados_teste_ravlt)
-        self.spinBox_TODO_ravlt.setObjectName(u"spinBox_TODO_ravlt")
+        self.spinBox_r1_ravlt = QSpinBox(self.groupBox_dados_teste_ravlt)
+        self.spinBox_r1_ravlt.setObjectName(u"spinBox_r1_ravlt")
 
-        self.formLayout_ravlt.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_ravlt)
+        self.formLayout_ravlt.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_r1_ravlt)
+
+        self.label_r2_ravlt = QLabel(self.groupBox_dados_teste_ravlt)
+        self.label_r2_ravlt.setObjectName(u"label_r2_ravlt")
+
+        self.formLayout_ravlt.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_r2_ravlt)
+
+        self.label_r3_ravlt = QLabel(self.groupBox_dados_teste_ravlt)
+        self.label_r3_ravlt.setObjectName(u"label_r3_ravlt")
+
+        self.formLayout_ravlt.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_r3_ravlt)
+
+        self.label_r4_ravlt = QLabel(self.groupBox_dados_teste_ravlt)
+        self.label_r4_ravlt.setObjectName(u"label_r4_ravlt")
+
+        self.formLayout_ravlt.setWidget(3, QFormLayout.ItemRole.LabelRole, self.label_r4_ravlt)
+
+        self.spinBox_r2_ravlt = QSpinBox(self.groupBox_dados_teste_ravlt)
+        self.spinBox_r2_ravlt.setObjectName(u"spinBox_r2_ravlt")
+
+        self.formLayout_ravlt.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_r2_ravlt)
+
+        self.spinBox_r3_ravlt = QSpinBox(self.groupBox_dados_teste_ravlt)
+        self.spinBox_r3_ravlt.setObjectName(u"spinBox_r3_ravlt")
+
+        self.formLayout_ravlt.setWidget(2, QFormLayout.ItemRole.FieldRole, self.spinBox_r3_ravlt)
+
+        self.spinBox_r4_ravlt = QSpinBox(self.groupBox_dados_teste_ravlt)
+        self.spinBox_r4_ravlt.setObjectName(u"spinBox_r4_ravlt")
+
+        self.formLayout_ravlt.setWidget(3, QFormLayout.ItemRole.FieldRole, self.spinBox_r4_ravlt)
 
 
         self.verticalLayout_ravlt.addWidget(self.groupBox_dados_teste_ravlt)
@@ -483,15 +513,15 @@ class Ui_TelaTestes(object):
         self.groupBox_dados_teste_neupsilin.setObjectName(u"groupBox_dados_teste_neupsilin")
         self.formLayout_neupsilin = QFormLayout(self.groupBox_dados_teste_neupsilin)
         self.formLayout_neupsilin.setObjectName(u"formLayout_neupsilin")
-        self.label_TODO_neupsilin = QLabel(self.groupBox_dados_teste_neupsilin)
-        self.label_TODO_neupsilin.setObjectName(u"label_TODO_neupsilin")
+        self.label_tarefas_neupsilin = QLabel(self.groupBox_dados_teste_neupsilin)
+        self.label_tarefas_neupsilin.setObjectName(u"label_tarefas_neupsilin")
 
-        self.formLayout_neupsilin.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_neupsilin)
+        self.formLayout_neupsilin.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_tarefas_neupsilin)
 
-        self.spinBox_TODO_neupsilin = QSpinBox(self.groupBox_dados_teste_neupsilin)
-        self.spinBox_TODO_neupsilin.setObjectName(u"spinBox_TODO_neupsilin")
+        self.spinBox_tarefas_neupsilin = QSpinBox(self.groupBox_dados_teste_neupsilin)
+        self.spinBox_tarefas_neupsilin.setObjectName(u"spinBox_tarefas_neupsilin")
 
-        self.formLayout_neupsilin.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_neupsilin)
+        self.formLayout_neupsilin.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_tarefas_neupsilin)
 
 
         self.verticalLayout_neupsilin.addWidget(self.groupBox_dados_teste_neupsilin)
@@ -603,15 +633,45 @@ class Ui_TelaTestes(object):
         self.groupBox_dados_teste_etdah.setObjectName(u"groupBox_dados_teste_etdah")
         self.formLayout_etdah = QFormLayout(self.groupBox_dados_teste_etdah)
         self.formLayout_etdah.setObjectName(u"formLayout_etdah")
-        self.label_TODO_etdah = QLabel(self.groupBox_dados_teste_etdah)
-        self.label_TODO_etdah.setObjectName(u"label_TODO_etdah")
+        self.label_fac1_etdah = QLabel(self.groupBox_dados_teste_etdah)
+        self.label_fac1_etdah.setObjectName(u"label_fac1_etdah")
 
-        self.formLayout_etdah.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_etdah)
+        self.formLayout_etdah.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_fac1_etdah)
 
-        self.spinBox_TODO_etdah = QSpinBox(self.groupBox_dados_teste_etdah)
-        self.spinBox_TODO_etdah.setObjectName(u"spinBox_TODO_etdah")
+        self.spinBox_fac1_etdah = QSpinBox(self.groupBox_dados_teste_etdah)
+        self.spinBox_fac1_etdah.setObjectName(u"spinBox_fac1_etdah")
 
-        self.formLayout_etdah.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_etdah)
+        self.formLayout_etdah.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_fac1_etdah)
+
+        self.label_fac2_etdah = QLabel(self.groupBox_dados_teste_etdah)
+        self.label_fac2_etdah.setObjectName(u"label_fac2_etdah")
+
+        self.formLayout_etdah.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_fac2_etdah)
+
+        self.label_fac3_etdah = QLabel(self.groupBox_dados_teste_etdah)
+        self.label_fac3_etdah.setObjectName(u"label_fac3_etdah")
+
+        self.formLayout_etdah.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_fac3_etdah)
+
+        self.label_fac4_etdah = QLabel(self.groupBox_dados_teste_etdah)
+        self.label_fac4_etdah.setObjectName(u"label_fac4_etdah")
+
+        self.formLayout_etdah.setWidget(3, QFormLayout.ItemRole.LabelRole, self.label_fac4_etdah)
+
+        self.spinBox_fac2_etdah = QSpinBox(self.groupBox_dados_teste_etdah)
+        self.spinBox_fac2_etdah.setObjectName(u"spinBox_fac2_etdah")
+
+        self.formLayout_etdah.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_fac2_etdah)
+
+        self.spinBox_fac3_etdah = QSpinBox(self.groupBox_dados_teste_etdah)
+        self.spinBox_fac3_etdah.setObjectName(u"spinBox_fac3_etdah")
+
+        self.formLayout_etdah.setWidget(2, QFormLayout.ItemRole.FieldRole, self.spinBox_fac3_etdah)
+
+        self.spinBox_fac4_etdah = QSpinBox(self.groupBox_dados_teste_etdah)
+        self.spinBox_fac4_etdah.setObjectName(u"spinBox_fac4_etdah")
+
+        self.formLayout_etdah.setWidget(3, QFormLayout.ItemRole.FieldRole, self.spinBox_fac4_etdah)
 
 
         self.verticalLayout_etdah.addWidget(self.groupBox_dados_teste_etdah)
@@ -783,15 +843,25 @@ class Ui_TelaTestes(object):
         self.groupBox_dados_teste_fdt.setObjectName(u"groupBox_dados_teste_fdt")
         self.formLayout_fdt = QFormLayout(self.groupBox_dados_teste_fdt)
         self.formLayout_fdt.setObjectName(u"formLayout_fdt")
-        self.label_TODO_fdt = QLabel(self.groupBox_dados_teste_fdt)
-        self.label_TODO_fdt.setObjectName(u"label_TODO_fdt")
+        self.label_flexcog_fdt = QLabel(self.groupBox_dados_teste_fdt)
+        self.label_flexcog_fdt.setObjectName(u"label_flexcog_fdt")
 
-        self.formLayout_fdt.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_fdt)
+        self.formLayout_fdt.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_flexcog_fdt)
 
-        self.spinBox_TODO_fdt = QSpinBox(self.groupBox_dados_teste_fdt)
-        self.spinBox_TODO_fdt.setObjectName(u"spinBox_TODO_fdt")
+        self.spinBox_flexcog_fdt = QSpinBox(self.groupBox_dados_teste_fdt)
+        self.spinBox_flexcog_fdt.setObjectName(u"spinBox_flexcog_fdt")
 
-        self.formLayout_fdt.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_fdt)
+        self.formLayout_fdt.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_flexcog_fdt)
+
+        self.spinBox_ctlinib_fdt = QSpinBox(self.groupBox_dados_teste_fdt)
+        self.spinBox_ctlinib_fdt.setObjectName(u"spinBox_ctlinib_fdt")
+
+        self.formLayout_fdt.setWidget(1, QFormLayout.ItemRole.FieldRole, self.spinBox_ctlinib_fdt)
+
+        self.label_ctlinib_fdt = QLabel(self.groupBox_dados_teste_fdt)
+        self.label_ctlinib_fdt.setObjectName(u"label_ctlinib_fdt")
+
+        self.formLayout_fdt.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_ctlinib_fdt)
 
 
         self.verticalLayout_fdt.addWidget(self.groupBox_dados_teste_fdt)
@@ -860,14 +930,14 @@ class Ui_TelaTestes(object):
         self.label_iop_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndices de Organiza\u00e7\u00e3o Perceptual", None))
         self.label_imo_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndices de Mem\u00f3ria Operacional", None))
         self.label_ivp_wisc4.setText(QCoreApplication.translate("TelaTestes", u"\u00cdndice Velocidade Processamento", None))
-        self.label_2.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_3.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_4.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_5.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_6.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_7.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_8.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
-        self.label_9.setText(QCoreApplication.translate("TelaTestes", u"TextLabel", None))
+        self.label_digitos_wisc4.setText(QCoreApplication.translate("TelaTestes", u"D\u00edgitos", None))
+        self.label_sequencia_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Sequ\u00eancia N/L", None))
+        self.label_aritmetica_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Aritm\u00e9tica", None))
+        self.label_semelhanca_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Semelhan\u00e7a", None))
+        self.label_rac_verbal_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Racioc\u00ednio verbal", None))
+        self.label_rac_naoverbal_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Racioc\u00ednio n\u00e3o verbal", None))
+        self.label_cubos_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Cubos", None))
+        self.label_vel_processamento_wisc4.setText(QCoreApplication.translate("TelaTestes", u"Velocidade de processamento", None))
         self.label_titulo_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - RAVLT", None))
         self.groupBox_faixa_etaria_ravlt.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
@@ -875,7 +945,10 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_ravlt.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_ravlt.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_r1_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Aprendizagem ao longo das tentativas", None))
+        self.label_r2_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Velocidade de esquecimento", None))
+        self.label_r3_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Interfer\u00eancia Proativa", None))
+        self.label_r4_ravlt.setText(QCoreApplication.translate("TelaTestes", u"Interfer\u00eancia Retroativa", None))
         self.label_titulo_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - BPA-2", None))
         self.groupBox_faixa_etaria_bpa2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_bpa2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
@@ -893,7 +966,7 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_neupsilin.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_tarefas_neupsilin.setText(QCoreApplication.translate("TelaTestes", u"Tarefas", None))
         self.label_titulo_srs2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - SRS-2", None))
         self.groupBox_faixa_etaria_srs2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_srs2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
@@ -909,7 +982,10 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_etdah.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_etdah.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_etdah.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_etdah.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_fac1_etdah.setText(QCoreApplication.translate("TelaTestes", u"Fator 1 \u2013 Regula\u00e7\u00e3o emociona", None))
+        self.label_fac2_etdah.setText(QCoreApplication.translate("TelaTestes", u"Fator 2 \u2013 Hiperatividade/Impulsividade", None))
+        self.label_fac3_etdah.setText(QCoreApplication.translate("TelaTestes", u"Fator 3 \u2013 Comportamento adaptativo", None))
+        self.label_fac4_etdah.setText(QCoreApplication.translate("TelaTestes", u"Fator 4 \u2013 Aten\u00e7\u00e3o", None))
         self.label_titulo_cars2.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - CARS-II", None))
         self.groupBox_faixa_etaria_cars2.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_cars2.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
@@ -933,7 +1009,8 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_fdt.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_fdt.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_fdt.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_fdt.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_flexcog_fdt.setText(QCoreApplication.translate("TelaTestes", u"Flexibilidade cognitiva", None))
+        self.label_ctlinib_fdt.setText(QCoreApplication.translate("TelaTestes", u"Controle inibit\u00f3rio", None))
         self.btn_voltar.setText(QCoreApplication.translate("TelaTestes", u"Voltar", None))
         self.btn_avancar.setText(QCoreApplication.translate("TelaTestes", u"Avan\u00e7ar", None))
     # retranslateUi

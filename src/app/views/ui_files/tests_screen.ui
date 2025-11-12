@@ -281,58 +281,58 @@
                  <widget class="QSpinBox" name="spinBox_ivp_wisc4"/>
                 </item>
                 <item row="4" column="0">
-                 <widget class="QLabel" name="label_2">
+                 <widget class="QLabel" name="label_digitos_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Dígitos</string>
                   </property>
                  </widget>
                 </item>
                 <item row="5" column="0">
-                 <widget class="QLabel" name="label_3">
+                 <widget class="QLabel" name="label_sequencia_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Sequência N/L</string>
                   </property>
                  </widget>
                 </item>
                 <item row="6" column="0">
-                 <widget class="QLabel" name="label_4">
+                 <widget class="QLabel" name="label_aritmetica_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Aritmética</string>
                   </property>
                  </widget>
                 </item>
                 <item row="7" column="0">
-                 <widget class="QLabel" name="label_5">
+                 <widget class="QLabel" name="label_semelhanca_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Semelhança</string>
                   </property>
                  </widget>
                 </item>
                 <item row="8" column="0">
-                 <widget class="QLabel" name="label_6">
+                 <widget class="QLabel" name="label_rac_verbal_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Raciocínio verbal</string>
                   </property>
                  </widget>
                 </item>
                 <item row="9" column="0">
-                 <widget class="QLabel" name="label_7">
+                 <widget class="QLabel" name="label_rac_naoverbal_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Raciocínio não verbal</string>
                   </property>
                  </widget>
                 </item>
                 <item row="11" column="0">
-                 <widget class="QLabel" name="label_8">
+                 <widget class="QLabel" name="label_cubos_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Cubos</string>
                   </property>
                  </widget>
                 </item>
                 <item row="12" column="0">
-                 <widget class="QLabel" name="label_9">
+                 <widget class="QLabel" name="label_vel_processamento_wisc4">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Velocidade de processamento</string>
                   </property>
                  </widget>
                 </item>
@@ -443,14 +443,44 @@
            </property>
            <layout class="QFormLayout" name="formLayout_ravlt">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_TODO_ravlt">
+             <widget class="QLabel" name="label_r1_ravlt">
               <property name="text">
-               <string>TODO</string>
+               <string>Aprendizagem ao longo das tentativas</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QSpinBox" name="spinBox_TODO_ravlt"/>
+             <widget class="QSpinBox" name="spinBox_r1_ravlt"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_r2_ravlt">
+              <property name="text">
+               <string>Velocidade de esquecimento</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_r3_ravlt">
+              <property name="text">
+               <string>Interferência Proativa</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_r4_ravlt">
+              <property name="text">
+               <string>Interferência Retroativa</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_r2_ravlt"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="spinBox_r3_ravlt"/>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="spinBox_r4_ravlt"/>
             </item>
            </layout>
           </widget>
@@ -639,14 +669,14 @@
            </property>
            <layout class="QFormLayout" name="formLayout_neupsilin">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_TODO_neupsilin">
+             <widget class="QLabel" name="label_tarefas_neupsilin">
               <property name="text">
-               <string>TODO</string>
+               <string>Tarefas</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QSpinBox" name="spinBox_TODO_neupsilin"/>
+             <widget class="QSpinBox" name="spinBox_tarefas_neupsilin"/>
             </item>
            </layout>
           </widget>
@@ -815,14 +845,44 @@
            </property>
            <layout class="QFormLayout" name="formLayout_etdah">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_TODO_etdah">
+             <widget class="QLabel" name="label_fac1_etdah">
               <property name="text">
-               <string>TODO</string>
+               <string>Fator 1 – Regulação emociona</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QSpinBox" name="spinBox_TODO_etdah"/>
+             <widget class="QSpinBox" name="spinBox_fac1_etdah"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_fac2_etdah">
+              <property name="text">
+               <string>Fator 2 – Hiperatividade/Impulsividade</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_fac3_etdah">
+              <property name="text">
+               <string>Fator 3 – Comportamento adaptativo</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_fac4_etdah">
+              <property name="text">
+               <string>Fator 4 – Atenção</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_fac2_etdah"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="spinBox_fac3_etdah"/>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="spinBox_fac4_etdah"/>
             </item>
            </layout>
           </widget>
@@ -1079,14 +1139,24 @@
            </property>
            <layout class="QFormLayout" name="formLayout_fdt">
             <item row="0" column="0">
-             <widget class="QLabel" name="label_TODO_fdt">
+             <widget class="QLabel" name="label_flexcog_fdt">
               <property name="text">
-               <string>TODO</string>
+               <string>Flexibilidade cognitiva</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QSpinBox" name="spinBox_TODO_fdt"/>
+             <widget class="QSpinBox" name="spinBox_flexcog_fdt"/>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="spinBox_ctlinib_fdt"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_ctlinib_fdt">
+              <property name="text">
+               <string>Controle inibitório</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
