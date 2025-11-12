@@ -1,0 +1,54 @@
+{
+    // Teste: Casa-Árvore-Pessoa (HTP)
+    // Objetivo: Fornecer opções de texto para análise qualitativa do desenho projetivo.
+    "teste": "HTP",
+
+    // Este arquivo não possui regras numéricas; contém apenas textos pré-definidos.
+  
+  "opcoes_texto_analise": {
+        
+        // Seleção de opções
+        "HTP_ASPECTOS_FORMAIS_DESC": [
+            "boa exploração de cores e cenários",
+            "exploração restrita de cores e cenários, com desenhos pequenos",
+            "traços fortes e impulsivos, com pouca cor",
+            "traços fracos e hesitantes"
+        ],
+
+        // Seleção de opções
+        "HTP_AMBIENTE_INFERENCIA": [
+            "nos direcionam para um ambiente familiar acolhedor e com bom suporte emocional.",
+            "sugerem um ambiente familiar percebido como conflituoso ou instável.",
+            "indicam necessidade de proteção e certa rigidez."
+        ],
+
+        // Seleção de opções (ou deixar em branco)
+        "HTP_CONECTOR": [
+            "No entanto,",
+            "Além disso,",
+            "Por outro lado,",
+            ""
+        ],
+
+        // Seleção de opções
+        "HTP_PROJECAO_DESC": [
+            "um repertório restrito de para projeção de seus sentimentos",
+            "boa capacidade de projeção de sentimentos e conflitos",
+            "dificuldade em se colocar de forma criativa"
+        ],
+
+        // Seleção de opções ou texto livre
+        "HTP_PROJECAO_COMPLEMENTO": [
+            "permanecendo na descrição dos elementos, tendo dificuldade em dar vida aos personagens.",
+            "utilizando os personagens e elementos para expressar seus conflitos de forma simbólica.",
+            "quando estimulado, usou desenhos infantis para se situar."
+        ],
+
+        // Seleção de opções ou texto livre
+        "HTP_CONCLUSAO_ANALISE": [
+            "Essa limitação sugere dificuldades na adaptação da criatividade à realidade externa em que está inserido.",
+            "Isso sugere bons recursos internos para lidar com a realidade, apesar de certa imaturidade emocional.",
+            "Isso indica ansiedade e dificuldades na gestão de seus afetos."
+        ]
+    }
+}

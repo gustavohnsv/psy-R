@@ -1,0 +1,18 @@
+{
+  // Teste: Teste de Aprendizagem Auditivo-Verbal de Rey – RAVLT 
+  // Objetivo: Classificar os percentis dos escores (ETM, ALT, etc.) 
+  // em textos de interpretação (ETM_out, ALT_out, etc.).
+  "teste": "RAVLT",
+  "tipo_de_regra": "percentil",
+  
+  // NOTA: As faixas de percentil exatas devem ser confirmadas no manual do teste.
+  "classificacoes": [
+    { "faixa_min": 98, "faixa_max": 100, "texto": "Muito superior" },
+    { "faixa_min": 91, "faixa_max": 97, "texto": "Superior" },
+    { "faixa_min": 75, "faixa_max": 90, "texto": "Médio superior" },
+    { "faixa_min": 25, "faixa_max": 74, "texto": "Médio" },
+    { "faixa_min": 9, "faixa_max": 24, "texto": "Médio inferior" },
+    { "faixa_min": 3, "faixa_max": 8, "texto": "Inferior" },
+    { "faixa_min": 0, "faixa_max": 2, "texto": "Muito inferior" }
+  ]
+}

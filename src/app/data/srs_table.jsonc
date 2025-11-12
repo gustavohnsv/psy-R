@@ -1,0 +1,31 @@
+{
+  // Teste: Escala de Responsividade Social/SRS-2 
+  // Objetivo: Classificar o Escore-T total 
+  // com base nas faixas do gráfico SRS-2.
+  "teste": "SRS-2",
+  "tipo_de_regra": "escore_t",
+  
+  // Regras extraídas da análise do gráfico
+  "classificacoes": [
+    {
+      "faixa_min": 76,
+      "faixa_max": 999, // Zona "Severo" (vermelha)
+      "texto": "Severo"
+    },
+    {
+      "faixa_min": 66,
+      "faixa_max": 75, // Zona "Moderado" (amarelo escuro/laranja)
+      "texto": "Moderado"
+    },
+    {
+      "faixa_min": 60,
+      "faixa_max": 65, // Zona "Leve" (amarelo claro)
+      "texto": "Leve"
+    },
+    {
+      "faixa_min": 0,
+      "faixa_max": 59, // Zona "Normal" (verde)
+      "texto": "Normal"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  // Teste: Escala ETDAH (relato parental)
+  // Objetivo: Regras de classificação baseadas nas zonas do gráfico (ex.: Vermelho/Amarelo/Verde)
+  // Fornece também opções de texto para o bloco de conclusão.
+  "teste": "ETDAH-PAIS",
+
+  // 1. Regras de classificação (para {F1_out}, {F2_out}, {F3_out}, {F4_out}, {TOTAL_out})
+  // Baseado nas zonas de cor do gráfico.
+  "tipo_de_regra": "percentil",
+  "classificacoes": [
+    {
+      // Zona Vermelha (Ex: F1 = 96,5)
+      "faixa_min": 81,
+      "faixa_max": 100,
+      "texto": "Elevado"
+    },
+    {
+      // Zona Amarela (Ex: F3 = 52,5, F4 = 75,6)
+      "faixa_min": 46,
+      "faixa_max": 80,
+      "texto": "Atenção"
+    },
+    {
+      // Zona Verde (Ex: F2 = 23,8)
+      "faixa_min": 0,
+      "faixa_max": 45,
+      "texto": "Esperado"
+    }
+  ],
+  
+  // 2. Opções de texto para a variável de conclusão
+  "opcoes_texto_analise": {
+    // Para a variável {ETDAH_CONCLUSAO_BLOCO} 
+    "ETDAH_CONCLUSAO_BLOCO": [
+      "Os resultados, baseados no relato dos pais, indicam uma presença significativa de sintomas de desatenção e/ou hiperatividade-impulsividade, com prejuízo notável na regulação emocional, sugerindo um impacto importante no funcionamento diário.",
+      "De acordo com os respondentes, os escores sugerem um nível de atenção para sintomas de TDAH, principalmente no que se refere à Atenção e Regulação Emocional, embora outros comportamentos se mantenham na faixa esperada.",
+      "Segundo o relato familiar, os comportamentos avaliados pela escala estão, em sua maioria, dentro do esperado para a faixa etária, não indicando, neste momento, sintomas clinicamente significativos de TDAH no ambiente doméstico."
+    ]
+  }
+}
