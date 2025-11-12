@@ -14,3 +14,9 @@ class ConclusionScreen(QWidget):
 
         self.ui.btn_avancar.clicked.connect(self.avancar_clicado.emit)
         self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
+    
+    def get_data(self):
+        """Get conclusion text data."""
+        return {
+            "conclusao_text": self.ui.textEdit_conclusao.toPlainText()
+        }

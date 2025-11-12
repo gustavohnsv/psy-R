@@ -54,3 +54,11 @@ class TemplateScreen(QWidget):
                 'Atenção',
                 'É necessário carregar um template antes de avançar!'
             )
+    
+    def get_template_path(self) -> str:
+        """Get the template file path."""
+        return self.ui.lineEdit_caminho_template.text() if self._template_carregado else ""
+    
+    def get_template_document(self) -> Document:
+        """Get the loaded template document."""
+        return self.file_template
