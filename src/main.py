@@ -31,7 +31,7 @@ class MainWindow(QMainWindow):
         self.tela_paciente = PatientScreen()
         self.tela_testes = TestsScreen()
         self.tela_conclusao = ConclusionScreen()
-        self.tela_revisao = ReviewScreen()
+        self.tela_revisao = ReviewScreen(data_model=self.data_model)
 
         self.stacked_widget.addWidget(self.tela_template)
         self.stacked_widget.addWidget(self.tela_paciente)
@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
         self.tela_testes.avancar_clicado.connect(self.ir_para_proxima_tela)
         self.tela_testes.voltar_clicado.connect(self.ir_para_tela_anterior)
 
-        self.tela_conclusao.avancar_clicado.connect(self.ir_para_proxima_tela)
+        self.tela_conclusao.avancar_clicado.connect(self._ir_para_revisao)
         self.tela_conclusao.voltar_clicado.connect(self.ir_para_tela_anterior)
 
         self.tela_revisao.voltar_clicado.connect(self.ir_para_tela_anterior)
@@ -101,6 +101,16 @@ class MainWindow(QMainWindow):
             conclusion_data = self.tela_conclusao.get_data()
             if "conclusao_text" in conclusion_data:
                 self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+    
+    def _ir_para_revisao(self):
+        """Navigate to review screen, collecting conclusion data first."""
+        # Collect conclusion data before showing review
+        conclusion_data = self.tela_conclusao.get_data()
+        if "conclusao_text" in conclusion_data:
+            self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+        
+        # Navigate to review screen (index 4)
+        self.stacked_widget.setCurrentIndex(4)
     
     def gerar_laudo(self):
         print("Lógica para GERAR LAUDO executada!")
