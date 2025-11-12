@@ -1,34 +1,18 @@
 {
-    // Intervalo para aplicação do teste
-    "intervalo": [6,59],
-    
-    // Classificações, com os percentis e textos formatados
-    "muito-inferior": {
-        "percentil": [1],
-        "texto": "Muito inferior"
-    },
-    "inferior": {
-        "percentil": [10],
-        "texto": "Inferior"
-    },
-    "medio-inferior": {
-        "percentil": [20, 25, 30],
-        "texto": "Médio inferior"
-    },
-    "medio": {
-        "percentil": [40, 50, 60],
-        "texto": "Médio"
-    },
-    "medio-superior": {
-        "percentil": [70, 75, 80],
-        "texto": "Médio superior"
-    },
-    "superior": {
-        "percentil": [90],
-        "texto": "Superior"
-    },
-    "muito-superior": {
-        "percentil": [99],
-        "texto": "Muito superior"
-    }
+  // Teste: Bateria Psicológica para Avaliação da Atenção - 2 (BPA-2)
+  // Objetivo: Classificar percentis (ex.: AC_BPA, AD_BPA) em textos de interpretação.
+  // Observação: confirme as faixas de percentil no manual do teste.
+  "teste": "BPA-2",
+  "tipo_de_regra": "percentil",
+
+  // Esta é uma estrutura padrão de classificação neuropsicológica.
+  "classificacoes": [
+    { "faixa_min": 98, "faixa_max": 100, "texto": "Muito superior" },
+    { "faixa_min": 91, "faixa_max": 97, "texto": "Superior" },
+    { "faixa_min": 75, "faixa_max": 90, "texto": "Médio superior" },
+    { "faixa_min": 25, "faixa_max": 74, "texto": "Médio" },
+    { "faixa_min": 9, "faixa_max": 24, "texto": "Médio inferior" },
+    { "faixa_min": 3, "faixa_max": 8, "texto": "Inferior" },
+    { "faixa_min": 0, "faixa_max": 2, "texto": "Muito inferior" }
+  ]
 }

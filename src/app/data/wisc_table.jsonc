@@ -1,45 +1,80 @@
 {
-    // Intervalo para aplicação do teste
-    "intervalo": [1,1],
-
-    // Classificações, com as pontuações, percentis e textos formatados
-    "excp-baixa": {
-
-        // Pontuação segue intervalo A <= x < B
-        "pontuacao": [0, 70],
-        
-        // Percentil segue intervalo A <= y < B
-        "percentil": [0, 2],
-        "texto": "Excepcionalmente baixa"
+  // Teste: WISC-IV (Wechsler Intelligence Scale for Children)
+  // Objetivo: Regras de classificação para Pontuações-Padrão (PP) e textos de análise dos índices.
+  "teste": "WISC-IV",
+  
+  // 1. Regras de classificação (para {QIT_out}, {ICV_out}, {IOP_out}, etc.)
+  // Baseado na tabela de classificação de pontuações.
+  "tipo_de_regra": "pontuacao_padrao",
+  "classificacoes_pp": [
+    {
+      "faixa_min": 130,
+      "faixa_max": 999, // "≥ 130"
+      "texto": "Pontuação excepcionalmente alta"
     },
-    "abaixo-media": {
-        "pontuacao": [71, 79],
-        "percentil": [2, 8],
-        "texto": "Abaixo da média"
+    {
+      "faixa_min": 120,
+      "faixa_max": 129, // "120 – 129"
+      "texto": "Pontuação acima da média"
     },
-    "media-inf": {
-        "pontuacao": [80, 89],
-        "percentil": [9, 24],
-        "texto": "Média inferior"
+    {
+      "faixa_min": 110,
+      "faixa_max": 119, // "110 – 119"
+      "texto": "Pontuação média superior"
     },
-    "media": {
-        "pontuacao": [90, 109],
-        "percentil": [25, 74],
-        "texto": "Média"
+    {
+      "faixa_min": 90,
+      "faixa_max": 109, // "90 – 109"
+      "texto": "Pontuação média"
     },
-    "media-sup": {
-        "pontuacao": [110, 119],
-        "percentil": [75, 90],
-        "texto": "Média superior"
+    {
+      "faixa_min": 80,
+      "faixa_max": 89, // "80 – 89"
+      "texto": "Pontuação média inferior"
     },
-    "acima-media": {
-        "pontuacao": [120, 129],
-        "percentil": [91, 97],
-        "texto": "Acima da média"
+    {
+      "faixa_min": 70,
+      "faixa_max": 79, // "70 – 79"
+      "texto": "Pontuação abaixo da média"
     },
-    "excp-alta": {
-        "pontuacao": [130, 999],
-        "percentil": [98, 100],
-        "texto": "Excepcionalmente alta"
+    {
+      "faixa_min": 0,
+      "faixa_max": 69, // "< 70"
+      "texto": "Pontuação excepcionalmente baixa"
     }
+  ],
+  
+  // 2. Opções de texto para variáveis de análise descritiva
+  "opcoes_texto_analise": {
+    // Para a variável {QIT_conclusao}
+    "QIT_conclusao": [
+      "indicando que sua capacidade de raciocínio abstrato, aquisição de conhecimento, memória e velocidade de processamento estão de acordo com o esperado para sua idade.",
+      "sugerindo que sua capacidade de raciocínio e adaptação é superior à da maioria dos indivíduos de sua faixa etária.",
+      "apontando para dificuldades significativas na compreensão, processamento de informações e resolução de problemas em comparação com seus pares."
+    ],
+  // Para a variável {ICV_text_out}
+    "ICV_text_out": [
+      "O Índice de Compreensão Verbal (ICV) avalia a formação de conceitos verbais, raciocínio verbal e conhecimento adquirido. Seu desempenho foi classificado como [CLASSIFICAÇÃO AQUI], indicando [COMPLEMENTO AQUI].",
+      "No ICV, o paciente demonstrou excelente capacidade de definição de palavras e compreensão de conceitos sociais, resultando em uma classification [CLASSIFICAÇÃO AQUI].",
+      "O desempenho no ICV ficou [CLASSIFICAÇÃO AQUI], com dificuldades notáveis na formação de conceitos abstratos e raciocínio verbal."
+    ],
+  // Para a variável {IOP_text_out}
+    "IOP_text_out": [
+      "O Índice de Organização Perceptual (IOP) mede o raciocínio não verbal, integração visomotora e processamento visual. O resultado foi [CLASSIFICAÇÃO AQUI], sugerindo [COMPLEMENTO AQUI].",
+      "No IOP, o paciente apresentou [CLASSIFICAÇÃO AQUI], destacando-se em tarefas de montagem de quebra-cabeças visuais (Cubos), mas com dificuldade em raciocínio matricial.",
+      "O resultado no IOP foi [CLASSIFICAÇÃO AQUI], indicando dificuldades na análise e síntese de estímulos visuais abstratos."
+    ],
+  // Para a variável {IMO_text_out}
+    "IMO_text_out": [
+      "O Índice de Memória Operacional (IMO) avalia a atenção, concentração e a capacidade de manter e manipular informações mentalmente. Seu desempenho foi [CLASSIFICAÇÃO AQUI].",
+      "O IMO foi classificado como [CLASSIFICAÇÃO AQUI], indicando que o paciente consegue reter e manipular sequências de informações auditivas (Dígitos, SNL) de forma eficaz.",
+      "O desempenho no IMO foi [CLASSIFICAÇÃO AQUI], sugerindo que dificuldades em atenção e memória de curto prazo podem impactar sua aprendizagem."
+    ],
+  // Para a variável {IVP_text_out}
+    "IVP_text_out": [
+      "O Índice de Velocidade de Processamento (IVP) mede a rapidez e precisão no processamento de informações visuais simples. O resultado foi [CLASSIFICAÇÃO AQUI].",
+      "No IVP, o paciente demonstrou [CLASSIFICAÇÃO AQUI], sendo capaz de rastrear e discriminar símbolos visuais (Código, Procurar Símbolos) com agilidade.",
+      "A classificação no IVP foi [CLASSIFICAÇÃO AQUI], indicando lentidão no processamento de tarefas visuais simples, o que pode afetar o desempenho em atividades sob pressão de tempo."
+    ]
+  }
 }
