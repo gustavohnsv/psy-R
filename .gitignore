@@ -6,6 +6,13 @@ __pycache__/
 .Python
 build/
 develop-eggs/
+# Virtual Environment
+.venv/
+
+# uv
+uv.lock
+
+# Build
 dist/
 downloads/
 eggs/
