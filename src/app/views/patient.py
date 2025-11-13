@@ -22,10 +22,17 @@ class PatientScreen(QWidget):
         botao_avancar.clicked.connect(self.capturar_dados)
 
     def capturar_dados(self):
-        data = []
+        """Legacy method - kept for backward compatibility."""
+        data = self.get_data()
+        for item in [data.get("patient", {}), data.get("resp1", {}), data.get("resp2", {})]:
+            if item:
+                print(item)
+    
+    def get_data(self):
+        """Get all patient and respondent data as a structured dictionary."""
         patient_data = {
             "patient_name": self.ui.lineEdit_nome.text(),
-            "patient_birh": self.ui.dateEdit_nascimento.text(),
+            "patient_birth": self.ui.dateEdit_nascimento.text(),
             "patient_crono_age": self.ui.lineEdit_idade_crono.text(),
             "patient_school": self.ui.lineEdit_escola.text(),
             "patient_class": self.ui.lineEdit_turma.text()
@@ -34,9 +41,7 @@ class PatientScreen(QWidget):
         resp1_idade = self.ui.lineEdit_resp1_idade.text()
         try:
             resp1_idade_int = int(resp1_idade)
-        except ValueError:
-            resp1_idade_int = 0
-        except TypeError:
+        except (ValueError, TypeError):
             resp1_idade_int = 0
 
         resp1_data = {
@@ -49,9 +54,7 @@ class PatientScreen(QWidget):
         resp2_idade = self.ui.lineEdit_resp2_idade.text()
         try:
             resp2_idade_int = int(resp2_idade)
-        except ValueError:
-            resp2_idade_int = 0
-        except TypeError:
+        except (ValueError, TypeError):
             resp2_idade_int = 0
 
         resp2_data = {
@@ -61,9 +64,8 @@ class PatientScreen(QWidget):
             "resp2_age": resp2_idade_int
         }
 
-        data.append(patient_data)
-        data.append(resp1_data)
-        data.append(resp2_data)
-
-        for item in data:
-            print(item)
+        return {
+            "patient": patient_data,
+            "resp1": resp1_data,
+            "resp2": resp2_data
+        }
