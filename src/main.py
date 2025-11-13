@@ -192,9 +192,17 @@ class MainWindow(QMainWindow):
             # Load a fresh copy of the template document for modification
             template_copy = Document(self.data_model.template_path)
             
+            # Debug: Print field mapping info
+            print(f"Field mapping contains {len(field_mapping)} fields")
+            print(f"Sample fields in mapping: {list(field_mapping.keys())[:10]}")
+            
             # Replace fields in the copy
             processor.set_document(template_copy)
             processor.replace_fields(field_mapping, template_copy)
+            
+            # Debug: Verify some replacements happened
+            sample_text = "\n".join([p.text[:100] for p in template_copy.paragraphs[:5] if p.text])
+            print(f"Sample text after replacement (first 5 paragraphs):\n{sample_text[:200]}")
             
             # Generate output filename (use patient name if available, otherwise generic)
             patient_name = self.data_model.patient_data.get("patient_name", "").strip()

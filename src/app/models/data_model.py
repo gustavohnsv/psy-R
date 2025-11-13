@@ -90,33 +90,80 @@ class LaudoDataModel:
     def get_field_mapping(self) -> Dict[str, str]:
         """Get a flat dictionary mapping field names to values for template replacement.
         
-        Returns a dictionary where keys are template field names (e.g., {patient_name})
+        Returns a dictionary where keys are template field names (e.g., {nome_paciente})
         and values are the actual data to replace them with.
+        Maps both standard field names and template-specific field names.
         """
         mapping = {}
         
-        # Patient fields
+        # Field name translation map: data_model_key -> [template_field_names]
+        field_translations = {
+            # Patient fields
+            "patient_name": ["nome_paciente", "primeiro_nome_paciente"],
+            "patient_birth": ["data_nasc_paciente"],
+            "patient_crono_age": ["idd_paciente"],
+            "patient_school": ["escola_paciente"],
+            "patient_class": ["turma_paciente"],
+            
+            # Respondent 1 fields
+            "resp1_name": ["resp1_nome"],
+            "resp1_career": ["resp1_profissao"],
+            "resp1_education": ["resp1_escolaridade"],
+            "resp1_age": ["resp1_idade"],
+            
+            # Respondent 2 fields
+            "resp2_name": ["resp2_nome"],
+            "resp2_career": ["resp2_profissao"],
+            "resp2_education": ["resp2_escolaridade"],
+            "resp2_age": ["resp2_idade"],
+            
+            # Psychologist fields
+            "nome_psicologo": ["psico_nome"],
+            "crp_psicologo": ["psico_crp"],
+        }
+        
+        # Add patient fields with both standard and template names
         for key, value in self.patient_data.items():
+            # Add standard name
             mapping[key] = str(value) if value is not None else ""
+            # Add template-specific names
+            if key in field_translations:
+                for template_name in field_translations[key]:
+                    mapping[template_name] = str(value) if value is not None else ""
         
-        # Respondent 1 fields
+        # Add respondent 1 fields with both standard and template names
         for key, value in self.resp1_data.items():
+            # Add standard name
             mapping[key] = str(value) if value is not None else ""
+            # Add template-specific names
+            if key in field_translations:
+                for template_name in field_translations[key]:
+                    mapping[template_name] = str(value) if value is not None else ""
         
-        # Respondent 2 fields
+        # Add respondent 2 fields with both standard and template names
         for key, value in self.resp2_data.items():
+            # Add standard name
             mapping[key] = str(value) if value is not None else ""
+            # Add template-specific names
+            if key in field_translations:
+                for template_name in field_translations[key]:
+                    mapping[template_name] = str(value) if value is not None else ""
         
-        # Test result fields
+        # Test result fields (no translation needed, use as-is)
         for key, value in self.test_results.items():
             mapping[key] = str(value) if value is not None else ""
         
         # Conclusion field
         mapping["conclusao_text"] = self.conclusion_text
         
-        # Psychologist fields
+        # Psychologist fields with both standard and template names
         for key, value in self.psychologist_data.items():
+            # Add standard name
             mapping[key] = str(value) if value is not None else ""
+            # Add template-specific names
+            if key in field_translations:
+                for template_name in field_translations[key]:
+                    mapping[template_name] = str(value) if value is not None else ""
         
         return mapping
     
