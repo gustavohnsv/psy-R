@@ -1,6 +1,9 @@
 # Virtual Environment
 .venv/
 
+# uv
+uv.lock
+
 # Build
 dist/
 
