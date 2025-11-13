@@ -17,8 +17,8 @@ except (ImportError, TypeError):
 
 
 @pytest.mark.unit
-@pytest.mark.branch4
-@pytest.mark.skipif(not REVIEW_WITH_DATA_MODEL, reason="ReviewScreen data_model feature not available (Branch 4 not merged)")
+@pytest.mark.review_summary
+@pytest.mark.skipif(not REVIEW_WITH_DATA_MODEL, reason="ReviewScreen data_model feature not available")
 class TestReviewScreen:
     """Test suite for ReviewScreen summary functionality."""
     
@@ -123,8 +123,8 @@ class TestReviewScreen:
 
 
 @pytest.mark.integration
-@pytest.mark.branch4
-@pytest.mark.skipif(not REVIEW_WITH_DATA_MODEL, reason="ReviewScreen data_model feature not available (Branch 4 not merged)")
+@pytest.mark.review_summary
+@pytest.mark.skipif(not REVIEW_WITH_DATA_MODEL, reason="ReviewScreen data_model feature not available")
 class TestReviewScreenIntegration:
     """Integration tests for ReviewScreen."""
     

@@ -5,7 +5,7 @@ from app.models import LaudoDataModel
 
 
 @pytest.mark.unit
-@pytest.mark.branch1
+@pytest.mark.data_model
 class TestLaudoDataModel:
     """Test suite for LaudoDataModel class."""
     

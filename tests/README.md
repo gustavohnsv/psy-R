@@ -8,11 +8,11 @@ This directory contains comprehensive automated tests following TDD (Test-Driven
 tests/
 ├── __init__.py
 ├── conftest.py                    # Shared fixtures and configuration
-├── test_branch1_data_model.py    # Branch 1: Data Model tests
-├── test_branch2_data_collection.py # Branch 2: Data Collection tests
-├── test_branch3_field_extraction.py # Branch 3: Field Extraction tests
-├── test_branch4_review_summary.py  # Branch 4: Review Summary tests
-├── test_branch5_document_generation.py # Branch 5: Document Generation tests
+├── test_data_model.py             # Data Model tests
+├── test_data_collection.py        # Data Collection tests
+├── test_field_extraction.py       # Field Extraction and Validation tests
+├── test_review_summary.py         # Review Screen Summary tests
+├── test_document_generation.py    # Document Generation tests
 ├── test_integration_full_workflow.py # Integration and E2E tests
 └── README.md
 ```
@@ -31,23 +31,23 @@ pip install -r requirements.txt
 pytest
 ```
 
-### Run Tests by Branch
+### Run Tests by Feature
 
 ```bash
-# Branch 1: Data Model
-pytest -m branch1
+# Data Model
+pytest -m data_model
 
-# Branch 2: Data Collection
-pytest -m branch2
+# Data Collection
+pytest -m data_collection
 
-# Branch 3: Field Extraction
-pytest -m branch3
+# Field Extraction
+pytest -m field_extraction
 
-# Branch 4: Review Summary
-pytest -m branch4
+# Review Summary
+pytest -m review_summary
 
-# Branch 5: Document Generation
-pytest -m branch5
+# Document Generation
+pytest -m document_generation
 ```
 
 ### Run Tests by Type
@@ -74,13 +74,13 @@ Coverage report will be generated in `htmlcov/index.html`
 ### Run Specific Test File
 
 ```bash
-pytest tests/test_branch1_data_model.py
+pytest tests/test_data_model.py
 ```
 
 ### Run Specific Test
 
 ```bash
-pytest tests/test_branch1_data_model.py::TestLaudoDataModel::test_initialization
+pytest tests/test_data_model.py::TestLaudoDataModel::test_initialization
 ```
 
 ## Test Categories
@@ -115,7 +115,7 @@ The test suite aims for:
 
 ```python
 @pytest.mark.unit
-@pytest.mark.branch1
+@pytest.mark.data_model
 class TestMyFeature:
     def test_my_function(self, sample_fixture):
         result = my_function(sample_fixture)

@@ -16,8 +16,8 @@ from docx import Document
 
 
 @pytest.mark.unit
-@pytest.mark.branch5
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3/5 not merged)")
+@pytest.mark.document_generation
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestTemplateProcessorFieldReplacement:
     """Test suite for field replacement in TemplateProcessor."""
     
@@ -119,8 +119,8 @@ class TestTemplateProcessorFieldReplacement:
 
 
 @pytest.mark.unit
-@pytest.mark.branch5
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3/5 not merged)")
+@pytest.mark.document_generation
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestDocumentSaving:
     """Test suite for document saving functionality."""
     
@@ -158,8 +158,8 @@ class TestDocumentSaving:
 
 
 @pytest.mark.unit
-@pytest.mark.branch5
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3/5 not merged)")
+@pytest.mark.document_generation
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestPDFConversion:
     """Test suite for PDF conversion functionality."""
     
@@ -191,8 +191,8 @@ class TestPDFConversion:
 
 
 @pytest.mark.integration
-@pytest.mark.branch5
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3/5 not merged)")
+@pytest.mark.document_generation
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestDocumentGenerationIntegration:
     """Integration tests for complete document generation."""
     
@@ -233,8 +233,8 @@ class TestDocumentGenerationIntegration:
 
 
 @pytest.mark.e2e
-@pytest.mark.branch5
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3/5 not merged)")
+@pytest.mark.document_generation
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestEndToEndDocumentGeneration:
     """End-to-end tests for document generation."""
     

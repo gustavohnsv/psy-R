@@ -15,8 +15,8 @@ from docx import Document
 
 
 @pytest.mark.unit
-@pytest.mark.branch3
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3 not merged)")
+@pytest.mark.field_extraction
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestFieldValidator:
     """Test suite for FieldValidator class."""
     
@@ -81,8 +81,8 @@ class TestFieldValidator:
 
 
 @pytest.mark.unit
-@pytest.mark.branch3
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3 not merged)")
+@pytest.mark.field_extraction
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestTemplateProcessor:
     """Test suite for TemplateProcessor class."""
     
@@ -190,8 +190,8 @@ class TestTemplateProcessor:
 
 
 @pytest.mark.integration
-@pytest.mark.branch3
-@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available (Branch 3 not merged)")
+@pytest.mark.field_extraction
+@pytest.mark.skipif(not SERVICES_AVAILABLE, reason="Services module not available")
 class TestFieldExtractionIntegration:
     """Integration tests for field extraction."""
     

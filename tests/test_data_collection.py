@@ -2,6 +2,7 @@
 import pytest
 from unittest.mock import Mock, patch, MagicMock
 from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QDate
 import sys
 
 # Ensure QApplication exists for GUI tests
@@ -10,7 +11,7 @@ if not QApplication.instance():
 
 
 @pytest.mark.unit
-@pytest.mark.branch2
+@pytest.mark.data_collection
 class TestTemplateScreenDataCollection:
     """Test suite for TemplateScreen data collection methods."""
     
@@ -47,7 +48,7 @@ class TestTemplateScreenDataCollection:
 
 
 @pytest.mark.unit
-@pytest.mark.branch2
+@pytest.mark.data_collection
 class TestPatientScreenDataCollection:
     """Test suite for PatientScreen data collection methods."""
     
@@ -59,7 +60,7 @@ class TestPatientScreenDataCollection:
         
         # Set some test data
         screen.ui.lineEdit_nome.setText("João Silva")
-        screen.ui.dateEdit_nascimento.setDate(2010, 3, 15)
+        screen.ui.dateEdit_nascimento.setDate(QDate(2010, 3, 15))
         screen.ui.lineEdit_idade_crono.setText("14")
         screen.ui.lineEdit_escola.setText("Escola Municipal")
         screen.ui.lineEdit_turma.setText("8º Ano")
@@ -113,7 +114,7 @@ class TestPatientScreenDataCollection:
 
 
 @pytest.mark.unit
-@pytest.mark.branch2
+@pytest.mark.data_collection
 class TestTestsScreenDataCollection:
     """Test suite for TestsScreen data collection methods."""
     
@@ -130,7 +131,7 @@ class TestTestsScreenDataCollection:
 
 
 @pytest.mark.unit
-@pytest.mark.branch2
+@pytest.mark.data_collection
 class TestConclusionScreenDataCollection:
     """Test suite for ConclusionScreen data collection methods."""
     
@@ -158,7 +159,7 @@ class TestConclusionScreenDataCollection:
 
 
 @pytest.mark.integration
-@pytest.mark.branch2
+@pytest.mark.data_collection
 class TestDataCollectionIntegration:
     """Integration tests for data collection across screens."""
     
@@ -176,7 +177,7 @@ class TestDataCollectionIntegration:
         
         # Set up patient screen
         window.tela_paciente.ui.lineEdit_nome.setText("Test Patient")
-        window.tela_paciente.ui.dateEdit_nascimento.setDate(2010, 1, 1)
+        window.tela_paciente.ui.dateEdit_nascimento.setDate(QDate(2010, 1, 1))
         
         # Navigate to collect data
         window.stacked_widget.setCurrentIndex(0)

@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 from docx import Document
 from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QDate
 import sys
 
 # Ensure QApplication exists
@@ -59,7 +60,7 @@ class TestCompleteWorkflow:
         # Step 2: Fill patient data
         window.stacked_widget.setCurrentIndex(1)
         window.tela_paciente.ui.lineEdit_nome.setText("João Silva")
-        window.tela_paciente.ui.dateEdit_nascimento.setDate(2010, 3, 15)
+        window.tela_paciente.ui.dateEdit_nascimento.setDate(QDate(2010, 3, 15))
         window.tela_paciente.ui.lineEdit_idade_crono.setText("14")
         window.tela_paciente.ui.lineEdit_escola.setText("Escola Municipal")
         window.tela_paciente.ui.lineEdit_turma.setText("8º Ano")
