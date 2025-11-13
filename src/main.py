@@ -1,5 +1,7 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget
+import os
+from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QFileDialog, QMessageBox
+from docx import Document
 
 from app.views import (
     TemplateScreen,
@@ -9,6 +11,7 @@ from app.views import (
     ReviewScreen
 )
 from app.models import LaudoDataModel
+from app.services import TemplateProcessor
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -113,8 +116,119 @@ class MainWindow(QMainWindow):
         self.stacked_widget.setCurrentIndex(4)
     
     def gerar_laudo(self):
-        print("Lógica para GERAR LAUDO executada!")
-        # (Aqui você poderá coletar os dados de cada tela, ex: self.tela_paciente.get_data())
+        """Generate the final document (DOCX and PDF) with all collected data."""
+        # Collect data from conclusion screen one more time
+        conclusion_data = self.tela_conclusao.get_data()
+        if "conclusao_text" in conclusion_data:
+            self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+        
+        # Validate template is loaded
+        if not self.data_model.is_template_loaded():
+            QMessageBox.critical(
+                self,
+                'Erro',
+                'Nenhum template foi carregado. Por favor, carregue um template antes de gerar o laudo.'
+            )
+            return
+        
+        # Initialize template processor
+        processor = TemplateProcessor(self.data_model.template_document)
+        
+        # Extract and validate fields
+        template_fields = processor.extract_fields()
+        valid_fields, invalid_fields = processor.validate_fields()
+        
+        # Show warning if invalid fields found
+        if invalid_fields:
+            invalid_list = '\n'.join([f"  - {field}: {reason}" for field, reason in invalid_fields])
+            reply = QMessageBox.warning(
+                self,
+                'Campos Inválidos Encontrados',
+                f'O template contém campos que não seguem a convenção de nomenclatura:\n\n{invalid_list}\n\n'
+                'Deseja continuar mesmo assim?',
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No
+            )
+            if reply == QMessageBox.StandardButton.No:
+                return
+        
+        # Get field mapping from data model
+        field_mapping = self.data_model.get_field_mapping()
+        
+        # Check for missing or empty fields
+        missing_fields, empty_fields = processor.check_required_fields(template_fields, field_mapping)
+        
+        # Show warning for missing/empty fields
+        if missing_fields or empty_fields:
+            warning_parts = []
+            if missing_fields:
+                warning_parts.append(f"Campos faltando: {', '.join(missing_fields)}")
+            if empty_fields:
+                warning_parts.append(f"Campos vazios: {', '.join(empty_fields)}")
+            
+            warning_text = '\n\n'.join(warning_parts)
+            reply = QMessageBox.warning(
+                self,
+                'Campos Incompletos',
+                f'Os seguintes campos não têm dados:\n\n{warning_text}\n\n'
+                'Deseja continuar mesmo assim? Os campos vazios serão deixados em branco no documento.',
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No
+            )
+            if reply == QMessageBox.StandardButton.No:
+                return
+        
+        # Get output directory from user
+        output_dir = QFileDialog.getExistingDirectory(
+            self,
+            'Selecione o diretório para salvar o laudo',
+            os.path.expanduser('~')
+        )
+        
+        if not output_dir:
+            return  # User cancelled
+        
+        try:
+            # Load a fresh copy of the template document for modification
+            template_copy = Document(self.data_model.template_path)
+            
+            # Replace fields in the copy
+            processor.set_document(template_copy)
+            processor.replace_fields(field_mapping, template_copy)
+            
+            # Generate output filename (use patient name if available, otherwise generic)
+            patient_name = self.data_model.patient_data.get("patient_name", "").strip()
+            if patient_name:
+                # Sanitize filename
+                safe_name = "".join(c for c in patient_name if c.isalnum() or c in (' ', '-', '_')).strip()
+                safe_name = safe_name.replace(' ', '_')
+                base_filename = f"laudo_{safe_name}"
+            else:
+                base_filename = "laudo"
+            
+            # Save DOCX
+            docx_path = os.path.join(output_dir, f"{base_filename}.docx")
+            processor.save_document(template_copy, docx_path)
+            
+            # Convert to PDF
+            pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
+            processor.convert_to_pdf(docx_path, pdf_path)
+            
+            # Show success message
+            QMessageBox.information(
+                self,
+                'Sucesso',
+                f'Laudo gerado com sucesso!\n\n'
+                f'DOCX: {docx_path}\n'
+                f'PDF: {pdf_path}'
+            )
+            
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                'Erro ao Gerar Laudo',
+                f'Ocorreu um erro ao gerar o laudo:\n\n{str(e)}'
+            )
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
