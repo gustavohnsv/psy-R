@@ -53,3 +53,4 @@ Thumbs.db
 # Project specific
 *.pdf
 test_output/
+uv.lock

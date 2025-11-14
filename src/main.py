@@ -16,7 +16,7 @@ from app.services import TemplateProcessor
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Assistente de Laudo Psicológico")
+        self.setWindowTitle("PsiqueLaudo")
         self.resize(800, 600)
 
         # Initialize data model
@@ -210,17 +210,12 @@ class MainWindow(QMainWindow):
             docx_path = os.path.join(output_dir, f"{base_filename}.docx")
             processor.save_document(template_copy, docx_path)
             
-            # Convert to PDF
-            pdf_path = os.path.join(output_dir, f"{base_filename}.pdf")
-            processor.convert_to_pdf(docx_path, pdf_path)
-            
             # Show success message
             QMessageBox.information(
                 self,
                 'Sucesso',
                 f'Laudo gerado com sucesso!\n\n'
                 f'DOCX: {docx_path}\n'
-                f'PDF: {pdf_path}'
             )
             
         except Exception as e:
