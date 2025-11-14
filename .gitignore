@@ -51,6 +51,5 @@ htmlcov/
 Thumbs.db
 
 # Project specific
-*.docx
 *.pdf
 test_output/
