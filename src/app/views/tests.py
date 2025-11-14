@@ -36,3 +36,12 @@ class TestsScreen(QWidget):
             stacked_widget.setCurrentIndex(index)
         else:
             print(f"Aviso: Formulário de teste (índice {index}) não encontrado.")
+    
+    def get_data(self):
+        """Get test results data as a dictionary.
+        
+        Returns an empty dict for now - test result collection will be
+        implemented when test forms are fully developed.
+        """
+        # TODO: Implement test result collection from UI forms
+        return {}
