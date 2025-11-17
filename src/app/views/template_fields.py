@@ -23,8 +23,12 @@ class TemplateFieldsScreen(QWidget):
         self.ui = Ui_TelaCamposTemplate()
         self.ui.setupUi(self)
 
+        # Optional: pass loader or use default
         self.loader = loader or TemplateFieldsLoader()
         self.field_widgets: Dict[str, QWidget] = {}
+
+        # If provided, this will limit which sections to render (list of section ids)
+        self.sections_to_show: list[str] | None = None
 
         self._build_dynamic_fields()
 
@@ -41,6 +45,9 @@ class TemplateFieldsScreen(QWidget):
                 item.widget().deleteLater()
 
         for section in self.loader.iter_sections():
+            # If a filter is set, skip sections not in the list
+            if self.sections_to_show and section.get("id") not in self.sections_to_show:
+                continue
             group = QGroupBox(section.get("label", ""))
             group_layout = QFormLayout(group)
 
@@ -63,6 +70,11 @@ class TemplateFieldsScreen(QWidget):
         line_edit = QLineEdit()
         line_edit.setObjectName(f"lineEdit_{field['name']}")
         return line_edit
+
+    def set_sections(self, section_ids: list[str] | None):
+        """Restrict the screen to render only the given section ids (order preserved by loader)."""
+        self.sections_to_show = section_ids
+        self._build_dynamic_fields()
 
     def get_data(self) -> Dict[str, str]:
         data: Dict[str, str] = {}

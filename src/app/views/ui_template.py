@@ -82,7 +82,7 @@ class Ui_TelaTemplate(object):
 
     def retranslateUi(self, TelaTemplate):
         TelaTemplate.setWindowTitle(QCoreApplication.translate("TelaTemplate", u"Assistente de Laudo", None))
-        self.label_titulo.setText(QCoreApplication.translate("TelaTemplate", u"Passo 1: Carregar Template", None))
+        self.label_titulo.setText(QCoreApplication.translate("TelaTemplate", u"Carregar Template", None))
         self.lineEdit_caminho_template.setPlaceholderText(QCoreApplication.translate("TelaTemplate", u"Caminho do arquivo de template...", None))
         self.btn_carregar.setText(QCoreApplication.translate("TelaTemplate", u"Carregar...", None))
         self.btn_avancar.setText(QCoreApplication.translate("TelaTemplate", u"Avan\u00e7ar", None))

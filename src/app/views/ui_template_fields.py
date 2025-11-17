@@ -79,7 +79,7 @@ class Ui_TelaCamposTemplate(object):
 
     def retranslateUi(self, TelaCamposTemplate):
         TelaCamposTemplate.setWindowTitle(QCoreApplication.translate("TelaCamposTemplate", u"Campos do Template", None))
-        self.label_titulo.setText(QCoreApplication.translate("TelaCamposTemplate", u"Passo 3: Campos do Template", None))
+        self.label_titulo.setText(QCoreApplication.translate("TelaCamposTemplate", u"Campos do Template", None))
         self.btn_voltar.setText(QCoreApplication.translate("TelaCamposTemplate", u"Voltar", None))
         self.btn_avancar.setText(QCoreApplication.translate("TelaCamposTemplate", u"Avan\u00e7ar", None))
     # retranslateUi

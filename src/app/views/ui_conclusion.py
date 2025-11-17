@@ -92,10 +92,10 @@ class Ui_TelaConclusao(object):
 
     def retranslateUi(self, TelaConclusao):
         TelaConclusao.setWindowTitle(QCoreApplication.translate("TelaConclusao", u"Form", None))
-        self.label_titulo.setText(QCoreApplication.translate("TelaConclusao", u"Passo 4: Conclus\u00e3o", None))
-        self.groupBox.setTitle(QCoreApplication.translate("TelaConclusao", u"Dados Calculados para Refer\u00eancia", None))
-        self.groupBox_2.setTitle(QCoreApplication.translate("TelaConclusao", u"Conclus\u00e3o e Parecer Psicol\u00f3gico", None))
+        self.label_titulo.setText(QCoreApplication.translate("TelaConclusao", u"Conclusão", None))
+        self.groupBox.setTitle(QCoreApplication.translate("TelaConclusao", u"Dados Calculados para Referência", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("TelaConclusao", u"Conclusão e Parecer Psicológico", None))
         self.btn_voltar.setText(QCoreApplication.translate("TelaConclusao", u"Voltar", None))
-        self.btn_avancar.setText(QCoreApplication.translate("TelaConclusao", u"Avan\u00e7ar para Revis\u00e3o", None))
+        self.btn_avancar.setText(QCoreApplication.translate("TelaConclusao", u"Avançar para Revisão", None))
     # retranslateUi
 

@@ -16,6 +16,13 @@ class PatientScreen(QWidget):
         self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
 
         self.configurar_capturar_dados()
+        # Hide chronological age field from the UI (calculated automatically in the data model)
+        try:
+            self.ui.label_idade_crono.hide()
+            self.ui.lineEdit_idade_crono.hide()
+        except Exception:
+            # If the UI was regenerated with different names, fail silently
+            pass
 
     def configurar_capturar_dados(self):
         botao_avancar = self.ui.btn_avancar
@@ -30,10 +37,24 @@ class PatientScreen(QWidget):
     
     def get_data(self):
         """Get all patient and respondent data as a structured dictionary."""
+        # helper to compute age from QDate text
+        def _compute_crono_age_from_date_text(date_text: str) -> str:
+            if not date_text:
+                return ""
+            try:
+                from datetime import datetime, date
+                parsed = datetime.strptime(date_text, "%d/%m/%Y").date()
+                today = date.today()
+                years = today.year - parsed.year - ((today.month, today.day) < (parsed.month, parsed.day))
+                return str(years)
+            except Exception:
+                return ""
         patient_data = {
             "patient_name": self.ui.lineEdit_nome.text(),
             "patient_birth": self.ui.dateEdit_nascimento.text(),
-            "patient_crono_age": self.ui.lineEdit_idade_crono.text(),
+            # Provide `patient_crono_age` for compatibility: compute from the date edit if possible.
+            # Prefer explicit value if present (keeps compatibility with tests and hidden field usage)
+            "patient_crono_age": (self.ui.lineEdit_idade_crono.text() if getattr(self.ui, "lineEdit_idade_crono", None) and self.ui.lineEdit_idade_crono.text() else _compute_crono_age_from_date_text(self.ui.dateEdit_nascimento.text())),
             "patient_school": self.ui.lineEdit_escola.text(),
             "patient_class": self.ui.lineEdit_turma.text()
         }

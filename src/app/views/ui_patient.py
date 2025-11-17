@@ -255,7 +255,7 @@ class Ui_TelaPaciente(object):
 
     def retranslateUi(self, TelaPaciente):
         TelaPaciente.setWindowTitle(QCoreApplication.translate("TelaPaciente", u"Form", None))
-        self.label_titulo.setText(QCoreApplication.translate("TelaPaciente", u"Passo 2: Dados do Paciente", None))
+        self.label_titulo.setText(QCoreApplication.translate("TelaPaciente", u"Dados do Paciente", None))
         self.groupBox.setTitle(QCoreApplication.translate("TelaPaciente", u"Informa\u00e7\u00f5es do paciente", None))
         self.label_nome.setText(QCoreApplication.translate("TelaPaciente", u"Nome Completo:", None))
         self.label_nascimento.setText(QCoreApplication.translate("TelaPaciente", u"Data de Nascimento:", None))

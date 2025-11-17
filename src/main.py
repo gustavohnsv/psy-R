@@ -8,8 +8,7 @@ from app.views import (
     PatientScreen,
     TemplateFieldsScreen,
     TestsScreen,
-    ConclusionScreen,
-    ReviewScreen
+    ReviewScreen,
 )
 from app.models import LaudoDataModel
 from app.services import TemplateProcessor
@@ -33,15 +32,35 @@ class MainWindow(QMainWindow):
 
         self.tela_template = TemplateScreen()
         self.tela_paciente = PatientScreen()
-        self.tela_campos_template = TemplateFieldsScreen()
-        self.tela_testes = TestsScreen()
+        # Split template fields into focused screens (administrative, clinical, behavior, conclusions)
+        self.tela_campos_administrativo = TemplateFieldsScreen()
+        self.tela_campos_administrativo.set_sections(["administrativo"])
+
+        self.tela_campos_contexto = TemplateFieldsScreen()
+        self.tela_campos_contexto.set_sections(["contexto_clinico"])
+
+        self.tela_campos_comportamento = TemplateFieldsScreen()
+        self.tela_campos_comportamento.set_sections(["comportamento_observado"])
+        # Conclusions use the same dynamic screen but restricted to the conclusions section
+        self.tela_conclusoes_section = TemplateFieldsScreen()
+        self.tela_conclusoes_section.set_sections(["conclusoes"])
+
+        # Keep a backward-compatible separate ConclusionScreen instance (some tests / callers expect it)
+        from app.views.conclusion import ConclusionScreen
         self.tela_conclusao = ConclusionScreen()
+
+        self.tela_testes = TestsScreen()
         self.tela_revisao = ReviewScreen(data_model=self.data_model)
 
+        # Order: template -> patient -> admin fields -> clinical -> behavior -> tests -> conclusions -> review
         self.stacked_widget.addWidget(self.tela_template)
         self.stacked_widget.addWidget(self.tela_paciente)
-        self.stacked_widget.addWidget(self.tela_campos_template)
+        self.stacked_widget.addWidget(self.tela_campos_administrativo)
+        self.stacked_widget.addWidget(self.tela_campos_contexto)
+        self.stacked_widget.addWidget(self.tela_campos_comportamento)
         self.stacked_widget.addWidget(self.tela_testes)
+        # add both conclusions widgets (conclusions section and legacy conclusion screen) to preserve API/indices
+        self.stacked_widget.addWidget(self.tela_conclusoes_section)
         self.stacked_widget.addWidget(self.tela_conclusao)
         self.stacked_widget.addWidget(self.tela_revisao)
 
@@ -50,12 +69,18 @@ class MainWindow(QMainWindow):
         self.tela_paciente.avancar_clicado.connect(self.ir_para_proxima_tela)
         self.tela_paciente.voltar_clicado.connect(self.ir_para_tela_anterior)
 
-        self.tela_campos_template.avancar_clicado.connect(self.ir_para_proxima_tela)
-        self.tela_campos_template.voltar_clicado.connect(self.ir_para_tela_anterior)
+        for tela in (self.tela_campos_administrativo, self.tela_campos_contexto, self.tela_campos_comportamento, self.tela_conclusoes_section):
+            tela.avancar_clicado.connect(self.ir_para_proxima_tela)
+            tela.voltar_clicado.connect(self.ir_para_tela_anterior)
 
         self.tela_testes.avancar_clicado.connect(self.ir_para_proxima_tela)
         self.tela_testes.voltar_clicado.connect(self.ir_para_tela_anterior)
 
+        # conclusions section leads to review
+        self.tela_conclusoes_section.avancar_clicado.connect(self._ir_para_revisao)
+        self.tela_conclusoes_section.voltar_clicado.connect(self.ir_para_tela_anterior)
+
+        # wire legacy conclusion screen as before (backward compatibility)
         self.tela_conclusao.avancar_clicado.connect(self._ir_para_revisao)
         self.tela_conclusao.voltar_clicado.connect(self.ir_para_tela_anterior)
 
@@ -84,8 +109,9 @@ class MainWindow(QMainWindow):
 
     def _preparar_tela(self, index: int):
         widget = self.stacked_widget.widget(index)
-        if widget is self.tela_campos_template:
-            self.tela_campos_template.set_data(self.data_model.get_template_field_values())
+        # If the target widget is any TemplateFieldsScreen, populate it with stored values
+        if isinstance(widget, TemplateFieldsScreen):
+            widget.set_data(self.data_model.get_template_field_values())
     
     def _coletar_dados_tela_atual(self):
         """Collect data from the currently visible screen."""
@@ -111,11 +137,22 @@ class MainWindow(QMainWindow):
             if "template_fields" in patient_data:
                 self.data_model.set_template_field_values(patient_data["template_fields"])
         
-        # Screen 2: Template fields
-        elif widget is self.tela_campos_template:
-            template_fields = self.tela_campos_template.get_data()
+        # Legacy Conclusion screen (backwards compatibility)
+        elif hasattr(self, "tela_conclusao") and widget is self.tela_conclusao:
+            conclusion_data = self.tela_conclusao.get_data()
+            if "conclusao_text" in conclusion_data:
+                self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+
+        # Template fields screens (administrative, clinical, behavior, conclusions)
+        elif isinstance(widget, TemplateFieldsScreen):
+            template_fields = widget.get_data()
             if template_fields:
                 self.data_model.set_template_field_values(template_fields)
+
+            # If this is the conclusions section, map the main free-text conclusion into the model's conclusion_text
+            # Prefer field `CONCLUSAO_ANALISE_LIVRE` if present, otherwise do nothing
+            if "CONCLUSAO_ANALISE_LIVRE" in template_fields:
+                self.data_model.set_conclusion_text(template_fields.get("CONCLUSAO_ANALISE_LIVRE", ""))
         
         # Screen 3: Tests
         elif widget is self.tela_testes:
@@ -123,18 +160,12 @@ class MainWindow(QMainWindow):
             if test_data:
                 self.data_model.set_test_results(test_data)
         
-        # Screen 4: Conclusion
-        elif widget is self.tela_conclusao:
-            conclusion_data = self.tela_conclusao.get_data()
-            if "conclusao_text" in conclusion_data:
-                self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+        # Note: explicit ConclusionScreen removed; conclusion data now comes from conclusions section above.
     
     def _ir_para_revisao(self):
         """Navigate to review screen, collecting conclusion data first."""
-        # Collect conclusion data before showing review
-        conclusion_data = self.tela_conclusao.get_data()
-        if "conclusao_text" in conclusion_data:
-            self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+        # Collect conclusion data before showing review (conclusions now live in conclusions section)
+        self._coletar_dados_tela_atual()
         
         # Navigate to review screen (index of tela_revisao)
         index_revisao = self.stacked_widget.indexOf(self.tela_revisao)
@@ -143,10 +174,8 @@ class MainWindow(QMainWindow):
     
     def gerar_laudo(self):
         """Generate the final document (DOCX and PDF) with all collected data."""
-        # Collect data from conclusion screen one more time
-        conclusion_data = self.tela_conclusao.get_data()
-        if "conclusao_text" in conclusion_data:
-            self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
+        # Ensure current screen data (including conclusions section) is collected before generating
+        self._coletar_dados_tela_atual()
         
         # Validate template is loaded
         if not self.data_model.is_template_loaded():

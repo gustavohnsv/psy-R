@@ -907,7 +907,7 @@ class Ui_TelaTestes(object):
 
     def retranslateUi(self, TelaTestes):
         TelaTestes.setWindowTitle(QCoreApplication.translate("TelaTestes", u"Form", None))
-        self.label_titulo.setText(QCoreApplication.translate("TelaTestes", u"Passo 3: Inserir Dados dos Testes", None))
+        self.label_titulo.setText(QCoreApplication.translate("TelaTestes", u"Inserir Dados dos Testes", None))
         self.groupBox_botoes.setTitle(QCoreApplication.translate("TelaTestes", u"Testes", None))
         self.btn_wisc4.setText(QCoreApplication.translate("TelaTestes", u"WISC-IV", None))
         self.btn_ravlt.setText(QCoreApplication.translate("TelaTestes", u"RAVLT", None))

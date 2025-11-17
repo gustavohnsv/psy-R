@@ -85,7 +85,7 @@ class Ui_TelaRevisao(object):
 
     def retranslateUi(self, TelaRevisao):
         TelaRevisao.setWindowTitle(QCoreApplication.translate("TelaRevisao", u"Form", None))
-        self.label_titulo.setText(QCoreApplication.translate("TelaRevisao", u"Passo 5: Revis\u00e3o e Gera\u00e7\u00e3o do Laudo", None))
+        self.label_titulo.setText(QCoreApplication.translate("TelaRevisao", u"Revis\u00e3o e Gera\u00e7\u00e3o do Laudo", None))
         self.label_revisao.setText(QCoreApplication.translate("TelaRevisao", u"Aqui ser\u00e3o exibidos todos os dados inseridos para a confer\u00eancia final...", None))
         self.btn_voltar.setText(QCoreApplication.translate("TelaRevisao", u"Voltar", None))
         self.btn_gerar_laudo.setText(QCoreApplication.translate("TelaRevisao", u"Confirmar e Gerar Laudo", None))

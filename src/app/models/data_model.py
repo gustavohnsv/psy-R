@@ -56,7 +56,37 @@ class LaudoDataModel:
     
     def set_patient_data(self, data: Dict[str, Any]):
         """Update patient data."""
+        # Update provided fields first
         self.patient_data.update(data)
+
+        # Compute derived fields when possible
+        # 1) First name (primeiro nome)
+        full_name = self.patient_data.get("patient_name", "") or ""
+        first_name = ""
+        if isinstance(full_name, str) and full_name.strip():
+            first_name = full_name.strip().split()[0]
+        # store under a conventional key used in templates mapping
+        self.patient_data["patient_first_name"] = first_name
+
+        # 2) Chronological age (years) from `patient_birth` if not provided
+        # Only compute if caller did not supply `patient_crono_age` (preserve explicit values)
+        birth = self.patient_data.get("patient_birth", "") or ""
+        provided_crono = self.patient_data.get("patient_crono_age")
+        if (provided_crono is None or provided_crono == "") and isinstance(birth, str) and birth:
+            try:
+                from datetime import datetime, date
+
+                # Attempt to parse common Brazilian format DD/MM/YYYY
+                parsed = datetime.strptime(birth, "%d/%m/%Y").date()
+                today = date.today()
+                years = today.year - parsed.year - ((today.month, today.day) < (parsed.month, parsed.day))
+                self.patient_data["patient_crono_age"] = str(years)
+            except Exception:
+                # parsing failed: leave as empty string
+                self.patient_data["patient_crono_age"] = str(provided_crono or "")
+        else:
+            # Preserve caller-provided value
+            self.patient_data["patient_crono_age"] = str(provided_crono or "")
     
     def set_resp1_data(self, data: Dict[str, Any]):
         """Update first respondent data."""
@@ -142,6 +172,15 @@ class LaudoDataModel:
             if key in field_translations:
                 for template_name in field_translations[key]:
                     mapping[template_name] = str(value) if value is not None else ""
+
+        # Ensure primeiro nome (first name) placeholder maps to the first token of full name
+        # Templates use the alias `primeiro_nome_paciente` which should contain only the first name
+        if "patient_name" in mapping:
+            try:
+                first = mapping["patient_name"].strip().split()[0]
+            except Exception:
+                first = ""
+            mapping.setdefault("primeiro_nome_paciente", first)
         
         # Add respondent 1 fields with both standard and template names
         for key, value in self.resp1_data.items():
