@@ -1,0 +1,87 @@
+{
+  "sections": [
+    {
+      "id": "contexto_clinico",
+      "label": "Contexto Clínico",
+      "fields": [
+        {"name": "analise_paciente", "label": "Análise do Paciente", "widget": "textarea"},
+        {"name": "anamnese_entrevistado", "label": "Anamnese - Entrevistado", "widget": "textarea"},
+        {"name": "constituicao_familiar", "label": "Constituição Familiar", "widget": "textarea"},
+        {"name": "antecedentes_familiares", "label": "Antecedentes Familiares", "widget": "textarea"},
+        {"name": "historico_desenvolvimento", "label": "Histórico de Desenvolvimento", "widget": "textarea"},
+        {"name": "historico_escolar", "label": "Histórico Escolar", "widget": "textarea"},
+        {"name": "indicacao_origem", "label": "Indicação / Origem", "widget": "textarea"},
+        {"name": "intervencoes_queixa", "label": "Intervenções Relacionadas à Queixa", "widget": "textarea"},
+        {"name": "queixa_sintomas_paciente", "label": "Queixa e Sintomas", "widget": "textarea"},
+        {"name": "temp_comp_vida", "label": "Tempo Compartilhado de Vida", "widget": "text"},
+        {"name": "numero_sessoes", "label": "Número de Sessões", "widget": "text"},
+        {"name": "medicacoes_exames", "label": "Medicações e Exames", "widget": "textarea"},
+        {"name": "desenvolvimento_neuro", "label": "Desenvolvimento Neuropsicológico", "widget": "textarea"},
+        {"name": "lista_instrumentos", "label": "Instrumentos Aplicados", "widget": "textarea"},
+        {"name": "teste_finalidade", "label": "Finalidade da Avaliação", "widget": "textarea"},
+        {"name": "sono_alimentacao", "label": "Sono e Alimentação", "widget": "textarea"},
+        {"name": "devolutiva_participantes", "label": "Participantes da Devolutiva", "widget": "textarea"},
+        {"name": "RELATO_TERCEIROS_FONTE", "label": "Fonte do Relato de Terceiros", "widget": "text"},
+        {"name": "RELATO_TERCEIROS_DESC", "label": "Relato de Terceiros", "widget": "textarea"},
+        {"name": "RELATO_TERCEIROS_COMPLEMENTO", "label": "Complemento do Relato de Terceiros", "widget": "textarea"}
+      ]
+    },
+    {
+      "id": "comportamento_observado",
+      "label": "Comportamento Observado",
+      "fields": [
+        {"name": "ATENCAO_INICIATIVA_DESC", "label": "Atenção - Iniciativa", "widget": "textarea"},
+        {"name": "ATENCAO_RESPOSTA_DESC", "label": "Atenção - Resposta", "widget": "textarea"},
+        {"name": "atencao_auditiva_conclusao", "label": "Conclusão sobre Atenção Auditiva", "widget": "textarea"},
+        {"name": "LING_EXP_INICIATIVA", "label": "Linguagem Expressiva - Iniciativa", "widget": "textarea"},
+        {"name": "LING_EXP_NIVEL", "label": "Linguagem Expressiva - Nível", "widget": "textarea"},
+        {"name": "LING_EXP_OBSERVACAO", "label": "Linguagem Expressiva - Observações", "widget": "textarea"},
+        {"name": "LING_RECEP_HABILIDADE_COMPLEXA", "label": "Linguagem Receptiva - Habilidade Complexa", "widget": "textarea"},
+        {"name": "LING_RECEP_HABILIDADE_SIMPLES", "label": "Linguagem Receptiva - Habilidade Simples", "widget": "textarea"},
+        {"name": "LING_RECEP_NIVEL", "label": "Linguagem Receptiva - Nível", "widget": "textarea"},
+        {"name": "LING_RECEP_RESPONSIVIDADE", "label": "Linguagem Receptiva - Responsividade", "widget": "textarea"},
+        {"name": "LING_RECEP_ROTINA", "label": "Linguagem Receptiva - Rotina", "widget": "textarea"},
+        {"name": "PISTAS_SOCIAIS_DESC", "label": "Pistas Sociais", "widget": "textarea"},
+        {"name": "CONTATO_VISUAL_DESC", "label": "Contato Visual", "widget": "textarea"},
+        {"name": "CONTATO_VISUAL_COMPLEMENTO", "label": "Contato Visual - Complemento", "widget": "textarea"},
+        {"name": "SORRISO_DESC", "label": "Sorriso", "widget": "textarea"},
+        {"name": "LUDICO_EXPLORACAO_DESC", "label": "Lúdico - Exploração", "widget": "textarea"},
+        {"name": "LUDICO_EXPLORACAO_COMPLEMENTO", "label": "Lúdico - Complemento", "widget": "textarea"},
+        {"name": "PERFIL_DESENVOLTURA_SOCIAL", "label": "Perfil - Desenvoltura Social", "widget": "textarea"},
+        {"name": "PERFIL_EMPATIA_FRUSTRACAO", "label": "Perfil - Empatia e Frustração", "widget": "textarea"},
+        {"name": "LISTA_SINTOMAS_TEA_PERSONALIZADA", "label": "Sintomas TEA Personalizados", "widget": "textarea"},
+        {"name": "LISTA_DE_ENCAMINHAMENTOS_GERADA", "label": "Encaminhamentos", "widget": "textarea"}
+      ]
+    },
+    {
+      "id": "conclusoes",
+      "label": "Conclusões",
+      "fields": [
+        {"name": "CONCLUSAO_ANALISE_LIVRE", "label": "Conclusão - Análise Livre", "widget": "textarea"},
+        {"name": "CONCLUSAO_FUNCIONAMENTO_GERAL", "label": "Conclusão - Funcionamento Geral", "widget": "textarea"},
+        {"name": "FE_conclusao_geral", "label": "Conclusão - Feedback", "widget": "textarea"},
+        {"name": "HIPOTESE_DIAGNOSTICA_FINAL", "label": "Hipótese Diagnóstica Final", "widget": "textarea"},
+        {"name": "hipotese_diagnostica", "label": "Hipótese Diagnóstica", "widget": "textarea"}
+      ]
+    },
+    {
+      "id": "administrativo",
+      "label": "Administrativo e Contatos",
+      "fields": [
+        {"name": "cidade_paciente", "label": "Cidade do Paciente", "widget": "text"},
+        {"name": "cidade", "label": "Cidade do Laudo", "widget": "text"},
+        {"name": "data_laudo_ano", "label": "Data (ano) do Laudo", "widget": "text"},
+        {"name": "solicitante_parentesco", "label": "Parentesco da Solicitante", "widget": "text"},
+        {"name": "solicitante_acompanhamento_duracao", "label": "Duração do Acompanhamento", "widget": "text"},
+        {"name": "nome_psicologo", "label": "Nome do Psicólogo", "widget": "text"},
+        {"name": "crp_psicologo", "label": "CRP do Psicólogo", "widget": "text"},
+        {"name": "psico_nome", "label": "Nome Profissional (Template)", "widget": "text"},
+        {"name": "psico_crp", "label": "CRP Profissional (Template)", "widget": "text"},
+        {"name": "formacao_psicologo", "label": "Formação do Psicólogo", "widget": "text"},
+        {"name": "email_contato_psicologo", "label": "Email de Contato", "widget": "text"},
+        {"name": "telefone_psicologo", "label": "Telefone de Contato", "widget": "text"}
+      ]
+    }
+  ]
+}
+

@@ -39,6 +39,9 @@ class LaudoDataModel:
         
         # Conclusion text
         self.conclusion_text: str = ""
+
+        # Template fields not covered by other screens
+        self.template_fields_data: Dict[str, Any] = {}
         
         # Psychologist metadata
         self.psychologist_data: Dict[str, Any] = {
@@ -71,6 +74,14 @@ class LaudoDataModel:
         """Set conclusion text."""
         self.conclusion_text = text
     
+    def set_template_field_values(self, values: Dict[str, Any]):
+        """Update custom template field values."""
+        self.template_fields_data.update(values)
+    
+    def get_template_field_values(self) -> Dict[str, Any]:
+        """Return stored template field values."""
+        return self.template_fields_data
+    
     def set_psychologist_data(self, data: Dict[str, Any]):
         """Update psychologist data."""
         self.psychologist_data.update(data)
@@ -84,7 +95,8 @@ class LaudoDataModel:
             "resp2": self.resp2_data,
             "tests": self.test_results,
             "conclusion": self.conclusion_text,
-            "psychologist": self.psychologist_data
+            "psychologist": self.psychologist_data,
+            "template_fields": self.template_fields_data
         }
     
     def get_field_mapping(self) -> Dict[str, str]:
@@ -155,6 +167,10 @@ class LaudoDataModel:
         
         # Conclusion field
         mapping["conclusao_text"] = self.conclusion_text
+
+        # Custom template fields
+        for key, value in self.template_fields_data.items():
+            mapping[key] = str(value) if value is not None else ""
         
         # Psychologist fields with both standard and template names
         for key, value in self.psychologist_data.items():

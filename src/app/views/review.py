@@ -3,6 +3,7 @@ from PySide6.QtCore import Signal
 from typing import Optional
 
 from .ui_review import Ui_TelaRevisao
+from app.services import TemplateFieldsLoader
 
 class ReviewScreen(QWidget):
     voltar_clicado = Signal()
@@ -13,6 +14,7 @@ class ReviewScreen(QWidget):
         self.ui = Ui_TelaRevisao()
         self.ui.setupUi(self)
         self.data_model = data_model
+        self.template_fields_loader = TemplateFieldsLoader()
 
         self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
         self.ui.btn_gerar_laudo.clicked.connect(self.gerar_laudo_clicado.emit)
@@ -94,7 +96,7 @@ class ReviewScreen(QWidget):
         
         summary_lines.append("<br>")
         
-        # Conclusion
+        # Conclusão
         summary_lines.append("<h3>Conclusão</h3>")
         if self.data_model.conclusion_text:
             conclusion_preview = self.data_model.conclusion_text[:200]
@@ -103,6 +105,28 @@ class ReviewScreen(QWidget):
             summary_lines.append(f"{conclusion_preview}")
         else:
             summary_lines.append("<span style='color: orange;'>Conclusão não preenchida</span>")
+        
+        summary_lines.append("<br>")
+
+        # Template fields overview
+        summary_lines.append("<h3>Campos do Template (Não Testes)</h3>")
+        template_values = self.data_model.get_template_field_values()
+        if template_values:
+            for section in self.template_fields_loader.iter_sections():
+                section_rows = []
+                for field in section.get("fields", []):
+                    name = field["name"]
+                    value = template_values.get(name, "")
+                    if value and str(value).strip():
+                        display_value = str(value)
+                        if len(display_value) > 80:
+                            display_value = display_value[:80] + "..."
+                        section_rows.append(f"<b>{field.get('label', name)}:</b> {display_value}")
+                if section_rows:
+                    summary_lines.append(f"<h4>{section.get('label')}</h4>")
+                    summary_lines.extend(section_rows)
+        else:
+            summary_lines.append("<span style='color: orange;'>Nenhum campo adicional preenchido</span>")
         
         summary_lines.append("<br>")
         summary_lines.append("<hr>")

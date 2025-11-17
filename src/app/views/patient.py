@@ -67,5 +67,9 @@ class PatientScreen(QWidget):
         return {
             "patient": patient_data,
             "resp1": resp1_data,
-            "resp2": resp2_data
+            "resp2": resp2_data,
+            "template_fields": {
+                "solicitante_nome": self.ui.lineEdit_solicitante_nome.text(),
+                "solicitante_crp": self.ui.lineEdit_solicitante_crp.text()
+            }
         }

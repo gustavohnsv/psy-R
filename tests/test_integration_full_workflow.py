@@ -74,7 +74,8 @@ class TestCompleteWorkflow:
         assert window.data_model.resp1_data["resp1_name"] == "Maria Silva"
         
         # Step 3: Fill conclusion
-        window.stacked_widget.setCurrentIndex(3)
+        index_conclusao = window.stacked_widget.indexOf(window.tela_conclusao)
+        window.stacked_widget.setCurrentIndex(index_conclusao)
         window.tela_conclusao.ui.textEdit_conclusao.setPlainText("Conclusão de teste")
         window._coletar_dados_tela_atual()
         
@@ -94,7 +95,8 @@ class TestCompleteWorkflow:
         assert "nome_psicologo" in field_mapping
         
         # Step 6: Test review screen
-        window.stacked_widget.setCurrentIndex(4)
+        index_revisao = window.stacked_widget.indexOf(window.tela_revisao)
+        window.stacked_widget.setCurrentIndex(index_revisao)
         window.tela_revisao.populate_summary()
         
         summary_text = window.tela_revisao.ui.label_revisao.text()
@@ -184,7 +186,8 @@ class TestDataFlowBetweenScreens:
         assert window.data_model.patient_data["patient_name"] == "Patient"
         
         # Conclusion screen
-        window.stacked_widget.setCurrentIndex(3)
+        index_conclusao = window.stacked_widget.indexOf(window.tela_conclusao)
+        window.stacked_widget.setCurrentIndex(index_conclusao)
         window.tela_conclusao.ui.textEdit_conclusao.setPlainText("Conclusion")
         window._coletar_dados_tela_atual()
         assert window.data_model.conclusion_text == "Conclusion"

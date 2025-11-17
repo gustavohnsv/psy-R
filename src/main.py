@@ -6,6 +6,7 @@ from docx import Document
 from app.views import (
     TemplateScreen,
     PatientScreen,
+    TemplateFieldsScreen,
     TestsScreen,
     ConclusionScreen,
     ReviewScreen
@@ -32,12 +33,14 @@ class MainWindow(QMainWindow):
 
         self.tela_template = TemplateScreen()
         self.tela_paciente = PatientScreen()
+        self.tela_campos_template = TemplateFieldsScreen()
         self.tela_testes = TestsScreen()
         self.tela_conclusao = ConclusionScreen()
         self.tela_revisao = ReviewScreen(data_model=self.data_model)
 
         self.stacked_widget.addWidget(self.tela_template)
         self.stacked_widget.addWidget(self.tela_paciente)
+        self.stacked_widget.addWidget(self.tela_campos_template)
         self.stacked_widget.addWidget(self.tela_testes)
         self.stacked_widget.addWidget(self.tela_conclusao)
         self.stacked_widget.addWidget(self.tela_revisao)
@@ -46,6 +49,9 @@ class MainWindow(QMainWindow):
 
         self.tela_paciente.avancar_clicado.connect(self.ir_para_proxima_tela)
         self.tela_paciente.voltar_clicado.connect(self.ir_para_tela_anterior)
+
+        self.tela_campos_template.avancar_clicado.connect(self.ir_para_proxima_tela)
+        self.tela_campos_template.voltar_clicado.connect(self.ir_para_tela_anterior)
 
         self.tela_testes.avancar_clicado.connect(self.ir_para_proxima_tela)
         self.tela_testes.voltar_clicado.connect(self.ir_para_tela_anterior)
@@ -62,7 +68,9 @@ class MainWindow(QMainWindow):
         
         index_atual = self.stacked_widget.currentIndex()
         if index_atual < self.stacked_widget.count() - 1:
-            self.stacked_widget.setCurrentIndex(index_atual + 1)
+            proximo = index_atual + 1
+            self._preparar_tela(proximo)
+            self.stacked_widget.setCurrentIndex(proximo)
 
     def ir_para_tela_anterior(self):
         # Collect data from current screen before navigating
@@ -70,21 +78,29 @@ class MainWindow(QMainWindow):
         
         index_atual = self.stacked_widget.currentIndex()
         if index_atual > 0:
-            self.stacked_widget.setCurrentIndex(index_atual - 1)
+            anterior = index_atual - 1
+            self._preparar_tela(anterior)
+            self.stacked_widget.setCurrentIndex(anterior)
+
+    def _preparar_tela(self, index: int):
+        widget = self.stacked_widget.widget(index)
+        if widget is self.tela_campos_template:
+            self.tela_campos_template.set_data(self.data_model.get_template_field_values())
     
     def _coletar_dados_tela_atual(self):
         """Collect data from the currently visible screen."""
         index_atual = self.stacked_widget.currentIndex()
+        widget = self.stacked_widget.currentWidget()
         
         # Screen 0: Template
-        if index_atual == 0:
+        if widget is self.tela_template:
             template_path = self.tela_template.get_template_path()
             template_doc = self.tela_template.get_template_document()
             if template_path and template_doc:
                 self.data_model.set_template(template_path, template_doc)
         
         # Screen 1: Patient
-        elif index_atual == 1:
+        elif widget is self.tela_paciente:
             patient_data = self.tela_paciente.get_data()
             if "patient" in patient_data:
                 self.data_model.set_patient_data(patient_data["patient"])
@@ -92,15 +108,23 @@ class MainWindow(QMainWindow):
                 self.data_model.set_resp1_data(patient_data["resp1"])
             if "resp2" in patient_data:
                 self.data_model.set_resp2_data(patient_data["resp2"])
+            if "template_fields" in patient_data:
+                self.data_model.set_template_field_values(patient_data["template_fields"])
         
-        # Screen 2: Tests
-        elif index_atual == 2:
+        # Screen 2: Template fields
+        elif widget is self.tela_campos_template:
+            template_fields = self.tela_campos_template.get_data()
+            if template_fields:
+                self.data_model.set_template_field_values(template_fields)
+        
+        # Screen 3: Tests
+        elif widget is self.tela_testes:
             test_data = self.tela_testes.get_data()
             if test_data:
                 self.data_model.set_test_results(test_data)
         
-        # Screen 3: Conclusion
-        elif index_atual == 3:
+        # Screen 4: Conclusion
+        elif widget is self.tela_conclusao:
             conclusion_data = self.tela_conclusao.get_data()
             if "conclusao_text" in conclusion_data:
                 self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
@@ -112,8 +136,10 @@ class MainWindow(QMainWindow):
         if "conclusao_text" in conclusion_data:
             self.data_model.set_conclusion_text(conclusion_data["conclusao_text"])
         
-        # Navigate to review screen (index 4)
-        self.stacked_widget.setCurrentIndex(4)
+        # Navigate to review screen (index of tela_revisao)
+        index_revisao = self.stacked_widget.indexOf(self.tela_revisao)
+        self._preparar_tela(index_revisao)
+        self.stacked_widget.setCurrentIndex(index_revisao)
     
     def gerar_laudo(self):
         """Generate the final document (DOCX and PDF) with all collected data."""
