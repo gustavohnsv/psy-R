@@ -119,7 +119,7 @@ class TestReviewScreen:
         
         summary_text = screen.ui.label_revisao.text()
         assert "Resultados dos Testes" in summary_text
-        assert "QIT_out" in summary_text or "105" in summary_text
+        assert "Média superior" in summary_text
 
 
 @pytest.mark.integration

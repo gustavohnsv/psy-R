@@ -157,6 +157,18 @@ class TestConclusionScreenDataCollection:
         
         assert data["conclusao_text"] == ""
 
+    def test_refresh_calculated_data_populates_browser(self, populated_data_model):
+        """Calculated reference panel should display collected test results."""
+        from app.views.conclusion import ConclusionScreen
+
+        screen = ConclusionScreen(data_model=populated_data_model)
+        screen.refresh_calculated_data()
+
+        panel_text = screen.ui.textBrowser_dados.toPlainText()
+
+        assert panel_text
+        assert "WISC" in panel_text
+
 
 @pytest.mark.integration
 @pytest.mark.data_collection

@@ -150,11 +150,46 @@ class TestLaudoDataModel:
         assert field_mapping["resp2_name"] == "José Silva"
         
         # Check test results
-        assert field_mapping["QIT_out"] == "105"
+        assert field_mapping["QIT_out"] == "Média superior"
         
         # Check conclusion
         assert field_mapping["conclusao_text"] == "Este é um texto de conclusão de teste."
         
         # Check psychologist
         assert field_mapping["nome_psicologo"] == "Dr. Ana Paula"
+
+    def test_classifies_wisc_score(self):
+        """Ensure WISC raw scores generate classification text."""
+        model = LaudoDataModel()
+        model.set_test_results({"QIT_WISC": 118})
+
+        assert model.test_results["QIT_WISC"] == 118
+        assert model.test_results["QIT_out"] == "Média superior"
+
+    def test_bpa_general_classification_alias(self):
+        """BPA general attention should expose classification and aliases."""
+        model = LaudoDataModel()
+        model.set_test_results({"AG_BPA": 85})
+
+        assert model.test_results["AG_out"] == "Médio superior"
+        field_mapping = model.get_field_mapping()
+        assert field_mapping["AG_out"] == "Médio superior"
+        assert field_mapping["AG_pontuacao"] == "85"
+
+    def test_bpa_general_computed_from_components(self):
+        """When only component scores exist, compute AG automatically."""
+        model = LaudoDataModel()
+        model.set_test_results({"AC_BPA": 45, "AD_BPA": 65, "AA_BPA": 90})
+
+        assert model.test_results["AG_BPA"] == 67
+        assert model.test_results["AG_out"] == "Médio"
+        mapping = model.get_field_mapping()
+        assert mapping["AG_pontuacao"] == "67"
+
+    def test_wisc_subtest_classification(self):
+        """WISC subtests should reuse classification table and clamp values."""
+        model = LaudoDataModel()
+        model.set_test_results({"DIGS_WISC": 123})
+
+        assert model.test_results["DIGS_out"] == "Acima da média"
 

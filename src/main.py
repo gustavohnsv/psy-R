@@ -8,6 +8,7 @@ from app.views import (
     PatientScreen,
     TemplateFieldsScreen,
     TestsScreen,
+    ConclusionScreen,
     ReviewScreen,
 )
 from app.models import LaudoDataModel
@@ -46,8 +47,7 @@ class MainWindow(QMainWindow):
         self.tela_conclusoes_section.set_sections(["conclusoes"])
 
         # Keep a backward-compatible separate ConclusionScreen instance (some tests / callers expect it)
-        from app.views.conclusion import ConclusionScreen
-        self.tela_conclusao = ConclusionScreen()
+        self.tela_conclusao = ConclusionScreen(data_model=self.data_model)
 
         self.tela_testes = TestsScreen()
         self.tela_revisao = ReviewScreen(data_model=self.data_model)
@@ -112,6 +112,8 @@ class MainWindow(QMainWindow):
         # If the target widget is any TemplateFieldsScreen, populate it with stored values
         if isinstance(widget, TemplateFieldsScreen):
             widget.set_data(self.data_model.get_template_field_values())
+        elif isinstance(widget, ConclusionScreen):
+            widget.refresh_calculated_data()
     
     def _coletar_dados_tela_atual(self):
         """Collect data from the currently visible screen."""
@@ -159,6 +161,8 @@ class MainWindow(QMainWindow):
             test_data = self.tela_testes.get_data()
             if test_data:
                 self.data_model.set_test_results(test_data)
+                if hasattr(self, "tela_conclusao"):
+                    self.tela_conclusao.refresh_calculated_data()
         
         # Note: explicit ConclusionScreen removed; conclusion data now comes from conclusions section above.
     
