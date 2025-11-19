@@ -60,9 +60,13 @@ def sample_resp2_data():
 def sample_test_results():
     """Sample test results for testing."""
     return {
-        "QIT_out": "105",
-        "ICV_out": "110",
-        "IOP_out": "100",
+        "QIT_WISC": 116,
+        "ICV_WISC": 110,
+        "IOP_WISC": 100,
+        "F1_ETDAH": 82,
+        "SRS_ESCORE_TOTAL": 61,
+        "CARS_PONTUACAO": 30,
+        "TASK_NEUP": 72,
         "ETDAH_CONCLUSAO_BLOCO": "Resultado esperado"
     }
 

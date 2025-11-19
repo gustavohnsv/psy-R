@@ -1,9 +1,85 @@
 from functools import partial
+from typing import Dict, Any
+
 from PySide6.QtWidgets import QWidget, QPushButton, QStackedWidget, QSpinBox
 from PySide6.QtCore import Signal
 
 from .ui_tests import Ui_TelaTestes
 from app.services.test_tables_loader import TestTablesLoader
+
+
+# Mapping from UI widget names to canonical template field names expected
+# downstream (e.g., by LaudoDataModel/TestResultClassifier).
+TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
+    "wisc": {
+        "checkbox": "checkBox_incluir_wisc4",
+        "fields": {
+            "spinBox_icv_wisc4": "ICV_WISC",
+            "spinBox_iop_wisc4": "IOP_WISC",
+            "spinBo_imo_wisc4": "IMO_WISC",
+            "spinBox_ivp_wisc4": "IVP_WISC",
+            "spinBox": "DIGS_WISC",
+            "spinBox_2": "SNL_WISC",
+            "spinBox_3": "ARIT_WISC",
+            "spinBox_4": "SEME_WISC",
+            "spinBox_5": "RV_WISC",
+            "spinBox_6": "RNV_WISC",
+            "spinBox_7": "CUBE_WISC",
+            "spinBox_8": "VP_WISC",
+        },
+    },
+    "ravlt": {
+        "checkbox": "checkBox_incluir_ravlt",
+        "fields": {
+            "spinBox_r1_ravlt": "ALT_RAVLT",
+            "spinBox_r2_ravlt": "VE_RAVLT",
+            "spinBox_r3_ravlt": "IP_RAVLT",
+            "spinBox_r4_ravlt": "IR_RAVLT",
+        },
+    },
+    "bpa": {
+        "checkbox": "checkBox_incluir_bpa2",
+        "fields": {
+            "spinBox_ac_bpa2": "AC_BPA",
+            "spinBox_ad_bpa2": "AD_BPA",
+            "spinBox_aa_bpa2": "AA_BPA",
+        },
+    },
+    "neupsilin": {
+        "checkbox": "checkBox_incluir_neupsilin",
+        "fields": {
+            "spinBox_tarefas_neupsilin": "TASK_NEUP",
+        },
+    },
+    "srs": {
+        "checkbox": "checkBox_incluir_srs2",
+        "fields": {
+            "spinBox_TODO_srs2": "SRS_ESCORE_TOTAL",
+        },
+    },
+    "etdah": {
+        "checkbox": "checkBox_incluir_etdah",
+        "fields": {
+            "spinBox_fac1_etdah": "F1_ETDAH",
+            "spinBox_fac2_etdah": "F2_ETDAH",
+            "spinBox_fac3_etdah": "F3_ETDAH",
+            "spinBox_fac4_etdah": "F4_ETDAH",
+        },
+    },
+    "cars": {
+        "checkbox": "checkBox_incluir_cars2",
+        "fields": {
+            "spinBox_TODO_cars2": "CARS_PONTUACAO",
+        },
+    },
+    "fdt": {
+        "checkbox": "checkBox_incluir_fdt",
+        "fields": {
+            "spinBox_flexcog_fdt": "FC_FDT",
+            "spinBox_ctlinib_fdt": "CI_FDT",
+        },
+    },
+}
 
 
 class TestsScreen(QWidget):
@@ -96,49 +172,21 @@ class TestsScreen(QWidget):
         """Collect test results from the UI.
 
         Only includes tests with the 'incluir' checkbox checked.
-        Returns a dict keyed by test prefix (e.g. 'wisc4') containing widget values.
+        Returns a flat dict where keys are canonical template field names.
         """
-        results = {}
+        results: Dict[str, Any] = {}
 
-        # mapping of test key -> (incluir_checkbox_attr, page_widget_prefix)
-        mapping = {
-            "wisc": ("checkBox_incluir_wisc4", "wisc4"),
-            "ravlt": ("checkBox_incluir_ravlt", "ravlt"),
-            "bpa": ("checkBox_incluir_bpa2", "bpa2"),
-            "neupsilin": ("checkBox_incluir_neupsilin", "neupsilin"),
-            "srs": ("checkBox_incluir_srs2", "srs2"),
-            "etdah": ("checkBox_incluir_etdah", "etdah"),
-            "cars": ("checkBox_incluir_cars2", "cars2"),
-            "htp": ("checkBox_incluir_htp", "htp"),
-            "fdt": ("checkBox_incluir_fdt", "fdt"),
-        }
-
-        for key, (checkbox_attr, prefix) in mapping.items():
-            incluir = getattr(self.ui, checkbox_attr, None)
-            if incluir is None:
+        for config in TEST_FIELD_CONFIG.values():
+            checkbox_name = config.get("checkbox")
+            if not checkbox_name:
                 continue
-            if not incluir.isChecked():
-                # skip tests not included
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox is None or not checkbox.isChecked():
                 continue
 
-            # collect all spinboxes on the page identified by prefix
-            page_values = {}
-            for name in dir(self.ui):
-                if name.startswith("spin") and prefix in name:
-                    widget = getattr(self.ui, name)
-                    if isinstance(widget, QSpinBox):
-                        page_values[name] = widget.value()
-
-            # fallback: collect any spinboxes in the page group box
-            if not page_values:
-                # try to find groupBox with prefix and collect spinboxes underneath
-                for attr in dir(self.ui):
-                    if prefix in attr and "groupBox" in attr:
-                        gb = getattr(self.ui, attr)
-                        # iterate children
-                        for child in gb.findChildren(QSpinBox):
-                            page_values[child.objectName()] = child.value()
-
-            results[prefix] = page_values
+            for widget_name, field_name in config.get("fields", {}).items():
+                widget = getattr(self.ui, widget_name, None)
+                if isinstance(widget, QSpinBox):
+                    results[field_name] = widget.value()
 
         return results

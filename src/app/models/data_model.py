@@ -1,6 +1,8 @@
 from docx import Document
 from typing import Dict, Optional, Any
 
+from app.services.test_result_classifier import TestResultClassifier
+
 
 class LaudoDataModel:
     """Central data model to store all collected data for psychological report generation."""
@@ -36,6 +38,7 @@ class LaudoDataModel:
         
         # Test results
         self.test_results: Dict[str, Any] = {}
+        self._test_classifier = TestResultClassifier()
         
         # Conclusion text
         self.conclusion_text: str = ""
@@ -98,7 +101,15 @@ class LaudoDataModel:
     
     def set_test_results(self, results: Dict[str, Any]):
         """Update test results."""
-        self.test_results.update(results)
+        if not isinstance(results, dict):
+            return
+
+        try:
+            classified = self._test_classifier.classify_results(results)
+        except Exception:
+            classified = results
+
+        self.test_results.update(classified)
     
     def set_conclusion_text(self, text: str):
         """Set conclusion text."""
@@ -200,9 +211,17 @@ class LaudoDataModel:
                 for template_name in field_translations[key]:
                     mapping[template_name] = str(value) if value is not None else ""
         
-        # Test result fields (no translation needed, use as-is)
+        # Test result fields with optional aliases for template compatibility
+        test_field_translations = {
+            "AG_BPA": ["AG_pontuacao"],
+        }
+
         for key, value in self.test_results.items():
-            mapping[key] = str(value) if value is not None else ""
+            str_value = str(value) if value is not None else ""
+            mapping[key] = str_value
+            if key in test_field_translations:
+                for alias in test_field_translations[key]:
+                    mapping.setdefault(alias, str_value)
         
         # Conclusion field
         mapping["conclusao_text"] = self.conclusion_text
