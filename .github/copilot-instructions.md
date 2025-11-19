@@ -28,9 +28,9 @@ Why this matters: UI screens call `get_data()` / `set_data()` and the `MainWindo
 
 ## How to run / test (developer workflows)
 - Run the GUI (development):
-  - From repo root: `./run.sh` (this does `cd src && python main.py`).
+  - From repo root: `uv run ./run.sh` (this does `cd src && python main.py`).
 - Regenerate compiled UI modules after editing `.ui` files: `./update.sh`.
-- Run test suite (configured in `pytest.ini`): from repo root run `pytest`. The project `pytest.ini` already adds coverage and HTML report options.
+- Run test suite (configured in `pytest.ini`): from repo root run `uv run pytest`. The project `pytest.ini` already adds coverage and HTML report options.
   - Run a focused unit test: `pytest tests/test_data_model.py::TestLaudoDataModel::test_initialization -q`.
 
 ## Tests & fixtures to follow for examples
