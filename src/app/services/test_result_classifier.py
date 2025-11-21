@@ -172,6 +172,10 @@ class TestResultClassifier:
         mapping = {
             "CI_FDT": "CI_out",
             "FC_FDT": "FC_out",
+            "LEITURA_FDT": "LEITURA_out",
+            "CONTAGEM_FDT": "CONTAGEM_out",
+            "ESCOLHA_FDT": "ESCOLHA_out",
+            "MUDANCA_FDT": "MUDANCA_out",
         }
 
         for raw_field, result_field in mapping.items():
@@ -208,24 +212,7 @@ class TestResultClassifier:
         else:
             self._store_if_empty(target, "SRS_NIVEL", classification)
 
-    def _apply_etdah(self, target: Dict[str, Any], source: Dict[str, Any]) -> None:
-        table_key = "etdah"
-        if table_key not in self._tables:
-            return
 
-        prefixes = ("F1", "F2", "F3", "F4", "TOTAL")
-        for prefix in prefixes:
-            raw_value = source.get(f"{prefix}_ETDAH")
-            if raw_value is None and prefix == "TOTAL":
-                # alguns templates usam ETADH por engano
-                raw_value = source.get("TOTAL_ETADH")
-            percentile = self._to_number(raw_value)
-            if percentile is None:
-                continue
-            classification = self._classify_value(table_key, percentile)
-            if classification is None:
-                continue
-            self._store_if_empty(target, f"{prefix}_out", classification)
 
     def _apply_cars(self, target: Dict[str, Any], source: Dict[str, Any]) -> None:
         table_key = "cars"
@@ -236,7 +223,8 @@ class TestResultClassifier:
         if raw_score is None:
             return
 
-        classification = self._classify_value(table_key, raw_score, text_key="interpretacao")
+        # Use standard classification which now combines text and interpretation
+        classification = self._classify_value(table_key, raw_score)
         if classification is None:
             return
         self._store_if_empty(target, "CARS_INTERPRETACAO", classification)
@@ -253,6 +241,60 @@ class TestResultClassifier:
         if classification is None:
             return
         self._store_if_empty(target, "TASK_out", classification)
+
+    def _apply_etdah(self, target: Dict[str, Any], source: Dict[str, Any]) -> None:
+        table_key = "etdah"
+        if table_key not in self._tables:
+            return
+
+        prefixes = ("F1", "F2", "F3", "F4", "TOTAL")
+        scores = {}
+        for prefix in prefixes:
+            raw_value = source.get(f"{prefix}_ETDAH")
+            if raw_value is None and prefix == "TOTAL":
+                # alguns templates usam ETADH por engano
+                raw_value = source.get("TOTAL_ETADH")
+            percentile = self._to_number(raw_value)
+            if percentile is None:
+                continue
+            
+            scores[prefix] = percentile
+            classification = self._classify_value(table_key, percentile)
+            if classification is None:
+                continue
+            self._store_if_empty(target, f"{prefix}_out", classification)
+
+        # Conclusion Block Logic
+        # Determine severity based on factors (simplified logic: if any is Elevated -> Elevated text, else if Attention -> Attention text, else Expected)
+        # Or use a more specific rule if defined. For now, let's check the highest severity found.
+        
+        highest_severity = 0 # 0: Expected, 1: Attention, 2: Elevated
+        
+        for prefix in ("F1", "F2", "F3", "F4"):
+            score = scores.get(prefix)
+            if score is None:
+                continue
+            
+            # Check against rules manually or reuse classify_value if it returned raw text (but we combined it now...)
+            # Let's look up the raw text again without interpretation combination
+            raw_text = self._classify_value(table_key, score, text_key="texto")
+            # Note: _classify_value with text_key="texto" WILL combine interpretation if we don't stop it.
+            # But wait, ETDAH table doesn't have "interpretacao" fields in classifications, only "texto".
+            # So it's safe.
+            
+            if raw_text == "Elevado":
+                highest_severity = max(highest_severity, 2)
+            elif raw_text == "Atenção":
+                highest_severity = max(highest_severity, 1)
+        
+        table = self._tables.get(table_key)
+        if table and "opcoes_texto_analise" in table:
+            options = table["opcoes_texto_analise"].get("ETDAH_CONCLUSAO_BLOCO", [])
+            if len(options) >= 3:
+                # Map severity to index: 2 (Elevado) -> 0, 1 (Atenção) -> 1, 0 (Esperado) -> 2
+                index_map = {2: 0, 1: 1, 0: 2}
+                selected_text = options[index_map[highest_severity]]
+                self._store_if_empty(target, "ETDAH_CONCLUSAO_BLOCO", selected_text)
 
     # Low-level utilities --------------------------------------------------------
     def _classify_value(
@@ -312,6 +354,23 @@ class TestResultClassifier:
 
         if chosen and postprocess:
             chosen = postprocess(chosen)
+
+        # Combine with interpretation if available and not already combined
+        if chosen and text_key != "interpretacao":
+             # Find the rule that matched
+             for rule in rules_list:
+                try:
+                    min_value = float(rule.get("faixa_min"))
+                    max_value = float(rule.get("faixa_max"))
+                    if min_value <= value <= max_value:
+                        interpretation = rule.get("interpretacao")
+                        if interpretation:
+                            # Check if already combined (avoid double combination if called recursively)
+                            if ": " not in chosen:
+                                chosen = f"{chosen}: {interpretation}"
+                        break
+                except (TypeError, ValueError):
+                    continue
 
         return chosen
 
