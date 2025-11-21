@@ -298,7 +298,14 @@ class MainController:
             "SRS_ESCORE_TOTAL": 55,
             "F1_ETDAH": 40, "F2_ETDAH": 45, "F3_ETDAH": 50, "F4_ETDAH": 35,
             "CARS_PONTUACAO": 25,
-            "FC_FDT": 30, "CI_FDT": 28
+            "FC_FDT": 30, "CI_FDT": 28,
+            # HTP Demo Data
+            "HTP_ASPECTOS_FORMAIS_DESC": "boa exploração de cores e cenários",
+            "HTP_AMBIENTE_INFERENCIA": "nos direcionam para um ambiente familiar acolhedor e com bom suporte emocional.",
+            "HTP_CONECTOR": "Além disso,",
+            "HTP_PROJECAO_DESC": "boa capacidade de projeção de sentimentos e conflitos",
+            "HTP_PROJECAO_COMPLEMENTO": "utilizando os personagens e elementos para expressar seus conflitos de forma simbólica.",
+            "HTP_CONCLUSAO_ANALISE": "Isso sugere bons recursos internos para lidar com a realidade, apesar de certa imaturidade emocional."
         }
 
         # Update Data Model

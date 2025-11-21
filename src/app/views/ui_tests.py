@@ -18,7 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QGroupBox,
     QHBoxLayout, QLabel, QPushButton, QRadioButton,
     QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
-    QStackedWidget, QVBoxLayout, QWidget)
+    QStackedWidget, QVBoxLayout, QWidget, QComboBox)
 
 class Ui_TelaTestes(object):
     def setupUi(self, TelaTestes):
@@ -578,10 +578,10 @@ class Ui_TelaTestes(object):
 
         self.formLayout_srs2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_srs2)
 
-        self.spinBox_TODO_srs2 = QSpinBox(self.groupBox_dados_teste_srs2)
-        self.spinBox_TODO_srs2.setObjectName(u"spinBox_TODO_srs2")
+        self.spinBox_srs_total = QSpinBox(self.groupBox_dados_teste_srs2)
+        self.spinBox_srs_total.setObjectName(u"spinBox_srs_total")
 
-        self.formLayout_srs2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_srs2)
+        self.formLayout_srs2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_srs_total)
 
 
         self.verticalLayout_srs2.addWidget(self.groupBox_dados_teste_srs2)
@@ -728,10 +728,10 @@ class Ui_TelaTestes(object):
 
         self.formLayout_cars2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_cars2)
 
-        self.spinBox_TODO_cars2 = QSpinBox(self.groupBox_dados_teste_cars2)
-        self.spinBox_TODO_cars2.setObjectName(u"spinBox_TODO_cars2")
+        self.spinBox_cars_pontuacao = QSpinBox(self.groupBox_dados_teste_cars2)
+        self.spinBox_cars_pontuacao.setObjectName(u"spinBox_cars_pontuacao")
 
-        self.formLayout_cars2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_cars2)
+        self.formLayout_cars2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_cars_pontuacao)
 
 
         self.verticalLayout_cars2.addWidget(self.groupBox_dados_teste_cars2)
@@ -783,15 +783,61 @@ class Ui_TelaTestes(object):
         self.groupBox_dados_teste_htp.setObjectName(u"groupBox_dados_teste_htp")
         self.formLayout_htp = QFormLayout(self.groupBox_dados_teste_htp)
         self.formLayout_htp.setObjectName(u"formLayout_htp")
-        self.label_TODO_htp = QLabel(self.groupBox_dados_teste_htp)
-        self.label_TODO_htp.setObjectName(u"label_TODO_htp")
+        
+        # HTP Fields
+        self.label_htp_aspectos = QLabel(self.groupBox_dados_teste_htp)
+        self.label_htp_aspectos.setObjectName(u"label_htp_aspectos")
+        self.label_htp_aspectos.setText("Aspectos Formais")
+        self.formLayout_htp.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_htp_aspectos)
+        
+        self.comboBox_htp_aspectos = QComboBox(self.groupBox_dados_teste_htp)
+        self.comboBox_htp_aspectos.setObjectName(u"comboBox_htp_aspectos")
+        self.formLayout_htp.setWidget(0, QFormLayout.ItemRole.FieldRole, self.comboBox_htp_aspectos)
 
-        self.formLayout_htp.setWidget(0, QFormLayout.ItemRole.LabelRole, self.label_TODO_htp)
+        self.label_htp_ambiente = QLabel(self.groupBox_dados_teste_htp)
+        self.label_htp_ambiente.setObjectName(u"label_htp_ambiente")
+        self.label_htp_ambiente.setText("Ambiente")
+        self.formLayout_htp.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_htp_ambiente)
+        
+        self.comboBox_htp_ambiente = QComboBox(self.groupBox_dados_teste_htp)
+        self.comboBox_htp_ambiente.setObjectName(u"comboBox_htp_ambiente")
+        self.formLayout_htp.setWidget(1, QFormLayout.ItemRole.FieldRole, self.comboBox_htp_ambiente)
 
-        self.spinBox_TODO_htp = QSpinBox(self.groupBox_dados_teste_htp)
-        self.spinBox_TODO_htp.setObjectName(u"spinBox_TODO_htp")
+        self.label_htp_conector = QLabel(self.groupBox_dados_teste_htp)
+        self.label_htp_conector.setObjectName(u"label_htp_conector")
+        self.label_htp_conector.setText("Conector")
+        self.formLayout_htp.setWidget(2, QFormLayout.ItemRole.LabelRole, self.label_htp_conector)
+        
+        self.comboBox_htp_conector = QComboBox(self.groupBox_dados_teste_htp)
+        self.comboBox_htp_conector.setObjectName(u"comboBox_htp_conector")
+        self.formLayout_htp.setWidget(2, QFormLayout.ItemRole.FieldRole, self.comboBox_htp_conector)
 
-        self.formLayout_htp.setWidget(0, QFormLayout.ItemRole.FieldRole, self.spinBox_TODO_htp)
+        self.label_htp_projecao = QLabel(self.groupBox_dados_teste_htp)
+        self.label_htp_projecao.setObjectName(u"label_htp_projecao")
+        self.label_htp_projecao.setText("Projeção")
+        self.formLayout_htp.setWidget(3, QFormLayout.ItemRole.LabelRole, self.label_htp_projecao)
+        
+        self.comboBox_htp_projecao = QComboBox(self.groupBox_dados_teste_htp)
+        self.comboBox_htp_projecao.setObjectName(u"comboBox_htp_projecao")
+        self.formLayout_htp.setWidget(3, QFormLayout.ItemRole.FieldRole, self.comboBox_htp_projecao)
+
+        self.label_htp_projecao_compl = QLabel(self.groupBox_dados_teste_htp)
+        self.label_htp_projecao_compl.setObjectName(u"label_htp_projecao_compl")
+        self.label_htp_projecao_compl.setText("Complemento Projeção")
+        self.formLayout_htp.setWidget(4, QFormLayout.ItemRole.LabelRole, self.label_htp_projecao_compl)
+        
+        self.comboBox_htp_projecao_compl = QComboBox(self.groupBox_dados_teste_htp)
+        self.comboBox_htp_projecao_compl.setObjectName(u"comboBox_htp_projecao_compl")
+        self.formLayout_htp.setWidget(4, QFormLayout.ItemRole.FieldRole, self.comboBox_htp_projecao_compl)
+
+        self.label_htp_conclusao = QLabel(self.groupBox_dados_teste_htp)
+        self.label_htp_conclusao.setObjectName(u"label_htp_conclusao")
+        self.label_htp_conclusao.setText("Conclusão")
+        self.formLayout_htp.setWidget(5, QFormLayout.ItemRole.LabelRole, self.label_htp_conclusao)
+        
+        self.comboBox_htp_conclusao = QComboBox(self.groupBox_dados_teste_htp)
+        self.comboBox_htp_conclusao.setObjectName(u"comboBox_htp_conclusao")
+        self.formLayout_htp.setWidget(5, QFormLayout.ItemRole.FieldRole, self.comboBox_htp_conclusao)
 
 
         self.verticalLayout_htp.addWidget(self.groupBox_dados_teste_htp)
@@ -974,7 +1020,7 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_srs2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_srs2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_srs2.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_srs2.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_TODO_srs2.setText(QCoreApplication.translate("TelaTestes", u"Escore Total", None))
         self.label_titulo_etdah.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - ETDAH-PAIS", None))
         self.groupBox_faixa_etaria_etdah.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_etdah.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
@@ -993,7 +1039,7 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_cars2.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_cars2.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_cars2.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_cars2.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_TODO_cars2.setText(QCoreApplication.translate("TelaTestes", u"Pontua\u00e7\u00e3o", None))
         self.label_titulo_htp.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - HTP", None))
         self.groupBox_faixa_etaria_htp.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_htp.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))
@@ -1001,7 +1047,12 @@ class Ui_TelaTestes(object):
         self.radioButton_escolar_htp.setText(QCoreApplication.translate("TelaTestes", u"Escolar", None))
         self.radioButton_adulto_htp.setText(QCoreApplication.translate("TelaTestes", u"Adulto", None))
         self.groupBox_dados_teste_htp.setTitle(QCoreApplication.translate("TelaTestes", u"Dados do Teste", None))
-        self.label_TODO_htp.setText(QCoreApplication.translate("TelaTestes", u"TODO", None))
+        self.label_htp_aspectos.setText(QCoreApplication.translate("TelaTestes", u"Aspectos Formais", None))
+        self.label_htp_ambiente.setText(QCoreApplication.translate("TelaTestes", u"Ambiente", None))
+        self.label_htp_conector.setText(QCoreApplication.translate("TelaTestes", u"Conector", None))
+        self.label_htp_projecao.setText(QCoreApplication.translate("TelaTestes", u"Proje\u00e7\u00e3o", None))
+        self.label_htp_projecao_compl.setText(QCoreApplication.translate("TelaTestes", u"Complemento Proje\u00e7\u00e3o", None))
+        self.label_htp_conclusao.setText(QCoreApplication.translate("TelaTestes", u"Conclus\u00e3o", None))
         self.label_titulo_fdt.setText(QCoreApplication.translate("TelaTestes", u"Formul\u00e1rio - FDT", None))
         self.groupBox_faixa_etaria_fdt.setTitle(QCoreApplication.translate("TelaTestes", u"Faixa Et\u00e1ria", None))
         self.checkBox_incluir_fdt.setText(QCoreApplication.translate("TelaTestes", u"Incluir", None))

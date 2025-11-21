@@ -1,7 +1,7 @@
 from functools import partial
 from typing import Dict, Any
 
-from PySide6.QtWidgets import QWidget, QPushButton, QStackedWidget, QSpinBox
+from PySide6.QtWidgets import QWidget, QPushButton, QStackedWidget, QSpinBox, QComboBox
 from PySide6.QtCore import Signal
 
 from .ui_tests import Ui_TelaTestes
@@ -54,7 +54,7 @@ TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
     "srs": {
         "checkbox": "checkBox_incluir_srs2",
         "fields": {
-            "spinBox_TODO_srs2": "SRS_ESCORE_TOTAL",
+            "spinBox_srs_total": "SRS_ESCORE_TOTAL",
         },
     },
     "etdah": {
@@ -69,7 +69,18 @@ TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
     "cars": {
         "checkbox": "checkBox_incluir_cars2",
         "fields": {
-            "spinBox_TODO_cars2": "CARS_PONTUACAO",
+            "spinBox_cars_pontuacao": "CARS_PONTUACAO",
+        },
+    },
+    "htp": {
+        "checkbox": "checkBox_incluir_htp",
+        "fields": {
+            "comboBox_htp_aspectos": "HTP_ASPECTOS_FORMAIS_DESC",
+            "comboBox_htp_ambiente": "HTP_AMBIENTE_INFERENCIA",
+            "comboBox_htp_conector": "HTP_CONECTOR",
+            "comboBox_htp_projecao": "HTP_PROJECAO_DESC",
+            "comboBox_htp_projecao_compl": "HTP_PROJECAO_COMPLEMENTO",
+            "comboBox_htp_conclusao": "HTP_CONCLUSAO_ANALISE",
         },
     },
     "fdt": {
@@ -168,6 +179,20 @@ class TestsScreen(QWidget):
                 if title:
                     label.setText(title)
 
+        # Populate HTP ComboBoxes
+        htp_data = self.test_tables.get("htp", {})
+        if htp_data and "opcoes_texto_analise" in htp_data:
+            options_map = htp_data["opcoes_texto_analise"]
+            # Map field names to widget names based on TEST_FIELD_CONFIG
+            htp_config = TEST_FIELD_CONFIG.get("htp", {}).get("fields", {})
+            
+            for widget_name, field_name in htp_config.items():
+                if field_name in options_map:
+                    widget = getattr(self.ui, widget_name, None)
+                    if isinstance(widget, QComboBox):
+                        widget.clear()
+                        widget.addItems(options_map[field_name])
+
     def get_data(self):
         """Collect test results from the UI.
 
@@ -188,6 +213,8 @@ class TestsScreen(QWidget):
                 widget = getattr(self.ui, widget_name, None)
                 if isinstance(widget, QSpinBox):
                     results[field_name] = widget.value()
+                elif isinstance(widget, QComboBox):
+                    results[field_name] = widget.currentText()
 
         return results
 
@@ -221,4 +248,13 @@ class TestsScreen(QWidget):
                                 val = int(data[field_name])
                                 widget.setValue(val)
                             except (ValueError, TypeError):
+                                pass
+                        elif isinstance(widget, QComboBox):
+                            text_val = str(data[field_name])
+                            index = widget.findText(text_val)
+                            if index >= 0:
+                                widget.setCurrentIndex(index)
+                            else:
+                                # Optional: if text not found, maybe add it or just ignore?
+                                # For now, we ignore if not in options, or we could set current text if editable.
                                 pass
