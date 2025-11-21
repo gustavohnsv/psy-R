@@ -196,8 +196,17 @@ class TestResultClassifier:
         if classification is None:
             return
 
-        for field_name in ("SRS_ESCORE_T_FAIXA", "SRS_NIVEL"):
-            self._store_if_empty(target, field_name, classification)
+        # Store short version
+        self._store_if_empty(target, "SRS_ESCORE_T_FAIXA", classification)
+
+        interpretation = self._classify_value(table_key, raw_score, text_key="interpretacao")
+        
+        if interpretation:
+            combined = f"{classification}: {interpretation}"
+            self._store_if_empty(target, "SRS_NIVEL", combined)
+            self._store_if_empty(target, "SRS_INTERPRETACAO", interpretation)
+        else:
+            self._store_if_empty(target, "SRS_NIVEL", classification)
 
     def _apply_etdah(self, target: Dict[str, Any], source: Dict[str, Any]) -> None:
         table_key = "etdah"

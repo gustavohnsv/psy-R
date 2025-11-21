@@ -4,28 +4,31 @@
   // com base nas faixas do gráfico SRS-2.
   "teste": "SRS-2",
   "tipo_de_regra": "escore_t",
-  
   // Regras extraídas da análise do gráfico
   "classificacoes": [
     {
       "faixa_min": 76,
       "faixa_max": 999, // Zona "Severo" (vermelha)
-      "texto": "Severo"
+      "texto": "Severo",
+      "interpretacao": "Indica prejuízos clinicamente significativos no comportamento social recíproco, que resultam em uma interferência severa e duradoura nas interações sociais cotidianas. Tais pontuações estão fortemente associadas a um diagnóstico clínico de Transtorno do Espectro Autista (TEA)."
     },
     {
       "faixa_min": 66,
       "faixa_max": 75, // Zona "Moderado" (amarelo escuro/laranja)
-      "texto": "Moderado"
+      "texto": "Moderado",
+      "interpretacao": "Indica prejuízos de moderados a severos no comportamento social recíproco, que são evidentes para os observadores e interferem significativamente nas interações sociais cotidianas. Essas pontuações são frequentemente encontradas em indivíduos com TEA que necessitam de apoio substancial."
     },
     {
       "faixa_min": 60,
       "faixa_max": 65, // Zona "Leve" (amarelo claro)
-      "texto": "Leve"
+      "texto": "Leve",
+      "interpretacao": "Pode apresentar prejuízos clinicamente significativos no comportamento social recíproco que são clinicamente significativas e podem interferir de leve a moderado nas interações sociais cotidianas. Essas pontuações geralmente são encontradas em indivíduos com autismo leve e/ou de alta funcionalidade."
     },
     {
       "faixa_min": 0,
       "faixa_max": 59, // Zona "Normal" (verde)
-      "texto": "Normal"
+      "texto": "Normal",
+      "interpretacao": "Indica que o comportamento social recíproco está dentro da faixa esperada, sem indicadores clinicamente significativos de dificuldades associadas ao TEA."
     }
   ]
 }
