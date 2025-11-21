@@ -34,6 +34,17 @@ class MainWindow(QMainWindow):
         self.create_and_connect_screens()
         self.stacked_widget.setCurrentIndex(0)
 
+        self.setup_menu()
+
+    def setup_menu(self):
+        menu_bar = self.menuBar()
+        
+        # Debug / Developer Menu
+        debug_menu = menu_bar.addMenu("Debug")
+        
+        fill_demo_action = debug_menu.addAction("Preencher Dados de Teste")
+        fill_demo_action.triggered.connect(self.main_controller.fill_demo_data)
+
     def create_and_connect_screens(self):
 
         self.template_screen = TemplateScreen()

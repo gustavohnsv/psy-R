@@ -190,3 +190,35 @@ class TestsScreen(QWidget):
                     results[field_name] = widget.value()
 
         return results
+
+    def set_data(self, data: Dict[str, Any]):
+        """Populate the UI fields with data from a dictionary.
+        
+        The dictionary keys should match the canonical template field names.
+        """
+        if not data:
+            return
+
+        for config in TEST_FIELD_CONFIG.values():
+            checkbox_name = config.get("checkbox")
+            if not checkbox_name:
+                continue
+            
+            # Check if any of the fields for this test are present in the data
+            fields_map = config.get("fields", {})
+            has_data = any(field_name in data for field_name in fields_map.values())
+            
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(has_data)
+
+            if has_data:
+                for widget_name, field_name in fields_map.items():
+                    if field_name in data:
+                        widget = getattr(self.ui, widget_name, None)
+                        if isinstance(widget, QSpinBox):
+                            try:
+                                val = int(data[field_name])
+                                widget.setValue(val)
+                            except (ValueError, TypeError):
+                                pass

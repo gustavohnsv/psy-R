@@ -94,3 +94,35 @@ class PatientScreen(QWidget):
                 "solicitante_crp": self.ui.lineEdit_solicitante_crp.text()
             }
         }
+
+    def set_data(self, data: dict):
+        """Populate the UI fields with data from a dictionary."""
+        patient = data.get("patient", {})
+        self.ui.lineEdit_nome.setText(patient.get("patient_name", ""))
+        self.ui.dateEdit_nascimento.setDate(patient.get("patient_birth_date")) # Assuming QDate object or handle string conversion if needed
+        # If passing string to dateEdit, might need setDate(QDate.fromString(str, fmt)) or setText if it accepts it. 
+        # The capture uses text(), so setText might work if mask is set, but setDate is safer if we have QDate.
+        # Let's check how it's used. The capture uses .text(). 
+        # For simplicity in demo data, we can try setText if it's a QDateEdit with a display format.
+        # Actually, let's look at how to set date.
+        if "patient_birth" in patient:
+             self.ui.dateEdit_nascimento.lineEdit().setText(patient.get("patient_birth"))
+        
+        self.ui.lineEdit_escola.setText(patient.get("patient_school", ""))
+        self.ui.lineEdit_turma.setText(patient.get("patient_class", ""))
+
+        resp1 = data.get("resp1", {})
+        self.ui.lineEdit_resp1_nome.setText(resp1.get("resp1_name", ""))
+        self.ui.lineEdit_resp1_profissao.setText(resp1.get("resp1_career", ""))
+        self.ui.lineEdit_resp1_escolaridade.setText(resp1.get("resp1_education", ""))
+        self.ui.lineEdit_resp1_idade.setText(str(resp1.get("resp1_age", "")))
+
+        resp2 = data.get("resp2", {})
+        self.ui.lineEdit_resp2_nome.setText(resp2.get("resp2_name", ""))
+        self.ui.lineEdit_resp2_profissao.setText(resp2.get("resp2_career", ""))
+        self.ui.lineEdit_resp2_escolaridade.setText(resp2.get("resp2_education", ""))
+        self.ui.lineEdit_resp2_idade.setText(str(resp2.get("resp2_age", "")))
+
+        template_fields = data.get("template_fields", {})
+        self.ui.lineEdit_solicitante_nome.setText(template_fields.get("solicitante_nome", ""))
+        self.ui.lineEdit_solicitante_crp.setText(template_fields.get("solicitante_crp", ""))
