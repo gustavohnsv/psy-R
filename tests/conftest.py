@@ -79,8 +79,8 @@ def sample_conclusion_text():
 def sample_psychologist_data():
     """Sample psychologist data for testing."""
     return {
-        "nome_psicologo": "Dr. Ana Paula",
-        "crp_psicologo": "CRP 06/123456"
+        "psychologist_name": "Dr. Ana Paula",
+        "psychologist_crp": "CRP 06/123456"
     }
 
 @pytest.fixture
@@ -88,9 +88,9 @@ def populated_data_model(sample_patient_data, sample_resp1_data, sample_resp2_da
                          sample_test_results, sample_conclusion_text, sample_psychologist_data,
                          sample_document):
     """Create a fully populated data model for testing."""
-    from app.models import LaudoDataModel
+    from app.models import ReportDataModel
     
-    model = LaudoDataModel()
+    model = ReportDataModel()
     model.set_template("/test/path/template.docx", sample_document)
     model.set_patient_data(sample_patient_data)
     model.set_resp1_data(sample_resp1_data)
@@ -102,7 +102,7 @@ def populated_data_model(sample_patient_data, sample_resp1_data, sample_resp2_da
     return model
 
 @pytest.fixture
-def qapp(qtbot):
+def qapp():
     """Create QApplication for GUI tests."""
     from PySide6.QtWidgets import QApplication
     import sys

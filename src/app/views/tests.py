@@ -83,18 +83,18 @@ TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
 
 
 class TestsScreen(QWidget):
-    avancar_clicado = Signal()
-    voltar_clicado = Signal()
+    next_clicked = Signal()
+    back_clicked = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_TelaTestes()
         self.ui.setupUi(self)
 
-        self.ui.btn_avancar.clicked.connect(self.avancar_clicado.emit)
-        self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
+        self.ui.btn_avancar.clicked.connect(self.next_clicked.emit)
+        self.ui.btn_voltar.clicked.connect(self.back_clicked.emit)
 
-        self.configurar_botoes_teste()
+        self.setup_test_buttons()
 
         # Load test configuration tables
         try:
@@ -106,24 +106,24 @@ class TestsScreen(QWidget):
         # Apply loaded tables into UI (titles, ranges)
         self._apply_tables_to_ui()
 
-    def configurar_botoes_teste(self):
+    def setup_test_buttons(self):
         stacked_forms = self.ui.stackedWidget_formularios
 
-        botoes_testes = [
+        test_buttons = [
             self.ui.btn_wisc4, self.ui.btn_ravlt, self.ui.btn_bpa2,
             self.ui.btn_neupsilin, self.ui.btn_srs2, self.ui.btn_etdah,
             self.ui.btn_cars2, self.ui.btn_htp, self.ui.btn_fdt,
         ]
 
-        for i, btn in enumerate(botoes_testes):
-            # O índice 0 é a página "Selecione...", então o botão 1 (i=0) vai para a página 1
-            btn.clicked.connect(partial(self.mostrar_form_teste, stacked_forms, i + 1))
+        for i, btn in enumerate(test_buttons):
+            # Index 0 is the "Select..." page, so button 1 (i=0) goes to page 1
+            btn.clicked.connect(partial(self.show_test_form, stacked_forms, i + 1))
 
-    def mostrar_form_teste(self, stacked_widget, index):
+    def show_test_form(self, stacked_widget, index):
         if index < stacked_widget.count():
             stacked_widget.setCurrentIndex(index)
         else:
-            print(f"Aviso: Formulário de teste (índice {index}) não encontrado.")
+            print(f"Warning: Test form (index {index}) not found.")
 
     def _apply_tables_to_ui(self):
         """Apply loaded test tables into UI labels and widgets.

@@ -4,18 +4,18 @@ from PySide6.QtCore import Signal
 from .ui_patient import Ui_TelaPaciente
 
 class PatientScreen(QWidget):
-    avancar_clicado = Signal()
-    voltar_clicado = Signal()
+    next_clicked = Signal()
+    back_clicked = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_TelaPaciente()
         self.ui.setupUi(self)
 
-        self.ui.btn_avancar.clicked.connect(self.avancar_clicado.emit)
-        self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
+        self.ui.btn_avancar.clicked.connect(self.next_clicked.emit)
+        self.ui.btn_voltar.clicked.connect(self.back_clicked.emit)
 
-        self.configurar_capturar_dados()
+        self.setup_data_capture()
         # Hide chronological age field from the UI (calculated automatically in the data model)
         try:
             self.ui.label_idade_crono.hide()
@@ -24,11 +24,11 @@ class PatientScreen(QWidget):
             # If the UI was regenerated with different names, fail silently
             pass
 
-    def configurar_capturar_dados(self):
-        botao_avancar = self.ui.btn_avancar
-        botao_avancar.clicked.connect(self.capturar_dados)
+    def setup_data_capture(self):
+        next_button = self.ui.btn_avancar
+        next_button.clicked.connect(self.capture_data)
 
-    def capturar_dados(self):
+    def capture_data(self):
         """Legacy method - kept for backward compatibility."""
         data = self.get_data()
         for item in [data.get("patient", {}), data.get("resp1", {}), data.get("resp2", {})]:

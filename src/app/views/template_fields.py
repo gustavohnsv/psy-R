@@ -11,12 +11,12 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Signal
 
 from .ui_template_fields import Ui_TelaCamposTemplate
-from app.services.template_fields_loader import TemplateFieldsLoader
+from app.services.template.loader import TemplateFieldsLoader
 
 
 class TemplateFieldsScreen(QWidget):
-    avancar_clicado = Signal()
-    voltar_clicado = Signal()
+    next_clicked = Signal()
+    back_clicked = Signal()
 
     def __init__(self, parent=None, loader: TemplateFieldsLoader | None = None):
         super().__init__(parent)
@@ -32,8 +32,8 @@ class TemplateFieldsScreen(QWidget):
 
         self._build_dynamic_fields()
 
-        self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
-        self.ui.btn_avancar.clicked.connect(self.avancar_clicado.emit)
+        self.ui.btn_voltar.clicked.connect(self.back_clicked.emit)
+        self.ui.btn_avancar.clicked.connect(self.next_clicked.emit)
 
     def _build_dynamic_fields(self):
         layout = self.ui.verticalLayout_campos

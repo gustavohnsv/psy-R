@@ -238,8 +238,8 @@ class TestDocumentGenerationIntegration:
 class TestEndToEndDocumentGeneration:
     """End-to-end tests for document generation."""
     
-    @patch('main.QFileDialog.getExistingDirectory')
-    @patch('main.QMessageBox')
+    @patch('app.controllers.main_controller.QFileDialog.getExistingDirectory')
+    @patch('app.controllers.main_controller.QMessageBox')
     def test_gerar_laudo_complete_flow(self, mock_messagebox, mock_filedialog, 
                                         tmp_path, qapp):
         """Test the complete gerar_laudo flow."""
@@ -264,7 +264,7 @@ class TestEndToEndDocumentGeneration:
         window.data_model.set_patient_data({"patient_name": "Test Patient"})
         
         # Mock the template processor to avoid PDF conversion issues
-        with patch('main.TemplateProcessor') as mock_processor_class:
+        with patch('app.controllers.main_controller.TemplateProcessor') as mock_processor_class:
             mock_processor = MagicMock()
             mock_processor_class.return_value = mock_processor
             mock_processor.extract_fields.return_value = {"patient_name"}
@@ -272,10 +272,9 @@ class TestEndToEndDocumentGeneration:
             mock_processor.check_required_fields.return_value = ([], [])
             mock_processor.save_document.return_value = str(tmp_path / "output.docx")
             
-            # Call gerar_laudo
-            window.gerar_laudo()
+            # Call generate_report (renamed from gerar_laudo)
+            window.main_controller.generate_report()
             
             # Verify it was called
             assert mock_processor.replace_fields.called
             assert mock_processor.save_document.called
-
