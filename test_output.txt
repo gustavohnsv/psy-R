@@ -1,0 +1,71 @@
+warning: No `requires-python` value found in the workspace. Defaulting to `>=3.14`.
+============================= test session starts ==============================
+platform linux -- Python 3.14.0, pytest-9.0.1, pluggy-1.6.0 -- /home/renanbg/Projects/psy-R/.venv/bin/python3
+cachedir: .pytest_cache
+PySide6 6.10.0 -- Qt runtime 6.10.0 -- Qt compiled 6.10.0
+rootdir: /home/renanbg/Projects/psy-R
+configfile: pytest.ini
+plugins: cov-7.0.0, mock-3.15.1, qt-4.5.0
+collecting ... collected 1 item
+
+tests/test_e2e_gui.py::test_e2e_flow ERROR                               [100%]
+
+==================================== ERRORS ====================================
+_______________________ ERROR at setup of test_e2e_flow ________________________
+file /home/renanbg/Projects/psy-R/tests/test_e2e_gui.py, line 22
+  def test_e2e_flow(app, qtbot, tmp_path, monkeypatch):
+file /home/renanbg/Projects/psy-R/tests/test_e2e_gui.py, line 15
+  @pytest.fixture
+  def app(qtbot):
+file /home/renanbg/Projects/psy-R/.venv/lib64/python3.14/site-packages/pytestqt/plugin.py, line 94
+  @pytest.fixture
+  def qtbot(qapp, request):
+file /home/renanbg/Projects/psy-R/tests/conftest.py, line 104
+  @pytest.fixture
+  def qapp(qtbot):
+E       recursive dependency involving fixture 'qtbot' detected
+>       available fixtures: app, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, class_mocker, cov, doctest_namespace, mocker, module_mocker, monkeypatch, no_cover, package_mocker, populated_data_model, pytestconfig, qapp, qapp_args, qapp_cls, qtbot, qtlog, qtmodeltester, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_conclusion_text, sample_document, sample_patient_data, sample_psychologist_data, sample_resp1_data, sample_resp2_data, sample_template_path, sample_test_results, session_mocker, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/home/renanbg/Projects/psy-R/tests/conftest.py:104
+=============================== warnings summary ===============================
+src/app/views/tests.py:85
+  /home/renanbg/Projects/psy-R/src/app/views/tests.py:85: PytestCollectionWarning: cannot collect test class 'TestsScreen' because it has a __init__ constructor (from: tests/test_e2e_gui.py)
+    class TestsScreen(QWidget):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.14.0-final-0 ________________
+
+Name                                         Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------
+src/app/__init__.py                              1      0   100%
+src/app/data/__init__.py                         0      0   100%
+src/app/models/__init__.py                       2      0   100%
+src/app/models/data_model.py                   103     85    17%   12-50, 57-58, 63-92, 96, 100, 104-112, 116, 120, 124, 128, 132, 150-242, 246, 250
+src/app/services/__init__.py                     4      0   100%
+src/app/services/field_validator.py             27     17    37%   75-89, 102-112, 117
+src/app/services/template_fields_loader.py      23     15    35%   10-12, 16-19, 23-28, 32-33
+src/app/services/template_processor.py         170    144    15%   22, 26, 39-73, 77-84, 88-96, 107-108, 120-129, 143-189, 198-224, 229-272, 280-285, 298-301, 313-328
+src/app/services/test_result_classifier.py     256    234     9%   19-20, 25-39, 43-107, 110-122, 125-165, 168-184, 187-200, 203-219, 222-233, 236-246, 258-307, 311-315, 318-362, 366-368, 372-385
+src/app/services/test_tables_loader.py          34     26    24%   14-16, 19-29, 32-45, 48-50
+src/app/views/__init__.py                        7      0   100%
+src/app/views/conclusion.py                     76     57    25%   92-101, 104-105, 108-112, 115-116, 120, 125-167, 171-175, 179-181
+src/app/views/patient.py                        52     42    19%   11-25, 28-29, 33-36, 41-88
+src/app/views/review.py                        107     95    11%   13-20, 24, 28-29, 33-150
+src/app/views/template.py                       43     28    35%   13-21, 24-25, 28-42, 46, 49-52, 60, 64
+src/app/views/template_fields.py                63     49    22%   22-36, 39-61, 64-72, 76-77, 80-86, 89-94
+src/app/views/tests.py                          67     52    22%   90-107, 110-120, 123-126, 135-169, 177-192
+src/app/views/ui_conclusion.py                  57     51    11%   24-90, 94-99
+src/app/views/ui_patient.py                    176    170     3%   25-253, 257-281
+src/app/views/ui_review.py                      55     49    11%   24-83, 87-91
+src/app/views/ui_template.py                    48     42    12%   24-80, 84-88
+src/app/views/ui_template_fields.py             48     42    12%   24-77, 81-84
+src/app/views/ui_tests.py                      686    680     1%   25-905, 909-1015
+src/main.py                                    161    144    11%   19-30, 34-88, 92-98, 102-108, 111-116, 120-165, 172-177, 182-281, 288-291
+--------------------------------------------------------------------------
+TOTAL                                         2266   2022    11%
+Coverage HTML written to dir htmlcov
+=========================== short test summary info ============================
+ERROR tests/test_e2e_gui.py::test_e2e_flow
+========================= 1 warning, 1 error in 0.90s ==========================

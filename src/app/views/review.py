@@ -1,27 +1,65 @@
-from PySide6.QtWidgets import QWidget
-from PySide6.QtCore import Signal
-from typing import Optional
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QScrollArea
+from PySide6.QtCore import Signal, Qt
 
-from .ui_review import Ui_TelaRevisao
-from app.services import TemplateFieldsLoader
+from app.services.review_service import ReviewService
 
 class ReviewScreen(QWidget):
-    voltar_clicado = Signal()
-    gerar_laudo_clicado = Signal()
+    """Screen for reviewing collected data before report generation."""
+    
+    back_clicked = Signal()
+    generate_report_clicked = Signal()
 
-    def __init__(self, parent=None, data_model=None):
-        super().__init__(parent)
-        self.ui = Ui_TelaRevisao()
-        self.ui.setupUi(self)
-        self.data_model = data_model
-        self.template_fields_loader = TemplateFieldsLoader()
+    def __init__(self, data_model=None):
+        super().__init__()
+        self._data_model = data_model
+        self._review_service = ReviewService()
+        self.setup_ui()
 
-        self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
-        self.ui.btn_gerar_laudo.clicked.connect(self.gerar_laudo_clicado.emit)
+    def setup_ui(self):
+        layout = QVBoxLayout(self)
+
+        # Title
+        lbl_title = QLabel("Revisão e Geração do Laudo")
+        lbl_title.setStyleSheet("font-size: 18px; font-weight: bold;")
+        lbl_title.setAlignment(Qt.AlignCenter)
+        layout.addWidget(lbl_title)
+
+        # Scroll Area for content
+        scroll_area = QScrollArea()
+        scroll_area.setWidgetResizable(True)
+        
+        scroll_content = QWidget()
+        scroll_layout = QVBoxLayout(scroll_content)
+        
+        self.lbl_summary = QLabel("Aqui serão exibidos todos os dados inseridos para a conferência final...")
+        self.lbl_summary.setAlignment(Qt.AlignLeading | Qt.AlignLeft | Qt.AlignTop)
+        self.lbl_summary.setWordWrap(True)
+        self.lbl_summary.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        
+        scroll_layout.addWidget(self.lbl_summary)
+        scroll_area.setWidget(scroll_content)
+        
+        layout.addWidget(scroll_area)
+
+        # Buttons
+        btn_layout = QHBoxLayout()
+        
+        self.btn_back = QPushButton("Voltar")
+        self.btn_back.clicked.connect(self.back_clicked.emit)
+        btn_layout.addWidget(self.btn_back)
+        
+        btn_layout.addStretch()
+        
+        self.btn_generate_report = QPushButton("Confirmar e Gerar Laudo")
+        self.btn_generate_report.setStyleSheet("font-weight: bold;")
+        self.btn_generate_report.clicked.connect(self.generate_report_clicked.emit)
+        btn_layout.addWidget(self.btn_generate_report)
+
+        layout.addLayout(btn_layout)
     
     def set_data_model(self, data_model):
         """Set the data model for this screen."""
-        self.data_model = data_model
+        self._data_model = data_model
     
     def showEvent(self, event):
         """Override showEvent to populate summary when screen is shown."""
@@ -30,121 +68,9 @@ class ReviewScreen(QWidget):
     
     def populate_summary(self):
         """Populate the review screen with collected data summary."""
-        if not self.data_model:
-            self.ui.label_revisao.setText("Nenhum dado disponível para revisão.")
+        if not self._data_model:
+            self.lbl_summary.setText("Nenhum dado disponível para revisão.")
             return
         
-        summary_lines = []
-        summary_lines.append("<h2>Resumo dos Dados Coletados</h2>")
-        summary_lines.append("<hr>")
-        
-        # Template information
-        if self.data_model.template_path:
-            summary_lines.append(f"<b>Template:</b> {self.data_model.template_path}")
-        else:
-            summary_lines.append("<b>Template:</b> <span style='color: red;'>Não carregado</span>")
-        
-        summary_lines.append("<br>")
-        
-        # Patient data
-        summary_lines.append("<h3>Dados do Paciente</h3>")
-        patient = self.data_model.patient_data
-        if patient.get("patient_name"):
-            summary_lines.append(f"<b>Nome:</b> {patient.get('patient_name', 'N/A')}")
-            summary_lines.append(f"<b>Data de Nascimento:</b> {patient.get('patient_birth', 'N/A')}")
-            summary_lines.append(f"<b>Idade Cronológica:</b> {patient.get('patient_crono_age', 'N/A')}")
-            summary_lines.append(f"<b>Escola:</b> {patient.get('patient_school', 'N/A')}")
-            summary_lines.append(f"<b>Turma:</b> {patient.get('patient_class', 'N/A')}")
-        else:
-            summary_lines.append("<span style='color: orange;'>Dados do paciente não preenchidos</span>")
-        
-        summary_lines.append("<br>")
-        
-        # Respondent 1 data
-        summary_lines.append("<h3>1º Responsável</h3>")
-        resp1 = self.data_model.resp1_data
-        if resp1.get("resp1_name"):
-            summary_lines.append(f"<b>Nome:</b> {resp1.get('resp1_name', 'N/A')}")
-            summary_lines.append(f"<b>Profissão:</b> {resp1.get('resp1_career', 'N/A')}")
-            summary_lines.append(f"<b>Escolaridade:</b> {resp1.get('resp1_education', 'N/A')}")
-            summary_lines.append(f"<b>Idade:</b> {resp1.get('resp1_age', 'N/A')}")
-        else:
-            summary_lines.append("<span style='color: orange;'>Dados do 1º responsável não preenchidos</span>")
-        
-        summary_lines.append("<br>")
-        
-        # Respondent 2 data
-        summary_lines.append("<h3>2º Responsável</h3>")
-        resp2 = self.data_model.resp2_data
-        if resp2.get("resp2_name"):
-            summary_lines.append(f"<b>Nome:</b> {resp2.get('resp2_name', 'N/A')}")
-            summary_lines.append(f"<b>Profissão:</b> {resp2.get('resp2_career', 'N/A')}")
-            summary_lines.append(f"<b>Escolaridade:</b> {resp2.get('resp2_education', 'N/A')}")
-            summary_lines.append(f"<b>Idade:</b> {resp2.get('resp2_age', 'N/A')}")
-        else:
-            summary_lines.append("<span style='color: orange;'>Dados do 2º responsável não preenchidos</span>")
-        
-        summary_lines.append("<br>")
-        
-        # Test results
-        summary_lines.append("<h3>Resultados dos Testes</h3>")
-        if self.data_model.test_results:
-            for test_name, test_data in self.data_model.test_results.items():
-                summary_lines.append(f"<b>{test_name}:</b> {test_data}")
-        else:
-            summary_lines.append("<span style='color: orange;'>Nenhum resultado de teste registrado</span>")
-        
-        summary_lines.append("<br>")
-        
-        # Conclusão
-        summary_lines.append("<h3>Conclusão</h3>")
-        if self.data_model.conclusion_text:
-            conclusion_preview = self.data_model.conclusion_text[:200]
-            if len(self.data_model.conclusion_text) > 200:
-                conclusion_preview += "..."
-            summary_lines.append(f"{conclusion_preview}")
-        else:
-            summary_lines.append("<span style='color: orange;'>Conclusão não preenchida</span>")
-        
-        summary_lines.append("<br>")
-
-        # Template fields overview
-        summary_lines.append("<h3>Campos do Template (Não Testes)</h3>")
-        template_values = self.data_model.get_template_field_values()
-        if template_values:
-            for section in self.template_fields_loader.iter_sections():
-                section_rows = []
-                for field in section.get("fields", []):
-                    name = field["name"]
-                    value = template_values.get(name, "")
-                    if value and str(value).strip():
-                        display_value = str(value)
-                        if len(display_value) > 80:
-                            display_value = display_value[:80] + "..."
-                        section_rows.append(f"<b>{field.get('label', name)}:</b> {display_value}")
-                if section_rows:
-                    summary_lines.append(f"<h4>{section.get('label')}</h4>")
-                    summary_lines.extend(section_rows)
-        else:
-            summary_lines.append("<span style='color: orange;'>Nenhum campo adicional preenchido</span>")
-        
-        summary_lines.append("<br>")
-        summary_lines.append("<hr>")
-        
-        # Field mapping preview
-        summary_lines.append("<h3>Mapeamento de Campos</h3>")
-        field_mapping = self.data_model.get_field_mapping()
-        if field_mapping:
-            summary_lines.append("<table border='1' cellpadding='5' style='border-collapse: collapse;'>")
-            summary_lines.append("<tr><th>Campo do Template</th><th>Valor</th></tr>")
-            for field, value in sorted(field_mapping.items()):
-                display_value = str(value)[:50] + "..." if len(str(value)) > 50 else str(value)
-                if not value or str(value).strip() == "":
-                    display_value = "<span style='color: red;'>VAZIO</span>"
-                summary_lines.append(f"<tr><td>{{{field}}}</td><td>{display_value}</td></tr>")
-            summary_lines.append("</table>")
-        else:
-            summary_lines.append("<span style='color: orange;'>Nenhum campo mapeado</span>")
-        
-        summary_text = "<br>".join(summary_lines)
-        self.ui.label_revisao.setText(summary_text)
+        summary_html = self._review_service.generate_html_summary(self._data_model)
+        self.lbl_summary.setText(summary_html)

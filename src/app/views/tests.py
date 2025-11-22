@@ -1,7 +1,7 @@
 from functools import partial
 from typing import Dict, Any
 
-from PySide6.QtWidgets import QWidget, QPushButton, QStackedWidget, QSpinBox
+from PySide6.QtWidgets import QWidget, QPushButton, QStackedWidget, QSpinBox, QComboBox
 from PySide6.QtCore import Signal
 
 from .ui_tests import Ui_TelaTestes
@@ -54,7 +54,7 @@ TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
     "srs": {
         "checkbox": "checkBox_incluir_srs2",
         "fields": {
-            "spinBox_TODO_srs2": "SRS_ESCORE_TOTAL",
+            "spinBox_srs_total": "SRS_ESCORE_TOTAL",
         },
     },
     "etdah": {
@@ -69,7 +69,18 @@ TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
     "cars": {
         "checkbox": "checkBox_incluir_cars2",
         "fields": {
-            "spinBox_TODO_cars2": "CARS_PONTUACAO",
+            "spinBox_cars_pontuacao": "CARS_PONTUACAO",
+        },
+    },
+    "htp": {
+        "checkbox": "checkBox_incluir_htp",
+        "fields": {
+            "comboBox_htp_aspectos": "HTP_ASPECTOS_FORMAIS_DESC",
+            "comboBox_htp_ambiente": "HTP_AMBIENTE_INFERENCIA",
+            "comboBox_htp_conector": "HTP_CONECTOR",
+            "comboBox_htp_projecao": "HTP_PROJECAO_DESC",
+            "comboBox_htp_projecao_compl": "HTP_PROJECAO_COMPLEMENTO",
+            "comboBox_htp_conclusao": "HTP_CONCLUSAO_ANALISE",
         },
     },
     "fdt": {
@@ -83,18 +94,18 @@ TEST_FIELD_CONFIG: Dict[str, Dict[str, Any]] = {
 
 
 class TestsScreen(QWidget):
-    avancar_clicado = Signal()
-    voltar_clicado = Signal()
+    next_clicked = Signal()
+    back_clicked = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_TelaTestes()
         self.ui.setupUi(self)
 
-        self.ui.btn_avancar.clicked.connect(self.avancar_clicado.emit)
-        self.ui.btn_voltar.clicked.connect(self.voltar_clicado.emit)
+        self.ui.btn_avancar.clicked.connect(self.next_clicked.emit)
+        self.ui.btn_voltar.clicked.connect(self.back_clicked.emit)
 
-        self.configurar_botoes_teste()
+        self.setup_test_buttons()
 
         # Load test configuration tables
         try:
@@ -106,24 +117,24 @@ class TestsScreen(QWidget):
         # Apply loaded tables into UI (titles, ranges)
         self._apply_tables_to_ui()
 
-    def configurar_botoes_teste(self):
+    def setup_test_buttons(self):
         stacked_forms = self.ui.stackedWidget_formularios
 
-        botoes_testes = [
+        test_buttons = [
             self.ui.btn_wisc4, self.ui.btn_ravlt, self.ui.btn_bpa2,
             self.ui.btn_neupsilin, self.ui.btn_srs2, self.ui.btn_etdah,
             self.ui.btn_cars2, self.ui.btn_htp, self.ui.btn_fdt,
         ]
 
-        for i, btn in enumerate(botoes_testes):
-            # O índice 0 é a página "Selecione...", então o botão 1 (i=0) vai para a página 1
-            btn.clicked.connect(partial(self.mostrar_form_teste, stacked_forms, i + 1))
+        for i, btn in enumerate(test_buttons):
+            # Index 0 is the "Select..." page, so button 1 (i=0) goes to page 1
+            btn.clicked.connect(partial(self.show_test_form, stacked_forms, i + 1))
 
-    def mostrar_form_teste(self, stacked_widget, index):
+    def show_test_form(self, stacked_widget, index):
         if index < stacked_widget.count():
             stacked_widget.setCurrentIndex(index)
         else:
-            print(f"Aviso: Formulário de teste (índice {index}) não encontrado.")
+            print(f"Warning: Test form (index {index}) not found.")
 
     def _apply_tables_to_ui(self):
         """Apply loaded test tables into UI labels and widgets.
@@ -168,6 +179,20 @@ class TestsScreen(QWidget):
                 if title:
                     label.setText(title)
 
+        # Populate HTP ComboBoxes
+        htp_data = self.test_tables.get("htp", {})
+        if htp_data and "opcoes_texto_analise" in htp_data:
+            options_map = htp_data["opcoes_texto_analise"]
+            # Map field names to widget names based on TEST_FIELD_CONFIG
+            htp_config = TEST_FIELD_CONFIG.get("htp", {}).get("fields", {})
+            
+            for widget_name, field_name in htp_config.items():
+                if field_name in options_map:
+                    widget = getattr(self.ui, widget_name, None)
+                    if isinstance(widget, QComboBox):
+                        widget.clear()
+                        widget.addItems(options_map[field_name])
+
     def get_data(self):
         """Collect test results from the UI.
 
@@ -188,5 +213,48 @@ class TestsScreen(QWidget):
                 widget = getattr(self.ui, widget_name, None)
                 if isinstance(widget, QSpinBox):
                     results[field_name] = widget.value()
+                elif isinstance(widget, QComboBox):
+                    results[field_name] = widget.currentText()
 
         return results
+
+    def set_data(self, data: Dict[str, Any]):
+        """Populate the UI fields with data from a dictionary.
+        
+        The dictionary keys should match the canonical template field names.
+        """
+        if not data:
+            return
+
+        for config in TEST_FIELD_CONFIG.values():
+            checkbox_name = config.get("checkbox")
+            if not checkbox_name:
+                continue
+            
+            # Check if any of the fields for this test are present in the data
+            fields_map = config.get("fields", {})
+            has_data = any(field_name in data for field_name in fields_map.values())
+            
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(has_data)
+
+            if has_data:
+                for widget_name, field_name in fields_map.items():
+                    if field_name in data:
+                        widget = getattr(self.ui, widget_name, None)
+                        if isinstance(widget, QSpinBox):
+                            try:
+                                val = int(data[field_name])
+                                widget.setValue(val)
+                            except (ValueError, TypeError):
+                                pass
+                        elif isinstance(widget, QComboBox):
+                            text_val = str(data[field_name])
+                            index = widget.findText(text_val)
+                            if index >= 0:
+                                widget.setCurrentIndex(index)
+                            else:
+                                # Optional: if text not found, maybe add it or just ignore?
+                                # For now, we ignore if not in options, or we could set current text if editable.
+                                pass

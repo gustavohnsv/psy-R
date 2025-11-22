@@ -16,11 +16,11 @@ class FieldValidator:
         'resp2': re.compile(r'^resp2_(nome|name|profissao|career|escolaridade|education|idade|age)$'),
         
         # Psychologist fields - accepts various psychologist field patterns
-        'psychologist_standard': re.compile(r'^(nome_psicologo|crp_psicologo)$'),
+        'psychologist_standard': re.compile(r'^(psychologist_name|psychologist_crp|nome_psicologo|crp_psicologo)$'),
         'psychologist_alternative': re.compile(r'^(psico_nome|psico_crp|telefone_psicologo|formacao_psicologo|email_contato_psicologo|solicitante_nome|solicitante_crp|solicitante_parentesco|solicitante_acompanhamento_duracao)$'),
         
         # Conclusion fields
-        'conclusion': re.compile(r'^conclusao.*$'),
+        'conclusion': re.compile(r'^(conclusion_text|conclusao.*)$'),
         
         # Test fields - WISC patterns (accepts _WISC suffix and various output patterns)
         'test_wisc': re.compile(r'^(QIT|ICV|IOP|IMO|IVP|ARIT|DIGS|SNL|SEME|CUBE|RV|RNV|VP|FC|CI|TASK|SEM|INF|VOC|COM|AG|AA|AC|AD|IR|IP|VE|ETM|ALT)(_WISC|_out|_conclusao|_text_out|_compostos|_percentil|_habilidade_descritiva|_HL)?$'),
@@ -118,8 +118,8 @@ class FieldValidator:
             'patient': ['patient_name', 'patient_birth', 'patient_crono_age', 'patient_school', 'patient_class'],
             'respondent_1': ['resp1_name', 'resp1_career', 'resp1_education', 'resp1_age'],
             'respondent_2': ['resp2_name', 'resp2_career', 'resp2_education', 'resp2_age'],
-            'psychologist': ['nome_psicologo', 'crp_psicologo'],
-            'conclusion': ['conclusao_text'],
+            'psychologist': ['psychologist_name', 'psychologist_crp', 'nome_psicologo', 'crp_psicologo'],
+            'conclusion': ['conclusion_text', 'conclusao_text'],
             'test_wisc': ['QIT_out', 'ICV_out', 'IOP_out', 'QIT_conclusao', 'ICV_text_out'],
             'test_etdah': ['F1_out', 'F2_out', 'F3_out', 'F4_out', 'TOTAL_out', 'ETDAH_CONCLUSAO_BLOCO'],
             'test_generic': ['Any uppercase field ending with _out, _conclusao, or _text_out']
