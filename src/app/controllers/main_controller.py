@@ -147,14 +147,36 @@ class MainController:
             if reply == QMessageBox.StandardButton.No:
                 return
 
-        # Select output directory
-        output_dir = QFileDialog.getExistingDirectory(
+        # Select output directory and filename
+        # Calculate path to src/app/data/documents
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        documents_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'documents'))
+        
+        if not os.path.exists(documents_dir):
+            try:
+                os.makedirs(documents_dir)
+            except OSError:
+                # Fallback to home if cannot create directory
+                documents_dir = os.path.expanduser('~')
+
+        patient_name = self.data_model.patient_data.get("patient_name", "").strip()
+        if patient_name:
+            safe_name = "".join(c for c in patient_name if c.isalnum() or c in (' ', '-', '_')).strip()
+            safe_name = safe_name.replace(' ', '_')
+            default_filename = f"laudo_{safe_name}.docx"
+        else:
+            default_filename = "laudo.docx"
+            
+        default_path = os.path.join(documents_dir, default_filename)
+
+        docx_path, _ = QFileDialog.getSaveFileName(
             self.main_window,
-            'Selecione o diretório para salvar o laudo',
-            os.path.expanduser('~')
+            'Salvar Laudo',
+            default_path,
+            'Word Documents (*.docx)'
         )
         
-        if not output_dir:
+        if not docx_path:
             return
 
         try:
@@ -164,15 +186,7 @@ class MainController:
             processor.set_document(template_copy)
             processor.replace_fields(field_mapping, template_copy)
             
-            patient_name = self.data_model.patient_data.get("patient_name", "").strip()
-            if patient_name:
-                safe_name = "".join(c for c in patient_name if c.isalnum() or c in (' ', '-', '_')).strip()
-                safe_name = safe_name.replace(' ', '_')
-                base_filename = f"laudo_{safe_name}"
-            else:
-                base_filename = "laudo"
-            
-            docx_path = os.path.join(output_dir, f"{base_filename}.docx")
+            # docx_path is already fully qualified from getSaveFileName
             processor.save_document(template_copy, docx_path)
             
             QMessageBox.information(

@@ -25,7 +25,13 @@ class TemplateScreen(QWidget):
         load_button.clicked.connect(self.load_template)
 
     def load_template(self):
-        file_path, _ = QFileDialog.getOpenFileName(self)
+        import os
+        # Calculate path to src/app/data/templates
+        # This file is in src/app/views/template.py
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        templates_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'templates'))
+        
+        file_path, _ = QFileDialog.getOpenFileName(self, "Selecionar Template", templates_dir, "Word Documents (*.docx)")
         if file_path:
             try:
                 self.file_template = Document(file_path)
