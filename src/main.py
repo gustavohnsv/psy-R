@@ -58,10 +58,7 @@ class MainWindow(QMainWindow):
 
         self.behavior_screen = TemplateFieldsScreen()
         self.behavior_screen.set_sections(["comportamento_observado"])
-        # Conclusions use the same dynamic screen but restricted to the conclusions section
-        self.conclusions_section_screen = TemplateFieldsScreen()
-        self.conclusions_section_screen.set_sections(["conclusoes"])
-
+        
         # Keep a backward-compatible separate ConclusionScreen instance (some tests / callers expect it)
         self.conclusion_screen = ConclusionScreen(data_model=self.data_model)
 
@@ -75,8 +72,7 @@ class MainWindow(QMainWindow):
         self.stacked_widget.addWidget(self.clinical_context_screen)
         self.stacked_widget.addWidget(self.behavior_screen)
         self.stacked_widget.addWidget(self.tests_screen)
-        # add both conclusions widgets (conclusions section and legacy conclusion screen) to preserve API/indices
-        self.stacked_widget.addWidget(self.conclusions_section_screen)
+        # Removed structured conclusion screen
         self.stacked_widget.addWidget(self.conclusion_screen)
         self.stacked_widget.addWidget(self.review_screen)
         
@@ -92,20 +88,15 @@ class MainWindow(QMainWindow):
         self.patient_screen.next_clicked.connect(self.nav_controller.next_screen)
         self.patient_screen.back_clicked.connect(self.nav_controller.previous_screen)
 
-        for tela in (self.admin_fields_screen, self.clinical_context_screen, self.behavior_screen, self.conclusions_section_screen):
+        for tela in (self.admin_fields_screen, self.clinical_context_screen, self.behavior_screen):
             tela.next_clicked.connect(self.nav_controller.next_screen)
             tela.back_clicked.connect(self.nav_controller.previous_screen)
 
         self.tests_screen.next_clicked.connect(self.nav_controller.next_screen)
         self.tests_screen.back_clicked.connect(self.nav_controller.previous_screen)
 
-        # conclusions section leads to review
-        # We need a special handler for this to jump to review screen
-        self.conclusions_section_screen.next_clicked.connect(lambda: self.nav_controller.go_to_screen(self.review_screen))
-        self.conclusions_section_screen.back_clicked.connect(self.nav_controller.previous_screen)
-
-        # wire legacy conclusion screen as before (backward compatibility)
-        self.conclusion_screen.next_clicked.connect(lambda: self.nav_controller.go_to_screen(self.review_screen))
+        # Conclusion screen navigation
+        self.conclusion_screen.next_clicked.connect(self.nav_controller.next_screen)
         self.conclusion_screen.back_clicked.connect(self.nav_controller.previous_screen)
 
         self.review_screen.back_clicked.connect(self.nav_controller.previous_screen)

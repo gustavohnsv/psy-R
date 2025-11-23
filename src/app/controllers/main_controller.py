@@ -325,7 +325,7 @@ class MainController:
         # We need to update all instances of TemplateFieldsScreen
         # The model already has the data, so we can just call set_data on them with the full dict
         # or rely on prepare_view if we were navigating. But we want immediate update.
-        for attr in ["admin_fields_screen", "clinical_context_screen", "behavior_screen", "conclusions_section_screen"]:
+        for attr in ["admin_fields_screen", "clinical_context_screen", "behavior_screen"]:
             screen = getattr(self.main_window, attr, None)
             if screen and isinstance(screen, TemplateFieldsScreen):
                 screen.set_data(demo_template_fields)
