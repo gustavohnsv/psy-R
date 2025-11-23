@@ -125,27 +125,7 @@ class MainController:
 
         # Check required fields
         field_mapping = self.data_model.get_field_mapping()
-        template_fields = processor.extract_fields()
-        missing_fields, empty_fields = processor.check_required_fields(template_fields, field_mapping)
-        
-        if missing_fields or empty_fields:
-            warning_parts = []
-            if missing_fields:
-                warning_parts.append(f"Campos faltando: {', '.join(missing_fields)}")
-            if empty_fields:
-                warning_parts.append(f"Campos vazios: {', '.join(empty_fields)}")
-            
-            warning_text = '\n\n'.join(warning_parts)
-            reply = QMessageBox.warning(
-                self.main_window,
-                'Campos Incompletos',
-                f'Os seguintes campos não têm dados:\n\n{warning_text}\n\n'
-                'Deseja continuar mesmo assim? Os campos vazios serão deixados em branco no documento.',
-                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
-                QMessageBox.StandardButton.No
-            )
-            if reply == QMessageBox.StandardButton.No:
-                return
+
 
         # Select output directory and filename
         # Calculate path to src/app/data/documents
