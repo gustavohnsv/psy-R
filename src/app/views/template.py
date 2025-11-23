@@ -26,12 +26,26 @@ class TemplateScreen(QWidget):
 
     def load_template(self):
         import os
-        # Calculate path to src/app/data/templates
-        # This file is in src/app/views/template.py
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        templates_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'templates'))
+        from app.utils.paths import get_app_dir
         
-        file_path, _ = QFileDialog.getOpenFileName(self, "Selecionar Template", templates_dir, "Word Documents (*.docx)")
+        # Templates folder relative to the executable (or project root in dev)
+        templates_dir = get_app_dir() / "templates"
+        
+        if not templates_dir.exists():
+             # Try to find it in data/templates as fallback (dev mode structure sometimes)
+             # But get_app_dir() in dev points to project root, so templates should be at root/templates?
+             # Actually, in dev, the user might have them in src/app/data/templates.
+             # Let's check both or just rely on get_app_dir() logic.
+             # In dev: get_app_dir() -> project root.
+             # If user keeps templates in project_root/templates, it works.
+             # If they are in src/app/data/templates, we might need a fallback or move them.
+             # Given the user wants "same folder as the app", let's stick to that.
+             # But for dev convenience, let's also check the source location.
+             dev_templates = get_app_dir() / "src" / "app" / "data" / "templates"
+             if dev_templates.exists():
+                 templates_dir = dev_templates
+        
+        file_path, _ = QFileDialog.getOpenFileName(self, "Selecionar Template", str(templates_dir), "Word Documents (*.docx)")
         if file_path:
             try:
                 self.file_template = Document(file_path)

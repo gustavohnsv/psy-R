@@ -128,16 +128,17 @@ class MainController:
 
 
         # Select output directory and filename
-        # Calculate path to src/app/data/documents
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        documents_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'documents'))
+        from app.utils.paths import get_app_dir
         
-        if not os.path.exists(documents_dir):
+        # Documents folder relative to the executable (or project root in dev)
+        documents_dir = get_app_dir() / "documents"
+        
+        if not documents_dir.exists():
             try:
-                os.makedirs(documents_dir)
+                documents_dir.mkdir(parents=True, exist_ok=True)
             except OSError:
                 # Fallback to home if cannot create directory
-                documents_dir = os.path.expanduser('~')
+                documents_dir = Path(os.path.expanduser('~'))
 
         patient_name = self.data_model.patient_data.get("patient_name", "").strip()
         if patient_name:
@@ -147,7 +148,7 @@ class MainController:
         else:
             default_filename = "laudo.docx"
             
-        default_path = os.path.join(documents_dir, default_filename)
+        default_path = str(documents_dir / default_filename)
 
         docx_path, _ = QFileDialog.getSaveFileName(
             self.main_window,

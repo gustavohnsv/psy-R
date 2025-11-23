@@ -1,13 +1,21 @@
-# -*- mode: python ; coding: utf-8 -*-
+import docx
+import os
+from PyInstaller.utils.hooks import collect_all
 
 block_cipher = None
+
+# Collect all resources for docx (data, binaries, hidden imports)
+docx_datas, docx_binaries, docx_hiddenimports = collect_all('docx')
 
 a = Analysis(
     ['src/main.py'],
     pathex=[],
-    binaries=[],
-    datas=[('src/app/assets', 'app/assets')],
-    hiddenimports=['backports'],
+    binaries=docx_binaries,
+    datas=[
+        ('src/app/assets', 'app/assets'),
+        ('src/app/data', 'app/data'),
+    ] + docx_datas,
+    hiddenimports=['backports'] + docx_hiddenimports,
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
