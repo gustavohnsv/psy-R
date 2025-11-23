@@ -37,12 +37,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -e .
-      - name: Compilar com PyInstaller (Linux/macOS)
-        if: runner.os != 'Windows'
-        run: pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets:app/assets" src/main.py
-      - name: Compilar com PyInstaller (Windows)
-        if: runner.os == 'Windows'
-        run: pyinstaller --onefile --windowed --name="psy-r" --add-data="src/app/assets;app/assets" src/main.py
+      - name: Compilar com PyInstaller
+        run: pyinstaller psy-r.spec
       - name: Renomear binário
         shell: bash
         run: |
