@@ -4,27 +4,30 @@
   // Observação: mantenha as regras de interpretação como estão.
   "teste": "CARS-II",
   "tipo_de_regra": "escore_bruto_inteiro",
-
   // Regras de interpretação baseadas nas faixas de pontuação
   "classificacoes": [
     {
       "faixa_min": 37,
       "faixa_max": 999, // "superior a 37 pontos"
+      "texto": "Grave",
       "interpretacao": "sugere um autismo moderado a grave"
     },
     {
       "faixa_min": 34,
       "faixa_max": 36, // "pontuações variando entre 34 a 36 pontos"
+      "texto": "Moderado",
       "interpretacao": "sugere um autismo moderado"
     },
     {
       "faixa_min": 30,
       "faixa_max": 33, // "30 a 33 indicam"
+      "texto": "Leve",
       "interpretacao": "indica a presença do autismo leve"
     },
     {
       "faixa_min": 0,
       "faixa_max": 29, // "abaixo de 29,5 pontos" (assumindo pontuação inteira)
+      "texto": "Ausente",
       "interpretacao": "indica ausência do autismo"
     }
   ]

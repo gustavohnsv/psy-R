@@ -4,15 +4,49 @@
   // em textos de interpretação (ETM_out, ALT_out, etc.).
   "teste": "RAVLT",
   "tipo_de_regra": "percentil",
-  
   // NOTA: As faixas de percentil exatas devem ser confirmadas no manual do teste.
   "classificacoes": [
-    { "faixa_min": 98, "faixa_max": 100, "texto": "Muito superior" },
-    { "faixa_min": 91, "faixa_max": 97, "texto": "Superior" },
-    { "faixa_min": 75, "faixa_max": 90, "texto": "Médio superior" },
-    { "faixa_min": 25, "faixa_max": 74, "texto": "Médio" },
-    { "faixa_min": 9, "faixa_max": 24, "texto": "Médio inferior" },
-    { "faixa_min": 3, "faixa_max": 8, "texto": "Inferior" },
-    { "faixa_min": 0, "faixa_max": 2, "texto": "Muito inferior" }
+    {
+      "faixa_min": 98,
+      "faixa_max": 100,
+      "texto": "Muito superior",
+      "interpretacao": "O desempenho encontra-se na faixa muito superior, indicando habilidades excepcionais nesta área."
+    },
+    {
+      "faixa_min": 91,
+      "faixa_max": 97,
+      "texto": "Superior",
+      "interpretacao": "O desempenho encontra-se na faixa superior, indicando habilidades acima da média."
+    },
+    {
+      "faixa_min": 75,
+      "faixa_max": 90,
+      "texto": "Médio superior",
+      "interpretacao": "O desempenho encontra-se na faixa médio superior, indicando boas habilidades."
+    },
+    {
+      "faixa_min": 25,
+      "faixa_max": 74,
+      "texto": "Médio",
+      "interpretacao": "O desempenho encontra-se na faixa média, indicando habilidades adequadas para a faixa etária."
+    },
+    {
+      "faixa_min": 9,
+      "faixa_max": 24,
+      "texto": "Médio inferior",
+      "interpretacao": "O desempenho encontra-se na faixa médio inferior, o que pode indicar leve dificuldade ou oscilação."
+    },
+    {
+      "faixa_min": 3,
+      "faixa_max": 8,
+      "texto": "Inferior",
+      "interpretacao": "O desempenho encontra-se na faixa inferior, sugerindo dificuldades significativas."
+    },
+    {
+      "faixa_min": 0,
+      "faixa_max": 2,
+      "texto": "Muito inferior",
+      "interpretacao": "O desempenho encontra-se na faixa muito inferior, indicando prejuízo importante nesta habilidade."
+    }
   ]
 }

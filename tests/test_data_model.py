@@ -1,17 +1,17 @@
 """Unit tests for Branch 1: Data Model and Storage."""
 import pytest
 from docx import Document
-from app.models import LaudoDataModel
+from app.models import ReportDataModel
 
 
 @pytest.mark.unit
 @pytest.mark.data_model
-class TestLaudoDataModel:
-    """Test suite for LaudoDataModel class."""
+class TestReportDataModel:
+    """Test suite for ReportDataModel class."""
     
     def test_initialization(self):
         """Test that data model initializes with empty/default values."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         
         assert model.template_path is None
         assert model.template_document is None
@@ -20,12 +20,12 @@ class TestLaudoDataModel:
         assert model.resp2_data["resp2_name"] == ""
         assert model.test_results == {}
         assert model.conclusion_text == ""
-        assert model.psychologist_data["nome_psicologo"] == ""
+        assert model.psychologist_data["psychologist_name"] == ""
         assert not model.is_template_loaded()
     
     def test_set_template(self, sample_document):
         """Test setting template path and document."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_template("/test/path/template.docx", sample_document)
         
         assert model.template_path == "/test/path/template.docx"
@@ -34,7 +34,7 @@ class TestLaudoDataModel:
     
     def test_set_patient_data(self, sample_patient_data):
         """Test setting patient data."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_patient_data(sample_patient_data)
         
         for key, value in sample_patient_data.items():
@@ -42,7 +42,7 @@ class TestLaudoDataModel:
     
     def test_set_resp1_data(self, sample_resp1_data):
         """Test setting respondent 1 data."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_resp1_data(sample_resp1_data)
         
         for key, value in sample_resp1_data.items():
@@ -50,7 +50,7 @@ class TestLaudoDataModel:
     
     def test_set_resp2_data(self, sample_resp2_data):
         """Test setting respondent 2 data."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_resp2_data(sample_resp2_data)
         
         for key, value in sample_resp2_data.items():
@@ -58,7 +58,7 @@ class TestLaudoDataModel:
     
     def test_set_test_results(self, sample_test_results):
         """Test setting test results."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_test_results(sample_test_results)
         
         for key, value in sample_test_results.items():
@@ -66,14 +66,14 @@ class TestLaudoDataModel:
     
     def test_set_conclusion_text(self, sample_conclusion_text):
         """Test setting conclusion text."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_conclusion_text(sample_conclusion_text)
         
         assert model.conclusion_text == sample_conclusion_text
     
     def test_set_psychologist_data(self, sample_psychologist_data):
         """Test setting psychologist data."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_psychologist_data(sample_psychologist_data)
         
         for key, value in sample_psychologist_data.items():
@@ -101,8 +101,8 @@ class TestLaudoDataModel:
         assert "patient_name" in field_mapping
         assert "resp1_name" in field_mapping
         assert "resp2_name" in field_mapping
-        assert "conclusao_text" in field_mapping
-        assert "nome_psicologo" in field_mapping
+        assert "conclusion_text" in field_mapping
+        assert "psychologist_name" in field_mapping
         assert field_mapping["patient_name"] == "João Silva"
         assert all(isinstance(v, str) for v in field_mapping.values())
     
@@ -115,7 +115,7 @@ class TestLaudoDataModel:
     
     def test_partial_update_preserves_other_fields(self, sample_patient_data):
         """Test that partial updates preserve other fields."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_patient_data(sample_patient_data)
         
         # Update only one field
@@ -127,7 +127,7 @@ class TestLaudoDataModel:
     
     def test_is_template_loaded(self, sample_document):
         """Test template loaded check."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         assert not model.is_template_loaded()
         
         model.set_template("/test/path.docx", sample_document)
@@ -153,14 +153,14 @@ class TestLaudoDataModel:
         assert field_mapping["QIT_out"] == "Média superior"
         
         # Check conclusion
-        assert field_mapping["conclusao_text"] == "Este é um texto de conclusão de teste."
+        assert field_mapping["conclusion_text"] == "Este é um texto de conclusão de teste."
         
         # Check psychologist
-        assert field_mapping["nome_psicologo"] == "Dr. Ana Paula"
+        assert field_mapping["psychologist_name"] == "Dr. Ana Paula"
 
     def test_classifies_wisc_score(self):
         """Ensure WISC raw scores generate classification text."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_test_results({"QIT_WISC": 118})
 
         assert model.test_results["QIT_WISC"] == 118
@@ -168,7 +168,7 @@ class TestLaudoDataModel:
 
     def test_bpa_general_classification_alias(self):
         """BPA general attention should expose classification and aliases."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_test_results({"AG_BPA": 85})
 
         assert model.test_results["AG_out"] == "Médio superior"
@@ -178,7 +178,7 @@ class TestLaudoDataModel:
 
     def test_bpa_general_computed_from_components(self):
         """When only component scores exist, compute AG automatically."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_test_results({"AC_BPA": 45, "AD_BPA": 65, "AA_BPA": 90})
 
         assert model.test_results["AG_BPA"] == 67
@@ -188,7 +188,7 @@ class TestLaudoDataModel:
 
     def test_wisc_subtest_classification(self):
         """WISC subtests should reuse classification table and clamp values."""
-        model = LaudoDataModel()
+        model = ReportDataModel()
         model.set_test_results({"DIGS_WISC": 123})
 
         assert model.test_results["DIGS_out"] == "Acima da média"

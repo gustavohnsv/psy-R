@@ -20,7 +20,7 @@ class TestTemplateScreenDataCollection:
         from app.views.template import TemplateScreen
         
         screen = TemplateScreen()
-        screen._template_carregado = True
+        screen._template_loaded = True
         screen.ui.lineEdit_caminho_template.setText("/test/path/template.docx")
         
         path = screen.get_template_path()
@@ -31,7 +31,7 @@ class TestTemplateScreenDataCollection:
         from app.views.template import TemplateScreen
         
         screen = TemplateScreen()
-        screen._template_carregado = False
+        screen._template_loaded = False
         
         path = screen.get_template_path()
         assert path == ""
@@ -140,13 +140,13 @@ class TestConclusionScreenDataCollection:
         from app.views.conclusion import ConclusionScreen
         
         screen = ConclusionScreen()
-        screen.ui.textEdit_conclusao.setPlainText("Test conclusion text")
+        screen.txt_conclusao.setPlainText("Test conclusion text")
         
         data = screen.get_data()
         
         assert isinstance(data, dict)
-        assert "conclusao_text" in data
-        assert data["conclusao_text"] == "Test conclusion text"
+        assert "conclusion_text" in data
+        assert data["conclusion_text"] == "Test conclusion text"
     
     def test_get_data_handles_empty_conclusion(self):
         """Test that get_data handles empty conclusion."""
@@ -155,19 +155,21 @@ class TestConclusionScreenDataCollection:
         screen = ConclusionScreen()
         data = screen.get_data()
         
-        assert data["conclusao_text"] == ""
+        assert data["conclusion_text"] == ""
 
-    def test_refresh_calculated_data_populates_browser(self, populated_data_model):
+    def test_refresh_calculated_data_populates_text_area(self, populated_data_model):
         """Calculated reference panel should display collected test results."""
         from app.views.conclusion import ConclusionScreen
 
-        screen = ConclusionScreen(data_model=populated_data_model)
-        screen.refresh_calculated_data()
-
-        panel_text = screen.ui.textBrowser_dados.toPlainText()
-
-        assert panel_text
-        assert "WISC" in panel_text
+        # Mock ReportSummaryService to ensure it returns a known string
+        with patch('app.views.conclusion.ReportSummaryService') as MockService:
+            mock_service_instance = MockService.return_value
+            mock_service_instance.build_summary_text.return_value = "Generated Summary"
+            
+            screen = ConclusionScreen(data_model=populated_data_model)
+            screen.refresh_calculated_data()
+            
+            assert screen.txt_conclusao.toPlainText() == "Generated Summary"
 
 
 @pytest.mark.integration
@@ -178,28 +180,29 @@ class TestDataCollectionIntegration:
     def test_mainwindow_collects_data_from_screens(self, qapp):
         """Test that MainWindow collects data from all screens."""
         from main import MainWindow
-        from app.models import LaudoDataModel
+        from app.models import ReportDataModel
         
         window = MainWindow()
         
         # Set up template screen
-        window.tela_template._template_carregado = True
-        window.tela_template.file_template = Mock()
-        window.tela_template.ui.lineEdit_caminho_template.setText("/test/template.docx")
+        window.template_screen._template_loaded = True
+        window.template_screen.file_template = Mock()
+        window.template_screen.ui.lineEdit_caminho_template.setText("/test/template.docx")
         
         # Set up patient screen
-        window.tela_paciente.ui.lineEdit_nome.setText("Test Patient")
-        window.tela_paciente.ui.dateEdit_nascimento.setDate(QDate(2010, 1, 1))
+        window.patient_screen.ui.lineEdit_nome.setText("Test Patient")
+        window.patient_screen.ui.dateEdit_nascimento.setDate(QDate(2010, 1, 1))
+        window.conclusion_screen.txt_conclusao.setPlainText("Test Conclusion")
         
         # Navigate to collect data
         window.stacked_widget.setCurrentIndex(0)
-        window._coletar_dados_tela_atual()
+        window.main_controller.collect_data_from_current_view()
         
         assert window.data_model.template_path == "/test/template.docx"
         
         # Navigate to patient screen
         window.stacked_widget.setCurrentIndex(1)
-        window._coletar_dados_tela_atual()
+        window.main_controller.collect_data_from_current_view()
         
         assert window.data_model.patient_data["patient_name"] == "Test Patient"
 

@@ -1,4 +1,4 @@
-from .data_model import LaudoDataModel
+from .data_model import ReportDataModel
 
-__all__ = ['LaudoDataModel']
+__all__ = ['ReportDataModel']
 

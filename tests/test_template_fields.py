@@ -1,12 +1,12 @@
 import pytest
 from docx import Document
 
-from app.models import LaudoDataModel
+from app.models import ReportDataModel
 from app.services.template_processor import TemplateProcessor
 
 
 def import_template_loader():
-    from app.services.template_fields_loader import TemplateFieldsLoader
+    from app.services.template.loader import TemplateFieldsLoader
 
     return TemplateFieldsLoader
 
@@ -34,7 +34,7 @@ def test_template_fields_loader_includes_expected_fields():
 
 
 def test_data_model_maps_template_fields_into_mapping():
-    data_model = LaudoDataModel()
+    data_model = ReportDataModel()
     payload = {
         "analise_paciente": "Observações relevantes",
         "cidade": "Poá",
@@ -54,7 +54,7 @@ def test_template_processor_replaces_custom_fields_from_mapping():
 
     processor = TemplateProcessor(doc)
 
-    data_model = LaudoDataModel()
+    data_model = ReportDataModel()
     data_model.set_template_field_values(
         {"analise_paciente": "Paciente atento", "cidade": "Poá"}
     )

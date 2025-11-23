@@ -54,3 +54,5 @@ Thumbs.db
 *.pdf
 test_output/
 uv.lock
+src/app/data/documents/laudo_João_da_Silva_Teste.docx
+src/app/data/documents/LaudoTeste.docx

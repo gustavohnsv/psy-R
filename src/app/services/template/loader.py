@@ -7,7 +7,9 @@ class TemplateFieldsLoader:
     """Loads the configuration that describes non-test template placeholders."""
 
     def __init__(self, config_path: Optional[Path | str] = None):
-        base_path = Path(config_path) if config_path else Path(__file__).resolve().parents[1] / "data" / "template_fields.json"
+        # Adjusted path relative to src/app/services/template/loader.py
+        # parents[2] is src/app
+        base_path = Path(config_path) if config_path else Path(__file__).resolve().parents[2] / "data" / "template_fields.json"
         self.config_path = base_path
         self._cache: Optional[Dict[str, Any]] = None
 
@@ -31,4 +33,3 @@ class TemplateFieldsLoader:
         """Iterate over configured sections."""
         config = self.load_config()
         return config.get("sections", [])
-
